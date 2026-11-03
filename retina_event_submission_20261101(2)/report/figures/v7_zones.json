@@ -1,0 +1,131 @@
+{
+ "session": "20261030-222201_v7hands",
+ "path": "E:/workspace/FPGA_Comp/records/20261030-222201_v7hands",
+ "wall_clock": {
+  "start": "2026-10-30 22:22:01",
+  "end": "2026-10-30 22:26:17",
+  "seconds": 256.16
+ },
+ "frames": 6831,
+ "events": 7913893,
+ "dropped_frames": 0,
+ "dropped_events": 0,
+ "fps_effective": 26.67,
+ "container_time_factor": 0.889,
+ "note_camera": "★★ 摄像头在 157-162 s 被人为转动（原本对着墙/屏幕，转成对着桌面键盘鼠标），235-239 s 转回原位。transit 段已排除。view A = 原始视角（部署视角），view B = 转动后视角（仅作硬负样本用）。",
+ "note_boundary": "边界由 t_board_ms 逐 2 s 的 dx 中位数（相邻 100 ms 窗质心位移，网格单位）确定，不是秒表：开合 dx 6-16，挥手 dx 20-38，差别 3 倍，切分无歧义。",
+ "zones": [
+  {
+   "name": "empty_A",
+   "t0": 0,
+   "t1": 15,
+   "label": "empty",
+   "view": "A",
+   "ev_per_s": 28,
+   "dx_p50": null
+  },
+  {
+   "name": "open_L",
+   "t0": 16,
+   "t1": 45,
+   "label": "openclose_left",
+   "view": "A",
+   "ev_per_s": 20057,
+   "dx_p50": 9
+  },
+  {
+   "name": "wave_L",
+   "t0": 46,
+   "t1": 77,
+   "label": "wave_left",
+   "view": "A",
+   "ev_per_s": 33441,
+   "dx_p50": 31.3
+  },
+  {
+   "name": "gap_away",
+   "t0": 78,
+   "t1": 82,
+   "label": "away",
+   "view": "A",
+   "ev_per_s": 40,
+   "dx_p50": null
+  },
+  {
+   "name": "open_L_near",
+   "t0": 83,
+   "t1": 105,
+   "label": "openclose_left",
+   "view": "A",
+   "ev_per_s": 27081,
+   "dx_p50": 8.3,
+   "distance": "near ~40cm"
+  },
+  {
+   "name": "open_L_far",
+   "t0": 107,
+   "t1": 134,
+   "label": "openclose_left",
+   "view": "A",
+   "ev_per_s": 15251,
+   "dx_p50": 5.8,
+   "distance": "far ~80cm"
+  },
+  {
+   "name": "wave_L_far",
+   "t0": 136,
+   "t1": 156,
+   "label": "wave_left",
+   "view": "A",
+   "ev_per_s": 29945,
+   "dx_p50": 23.9,
+   "distance": "far ~80cm"
+  },
+  {
+   "name": "EXCLUDE_rotate_to_B",
+   "t0": 157,
+   "t1": 162.5,
+   "label": "exclude",
+   "view": "X"
+  },
+  {
+   "name": "typing",
+   "t0": 163,
+   "t1": 185,
+   "label": "hardneg",
+   "view": "B",
+   "ev_per_s": 59137
+  },
+  {
+   "name": "cup_paper",
+   "t0": 186,
+   "t1": 209.5,
+   "label": "hardneg",
+   "view": "B",
+   "ev_per_s": 79671
+  },
+  {
+   "name": "still_B",
+   "t0": 214,
+   "t1": 234,
+   "label": "static",
+   "view": "B",
+   "ev_per_s": 570
+  },
+  {
+   "name": "EXCLUDE_rotate_back",
+   "t0": 235,
+   "t1": 239.5,
+   "label": "exclude",
+   "view": "X"
+  },
+  {
+   "name": "empty_A2",
+   "t0": 240,
+   "t1": 256,
+   "label": "empty",
+   "view": "A",
+   "ev_per_s": 33
+  }
+ ]
+}

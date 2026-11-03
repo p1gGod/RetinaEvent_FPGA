@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300">
+<defs>
+  <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#2f9e6e"/>
+  </marker>
+</defs>
+<text x="480" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件引擎数据通路 —— 逐像素流水线</text>
+<text x="480" y="52" text-anchor="middle" font-size="11.5" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>每一级只依赖标准的「像素流(VPS)」接口，换算法 / 加一级 / 旁路一级都只动一个模块</text>
+
+<g font-size="11">
+<rect x="18" y="120" width="92" height="66" rx="8" fill="#eef3f8" stroke="#4a6fa5" stroke-width="1.4"/>
+<text x="64" y="146" text-anchor="middle" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>输入</text>
+<text x="64" y="163" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>800×480</text>
+<text x="64" y="177" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>RGB565</text>
+
+<rect x="138" y="120" width="104" height="66" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="190" y="145" text-anchor="middle" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>vps_resample</text>
+<text x="190" y="162" text-anchor="middle" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>2×2 抽点</text>
+<text x="190" y="176" text-anchor="middle" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>→ 400×240</text>
+
+<rect x="270" y="120" width="84" height="66" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="312" y="146" text-anchor="middle" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>px_luma</text>
+<text x="312" y="163" text-anchor="middle" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>RGB→亮度</text>
+
+<rect x="382" y="120" width="84" height="66" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="424" y="146" text-anchor="middle" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>luma_log</text>
+<text x="424" y="163" text-anchor="middle" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>对数压缩</text>
+
+<rect x="494" y="120" width="96" height="66" rx="8" fill="#eafaf1" stroke="#2f9e6e" stroke-width="1.6"/>
+<text x="542" y="145" text-anchor="middle" font-weight="700" fill="#1f6b43" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>temporal_diff</text>
+<text x="542" y="163" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>时间差分</text>
+<text x="542" y="177" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>+ 帧存 BRAM</text>
+
+<rect x="618" y="120" width="96" height="66" rx="8" fill="#eafaf1" stroke="#2f9e6e" stroke-width="1.6"/>
+<text x="666" y="145" text-anchor="middle" font-weight="700" fill="#1f6b43" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>spatial_lap</text>
+<text x="666" y="163" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>中心-周边</text>
+<text x="666" y="177" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>+ 2 行缓存</text>
+
+<rect x="742" y="120" width="90" height="66" rx="8" fill="#eafaf1" stroke="#2f9e6e" stroke-width="1.6"/>
+<text x="787" y="146" text-anchor="middle" font-weight="700" fill="#1f6b43" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>event_gen</text>
+<text x="787" y="163" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>双阈值判决</text>
+
+<rect x="860" y="120" width="86" height="66" rx="8" fill="#eef3f8" stroke="#4a6fa5" stroke-width="1.4"/>
+<text x="903" y="146" text-anchor="middle" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>输出</text>
+<text x="903" y="163" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>ON/OFF</text>
+<text x="903" y="177" text-anchor="middle" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件流</text>
+</g>
+
+<line x1="110" y1="153" x2="136" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="242" y1="153" x2="268" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="354" y1="153" x2="380" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="466" y1="153" x2="492" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="590" y1="153" x2="616" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="714" y1="153" x2="740" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="832" y1="153" x2="858" y2="153" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#ap)"/>
+
+<text x="64" y="216" text-anchor="middle" font-size="11" fill="#8a5a1e" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>每像素 2 拍</text>
+<text x="312" y="216" text-anchor="middle" font-size="11" fill="#8a5a1e" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>每像素 1 拍（此域起）</text>
+</svg>

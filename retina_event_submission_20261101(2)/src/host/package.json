@@ -1,0 +1,36 @@
+{
+  "name": "retina-host",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "RetinaEvent 上位机（PC 端地面站）：Node/TS 网关 + Web 前端（设计见 host/docs/）",
+  "workspaces": [
+    "packages/*",
+    "gateway",
+    "web"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --test --experimental-strip-types \"packages/**/test/**/*.test.ts\" \"gateway/test/**/*.test.ts\" \"tools/test/**/*.test.ts\" \"web/test/**/*.test.ts\"",
+    "test:protocol": "node --test --experimental-strip-types \"packages/protocol/test/**/*.test.ts\"",
+    "test:v3": "node --test --experimental-strip-types \"packages/protocol/test/codec_v3.test.ts\" \"gateway/test/v3*.test.ts\" \"web/test/export-times.test.ts\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:protocol": "tsc --noEmit --strict --target ES2023 --module ESNext --moduleResolution bundler --allowImportingTsExtensions --erasableSyntaxOnly --skipLibCheck --lib ES2023,DOM,DOM.Iterable \"packages/protocol/src/**/*.ts\" \"packages/protocol/test/**/*.ts\"",
+    "test:gateway": "node --test --experimental-strip-types \"gateway/test/**/*.test.ts\"",
+    "test:e2e": "node test/m1_e2e.mjs && node test/api_e2e.mjs && node test/ui_export_e2e.mjs",
+    "golden:gen": "node --experimental-strip-types tools/gen-golden.ts",
+    "recv:replay": "node --experimental-strip-types tools/recv_buffer_replay.ts",
+    "theta:sweep": "node --experimental-strip-types tools/theta_sweep.mjs",
+    "web:dev": "npm run dev --workspace web",
+    "gateway:replay": "node --experimental-strip-types gateway/src/main.ts --replay"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "serialport": "^13.0.0"
+  }
+}

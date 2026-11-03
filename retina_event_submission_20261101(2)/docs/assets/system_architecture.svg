@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="640" viewBox="0 0 1100 640">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6b7c"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f9e6e"/></marker>
+  <marker id="ard" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c08a3e"/></marker>
+  <marker id="arp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a4fd0"/></marker>
+</defs>
+<text x="550" y="26" text-anchor="middle" font-size="16.5" font-weight="700" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>系统总体框图 —— KEY0 切换显示源 · UDP 单流合并（原始帧 + 事件）</text>
+
+<!-- 摄像头 -->
+<rect x="20" y="250" width="145" height="82" rx="10" fill="#eef3f8" stroke="#4a6fa5" stroke-width="1.6"/>
+<text x="92" y="284" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>OV5640 摄像头</text>
+<text x="92" y="304" text-anchor="middle" font-size="11" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>DVP 8bit RGB565</text>
+<text x="92" y="320" text-anchor="middle" font-size="11" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>800×480 @ 26.4fps</text>
+
+<!-- 显示通路容器 -->
+<rect x="195" y="30" width="545" height="165" rx="12" fill="#f4f7fb" stroke="#8aa3bf" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="467" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#3a5a7a" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>显示通路（厂家例程 37 · 原样不动）</text>
+<rect x="215" y="72" width="115" height="58" rx="8" fill="#ffffff" stroke="#5b6b7c" stroke-width="1.4"/>
+<text x="272" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>ov5640_dri</text>
+<text x="272" y="116" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>配置 + 采集</text>
+<rect x="350" y="72" width="135" height="58" rx="8" fill="#ffffff" stroke="#5b6b7c" stroke-width="1.4"/>
+<text x="417" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>DDR3 / MIG</text>
+<text x="417" y="116" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>乒乓帧缓存 16bit</text>
+<rect x="505" y="72" width="115" height="58" rx="8" fill="#ffffff" stroke="#5b6b7c" stroke-width="1.4"/>
+<text x="562" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>lcd_rgb_top</text>
+<text x="562" y="116" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>LCD 时序</text>
+
+<!-- 事件支路容器 -->
+<rect x="195" y="255" width="545" height="275" rx="12" fill="#f0f8f3" stroke="#6fbf8f" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="467" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#2f7d50" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件支路（自研 · 只读并联）</text>
+<rect x="215" y="300" width="105" height="58" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="267" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>cam_tap</text>
+<text x="267" y="344" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>只读抓取 + 组包</text>
+<rect x="340" y="300" width="155" height="58" rx="8" fill="#eafaf1" stroke="#2f9e6e" stroke-width="1.8"/>
+<text x="417" y="324" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f6b43" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>retina_core</text>
+<text x="417" y="344" text-anchor="middle" font-size="10" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件引擎（核心）</text>
+<rect x="515" y="296" width="115" height="50" rx="8" fill="#eef8ff" stroke="#4a6fa5" stroke-width="1.4"/>
+<text x="572" y="317" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件位图</text>
+<text x="572" y="334" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>400×240×4bit BRAM</text>
+<rect x="515" y="360" width="115" height="58" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="572" y="384" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>event_render</text>
+<text x="572" y="402" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>渲染 → 800×480 RGB</text>
+<rect x="515" y="434" width="115" height="50" rx="8" fill="#ffffff" stroke="#2f9e6e" stroke-width="1.4"/>
+<text x="572" y="455" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>event_sink</text>
+<text x="572" y="472" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>事件分发</text>
+
+<!-- 右侧 -->
+<rect x="770" y="170" width="150" height="84" rx="10" fill="#fff7ed" stroke="#c08a3e" stroke-width="1.8"/>
+<text x="845" y="198" text-anchor="middle" font-size="13" font-weight="700" fill="#8a5a1e" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>disp_mux</text>
+<text x="845" y="218" text-anchor="middle" font-size="11" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>背景源选择</text>
+<text x="845" y="236" text-anchor="middle" font-size="11" font-weight="700" fill="#8a5a1e" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>KEY0 切换</text>
+
+<rect x="970" y="60" width="120" height="80" rx="10" fill="#eef3f8" stroke="#4a6fa5" stroke-width="1.6"/>
+<text x="1030" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>4.3" LCD</text>
+<text x="1030" y="112" text-anchor="middle" font-size="10.5" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>原始 或 事件画面</text>
+
+<rect x="770" y="300" width="150" height="54" rx="8" fill="#fff7ed" stroke="#c08a3e" stroke-width="1.4"/>
+<text x="845" y="324" text-anchor="middle" font-size="12" font-weight="600" fill="#8a5a1e" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>HUD 叠加层</text>
+<text x="845" y="342" text-anchor="middle" font-size="10" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>网格 / 仪表盘 / 统计</text>
+
+<rect x="770" y="430" width="150" height="60" rx="10" fill="#f3effa" stroke="#8a4fd0" stroke-width="1.6"/>
+<text x="845" y="454" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5b2f8a" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>UDP 合并打包</text>
+<text x="845" y="474" text-anchor="middle" font-size="10.5" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>原始帧 + 事件 · 单流</text>
+
+<rect x="970" y="300" width="120" height="80" rx="10" fill="#eef3f8" stroke="#4a6fa5" stroke-width="1.6"/>
+<text x="1030" y="332" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1a2733" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>PC 上位机</text>
+<text x="1030" y="352" text-anchor="middle" font-size="10.5" fill="#4a5568" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>拆包 → 分屏呈现</text>
+
+<!-- 箭头 -->
+<line x1="165" y1="285" x2="213" y2="101" stroke="#5b6b7c" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="330" y1="101" x2="348" y2="101" stroke="#5b6b7c" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="485" y1="101" x2="503" y2="101" stroke="#5b6b7c" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="620" y1="101" x2="768" y2="198" stroke="#5b6b7c" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="165" y1="300" x2="213" y2="330" stroke="#2f9e6e" stroke-width="1.8" marker-end="url(#arg)"/>
+<line x1="320" y1="330" x2="338" y2="330" stroke="#2f9e6e" stroke-width="1.8" marker-end="url(#arg)"/>
+<line x1="495" y1="330" x2="513" y2="322" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#arg)"/>
+<line x1="572" y1="346" x2="572" y2="358" stroke="#2f9e6e" stroke-width="1.6" marker-end="url(#arg)"/>
+<line x1="630" y1="389" x2="768" y2="226" stroke="#2f9e6e" stroke-width="1.8" marker-end="url(#arg)"/>
+<line x1="572" y1="410" x2="572" y2="432" stroke="#2f9e6e" stroke-width="1.4" marker-end="url(#arg)"/>
+<line x1="920" y1="212" x2="968" y2="110" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#ar)"/>
+<line x1="845" y1="354" x2="1000" y2="300" stroke="#c08a3e" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#ard)"/>
+
+<!-- 原始帧回传：从 cam_tap 底部走线到底部再进入 UDP 合并 -->
+<line x1="267" y1="358" x2="267" y2="575" stroke="#8a4fd0" stroke-width="1.4" stroke-dasharray="3 3"/>
+<line x1="267" y1="575" x2="768" y2="575" stroke="#8a4fd0" stroke-width="1.4" stroke-dasharray="3 3"/>
+<line x1="768" y1="575" x2="768" y2="460" stroke="#8a4fd0" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#arp)"/>
+<text x="420" y="565" font-size="10.5" fill="#8a4fd0" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>原始帧（只读 tap，供回传）</text>
+
+<!-- 事件流 → UDP -->
+<line x1="630" y1="459" x2="768" y2="459" stroke="#8a4fd0" stroke-width="1.6" marker-end="url(#arp)"/>
+<line x1="920" y1="460" x2="968" y2="360" stroke="#8a4fd0" stroke-width="1.6" marker-end="url(#arp)"/>
+
+<!-- 图例 -->
+<g font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif' font-size="10.5">
+<text x="195" y="605" fill="#5b6b7c">■ 显示通路（厂家）</text>
+<text x="340" y="605" fill="#2f9e6e">■ 事件支路（自研）</text>
+<text x="490" y="605" fill="#c08a3e">■ 显示源选择 / HUD</text>
+<text x="670" y="605" fill="#8a4fd0">■ UDP 合并（原始+事件）</text>
+</g>
+<text x="550" y="625" text-anchor="middle" font-size="11" fill="#6b7280" font-family='-apple-system,Segoe UI,Microsoft YaHei,Roboto,sans-serif'>KEY0=0 → LCD 显示原始画面；KEY0=1 → LCD 显示事件渲染画面；HUD 恒叠加在最上层</text>
+</svg>

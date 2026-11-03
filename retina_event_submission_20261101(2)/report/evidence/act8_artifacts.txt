@@ -1,0 +1,21 @@
+ACT8_EVIDENCE=1
+generated=2026-10-31
+bit_path=build/variant_act8_final/retina_event.bit
+bit_bytes=2839107
+bit_md5=5ec55ec07c44f2503df63f1bb160a6e6
+timing_rpt=build/variant_act8_final/timing.rpt:131
+wns_ns=0.215
+tns_ns=0.000
+whs_ns=0.017
+ths_ns=0.000
+setup_endpoints=84390
+hold_endpoints=84367
+util_rpt=build/variant_act8_final/util.rpt
+lut=22383 35.30
+ff=14325 11.30
+slice=8026 50.64
+bram=86.5 64.07
+dsp=8 3.33
+iob=140 49.12
+chosen=build/variant_act8_final/chosen.txt:3
+chosen_text=CHOSEN=explore; WNS +0.215 > Default +0.188; hold +0.017; payload reproducible vs act8r

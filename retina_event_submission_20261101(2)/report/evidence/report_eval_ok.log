@@ -1,0 +1,165 @@
+REPORT_EVAL_OK=1
+# M9d 评测报告与图表证据日志
+
+生成时间：2026-10-31T00:46:41+08:00
+工作目录：E:/workspace/FPGA_Comp
+环境：Windows / Git Bash，Python 3.12.14（nn/.venv/Scripts/python.exe），matplotlib Agg 后端。
+
+## 1. 验收对象
+
+- 报告：report/evaluation_report.md，35,965 B，218 行，中文 6,037 字，8 个二级章节，引用图 F1 至 F10 全部 10 张。
+- 图表：report/figures/f1_system_arch.svg 至 f10_latency.svg 共 10 个 SVG，全部通过 XML 解析。
+- 数据点表：report/figures/figure_data_table.csv，110 行，equal 列全部为 YES。
+- 图表脚本：report/figures/make_figures.py，末行 FIGURES_OK=1。
+- 数字校验：report/figures/verify_numbers.py，107 项检查、73 条行级引用、22 项派生计算，末行 NUMBERS_VERIFIED=1。
+- 文风自查：report/figures/style_check.py，末行 STYLE_CHECK_OK=1。
+- 源数据快照：report/evidence/event_stream_stats.json，由 report/figures/stream_stats.py 重跑生成。
+
+## 2. 测试命令与结果
+
+### 2.1 事件流统计快照
+
+命令：
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/stream_stats.py
+
+退出码：0
+末尾输出：
+zone empty_A2 240 256 567 35.4 33 0.4991 91
+STATS_OK
+
+### 2.2 生成 10 张图
+
+命令：
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/make_figures.py
+
+退出码：0
+
+每图数据点数：
+[F1] data_points=19 -> f1_system_arch.svg
+[F2] data_points=19 -> f2_data_volume.svg
+[F3] data_points=8 -> f3_event_pipeline.svg
+[F4] data_points=14 -> f4_resources.svg
+[F5] data_points=4 -> f5_timing.svg
+[F6] data_points=5 -> f6_cycle_budget.svg
+[F7] data_points=5 -> f7_heldout_rates.svg
+[F8] data_points=8 -> f8_iteration.svg
+[F9] data_points=8 -> f9_data_composition.svg
+[F10] data_points=6 -> f10_latency.svg
+
+汇总：
+figures=10 data_points_total=96
+FIGURES_OK=1
+
+脚本同时覆盖写出 report/figures/figure_data_table.csv，列顺序为 figure,metric,value,expected,source_path:line,equal。该表 110 行，equal 全部为 YES，末尾汇总：
+CSV_ROWS=110
+CSV_ALL_YES=110
+
+### 2.3 数字校验
+
+命令：
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/verify_numbers.py
+
+退出码：0
+首行示例：
+LINE OK MAC 单窗                             docs/03_tech/04_action_recognition_selection.md:15 = 208,080 MAC
+LINE OK M0 LUT                              docs/03_tech/04_action_recognition_selection.md:77 = 18,973
+LINE OK act3c LUT                           build/variant_act3c/inproc_util_impl.rpt:34 = 20,559 / 32.43%
+
+末尾汇总：
+checks=107 line_refs=73 derived=22 table_checks=3 svgs=10 fails=0
+NUMBERS_VERIFIED=1
+
+### 2.4 文风自查
+
+命令：
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/style_check.py
+
+退出码：0
+输出：
+STYLE OK banned_words=0
+STYLE OK contrast_construction=0
+STYLE OK exclamation=0
+STYLE chars_cn=6037
+STYLE headings=8
+STYLE OK figure_refs=10
+STYLE OK source_tables=7 lines=36,51,92,128,155,180,209
+STYLE OK max_sentence_cn<=60
+STYLE OK paragraph_sentences=3..5
+STYLE_CHECK_OK=1
+
+### 2.5 SVG XML 解析
+
+命令：
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe -c "import xml.etree.ElementTree as ET, pathlib; fs=sorted(pathlib.Path('report/figures').glob('*.svg')); [ET.parse(f) for f in fs]; print('SVG_PARSE_OK=%d'%len(fs))"
+
+输出：
+SVG_PARSE_OK=10
+
+## 3. 报告结构核验
+
+- 二级章节数：8。
+- 章节标题：1 结论先行；2 测试平台与环境；3 数据与标签来源；4 v5 实机评测；5 v7 离线评测；6 资源与时序；7 与基线对比；8 局限与不可复现的部分。
+- 图引用：图 F1、F2、F3、F4、F5、F6、F7、F8、F9、F10 均出现在正文。
+- 数据来源表：7 个表均带「数据来源」列。
+- 未上板项标记：v7 板上时延、资源与时序余量共 2 处写为 TBD(等 act7 实测)。
+- 禁用词与对比句式：0 命中；感叹号：0；单句中文长度不超过 60 字；段落句数 3 至 5。
+
+## 4. 产物清单
+
+- report/evaluation_report.md
+- report/figures/f1_system_arch.svg
+- report/figures/f2_data_volume.svg
+- report/figures/f3_event_pipeline.svg
+- report/figures/f4_resources.svg
+- report/figures/f5_timing.svg
+- report/figures/f6_cycle_budget.svg
+- report/figures/f7_heldout_rates.svg
+- report/figures/f8_iteration.svg
+- report/figures/f9_data_composition.svg
+- report/figures/f10_latency.svg
+- report/figures/figure_data_table.csv
+- report/figures/make_figures.py
+- report/figures/verify_numbers.py
+- report/figures/style_check.py
+- report/figures/stream_stats.py
+- report/figures/v7_zones.json
+- report/evidence/event_stream_stats.json
+
+临时预览目录 report/figures/preview/ 已在人工检查后删除；report/figures/__pycache__/ 已删除。
+
+## 5. 复现方式
+
+从仓库根依次运行：
+
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/stream_stats.py
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/make_figures.py
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/verify_numbers.py
+PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/style_check.py
+
+预期末行分别为 STATS_OK、FIGURES_OK=1、NUMBERS_VERIFIED=1、STYLE_CHECK_OK=1。
+
+## 6. 口径备注
+
+- 事件流统计以 events.csv 逐行重算，事件率按板卡跨度计算，不用容器声明的 30 fps。
+- v7 分区事件率与 report/figures/v7_zones.json 自带 ev_per_s 存在差异，正文与图 F2 以 events.csv 重算值为准。
+- F8 的 v7 开合 0.9412 是折级 16/17，pooled 无守卫为 17/17=1.000，两者口径不同，图中已注明。
+- F8 的挥手 0.0098 是 5/510 决策窗，仅统计 wave 两段 1,020 窗，不含硬负样本。
+- 报告中的 v7 板上指标为 TBD(等 act7 实测)，当前 act3c 位流不含 v7 权重。
+
+## 7. task-75 增补（2026-10-31T02:58:00+08:00）
+
+本节追加于 task-75 完成后。§1–§6 保留 2026-10-31 00:46 时点记录；当前报告与图表状态以本节为准。
+
+- 报告：report/evaluation_report.md，60,193 B，360 行，8,704 中文字，8 个二级章节，12 个图引用，13 个含「数据来源」列的表。
+- 图表：report/figures/f1_system_arch.svg 至 f12_act7_vs_act3c.svg 共 12 个 SVG，全部通过 XML 解析。
+- 数据点表：report/figures/figure_data_table.csv，182 行，equal 全部 YES，source_path:line 全部含行号。
+- make_figures.py：EXIT=0，figures=12，data_points_total=161，末行 FIGURES_OK=1。
+- verify_numbers.py：checks=220，line_refs=146，derived=41，table_checks=3，svgs=12，fails=0，末行 NUMBERS_VERIFIED=1。
+- style_check.py：chars_cn=8704，headings=8，figure_refs=12，source_tables=13，末行 STYLE_CHECK_OK=1。
+- f4_resources.svg：act3c、act7、act8 三组；act8 Slice 50.64%（8,026/15,850=50.636% 四舍五入），act3c Slice 46.23%。
+- f5_timing.svg：六组 WNS，+0.306、+0.059、+0.215、+8.827、−0.175、−7.001 ns。
+- report/evaluation_report.md §6 为 act3c、act7、act8 三代资源与时序并列表；§7.1 为 act8 验收占位，等 A1~A4 真机结果回填。
+- task-75 专项证据：report/evidence/EVIDENCE_FIG_ACT8.log，首行 FIGURES_ACT8_OK=1。
+- 口径说明：任务卡原写 act8 Slice 50.63%，按 lead 2026-10-31 02:45 指令改为 50.64%；其余数字与 figure_data_table.csv 一致。
+
+- 更正（2026-10-31T02:59:00+08:00）：本节上方 60,193 B、8,704 字、checks=220、line_refs=146 是加入 act8 载荷 md5 说明前的瞬时值；最终为 60,416 B、8,722 字、checks=221、line_refs=147。最终哈希与完整输出见 report/evidence/EVIDENCE_FIG_ACT8.log。

@@ -1,0 +1,34 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Thu Oct 29 22:54:18 2026
+| Host         : Windows_11_Plus running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file E:/workspace/FPGA_Comp/retina_event/sim/nn/nn_util_hier.rpt
+| Design       : nn_top
+| Device       : 7a100tfgg484-2
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------+-------------+------------+------------+---------+------+-----+--------+--------+------------+
+|    Instance    |    Module   | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------+-------------+------------+------------+---------+------+-----+--------+--------+------------+
+| nn_top         |       (top) |       1026 |        882 |     144 |    0 | 400 |      9 |      3 |          1 |
+|   (nn_top)     |       (top) |          0 |          0 |       0 |    0 |   1 |      0 |      0 |          0 |
+|   u_dec        |   nn_decide |        144 |        144 |       0 |    0 |  99 |      0 |      0 |          0 |
+|   u_eng        |   nn_engine |        500 |        500 |       0 |    0 | 189 |      1 |      2 |          1 |
+|   u_feat       |     nn_feat |        381 |        237 |     144 |    0 | 111 |      5 |      0 |          0 |
+|   u_rom        |      nn_rom |          1 |          1 |       0 |    0 |   0 |      3 |      1 |          0 |
+|     u_rom_data | nn_rom_data |          1 |          1 |       0 |    0 |   0 |      3 |      1 |          0 |
++----------------+-------------+------------+------------+---------+------+-----+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

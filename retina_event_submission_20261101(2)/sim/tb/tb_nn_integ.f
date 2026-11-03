@@ -1,0 +1,9 @@
+src/rtl/nn/nn_top.v
+src/rtl/nn/nn_feat.v
+src/rtl/nn/nn_engine.v
+src/rtl/nn/nn_decide.v
+src/rtl/nn/nn_rom.v
+src/rtl/nn/nn_rom_data.v
+src/rtl/nn/nn_winstat.v
+src/rtl/nn/nn_winfeat.v
+src/rtl/primitives/cdc_tog_word.v

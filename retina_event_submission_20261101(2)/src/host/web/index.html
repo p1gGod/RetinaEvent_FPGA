@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RetinaEvent 上位机 · 主监视台</title>
+<!-- 空图标：不给浏览器留 /favicon.ico 的 404（验收要求 console 零 error） -->
+<link rel="icon" href="data:,">
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand"><div class="logo"></div><b>RetinaEvent 上位机</b><span>地面站 / Ground Station · 前端 v0.1.0</span></div>
+    <span class="pill"><i class="dot off" id="dotConn"></i><span id="txtConn">连接中…</span></span>
+    <span class="pill">profile <b class="mono" id="txtProfile" style="margin-left:4px">-</b></span>
+    <span class="pill opt"><i class="dot" id="dotAlarm"></i><span id="txtAlarm">链路正常</span></span>
+    <span class="srcbadge synth" id="srcBadge">页内合成源</span>
+    <div class="spacer"></div>
+    <div class="seg" id="segMode" title="FPGA 实时 = 用板子发来的事件；上位机模拟 = 用同一帧但由上位机同构算法算事件（标准对照）；合成源 = 页内造数据，不连网关">
+      <div data-mode="board" class="sel">FPGA 实时处理</div><div data-mode="host">上位机模拟处理</div><div data-mode="synth">合成源</div>
+    </div>
+    <button class="btn" id="btnPause" title="空格：冻结/继续画面">冻结</button>
+    <button class="btn foldbar" id="btnSide" title="显示/隐藏侧栏">侧栏</button>
+  </header>
+
+  <div class="main">
+    <section class="stage" id="stage"><!-- 四窗格由 ui/panes.ts 装配 --></section>
+    <aside class="side" id="side"><!-- 四张卡片由 ui/sidebar.ts 装配 --></aside>
+  </div>
+
+  <div class="bottom">
+    <div class="tl">
+      <button class="btn ghost" id="btnRec" title="开始/停止录制（快捷键 R）。录制内容进内存环形缓冲，导出时用">● 录制</button>
+      <span class="rec" id="recInd"><i></i><span id="recTxt">未录制</span></span>
+      <span class="lblright" id="tlClock">00:00.0</span>
+      <div class="track" id="tlTrack" title="拖动可圈选要导出的片段（松手生效，单击空白取消选区）">
+        <div class="sel-range" id="tlSel" hidden></div>
+        <div class="head" id="tlHead" style="left:0"></div>
+      </div>
+      <span class="lblright" id="tlRight">0 MB · 环形缓冲 30 s 帧 / 120 s 事件</span>
+    </div>
+    <div class="exports">
+      <span class="lbl">导出</span>
+      <!-- 这 5 个以前是装饰用的 <span class="chip">（点了没反应，也没有任何代码声明过它们该干什么）。
+           现在是真的按钮：有选区就导出选区，没有就导出整个缓冲。data-export 与 export/registry.ts 对齐。 -->
+      <button class="chip" id="exp-pngzip" data-export="pngzip"><span>PNG 序列</span> <span class="k">.zip</span></button>
+      <button class="chip opt" id="exp-mp4" data-export="mp4"><span>MP4 · H.264</span> <span class="k">按时间戳</span></button>
+      <button class="chip" id="exp-rawbin" data-export="rawbin"><span>原始帧</span> <span class="k">.bin</span></button>
+      <button class="chip opt" id="exp-csv" data-export="csv"><span>事件流</span> <span class="k">.csv</span></button>
+      <button class="chip opt" id="exp-detsjson" data-export="detsjson"><span>检测结果</span> <span class="k">.json</span></button>
+      <span class="expprog" id="expProg" hidden></span>
+      <button class="btn ghost" id="btnExpCancel" hidden>取消导出</button>
+      <div class="spacer"></div>
+      <select class="sel" id="selFrameTarget" title="「导出当前帧」与视频导出使用哪一个画面（导出走离屏原生分辨率渲染，与窗口大小无关）"></select>
+      <button class="btn" id="btnExportFrame" title="导出当前帧的 PNG（快捷键 E）。画面由左边的下拉框选择">导出当前帧（PNG）</button>
+      <button class="btn ghost" id="btnExportClip" disabled title="把时间轴上选中的区间导成 MP4 片段：先在时间轴上拖出选区，再点这里">导出选中片段</button>
+    </div>
+  </div>
+
+  <footer class="status" id="status"></footer>
+
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

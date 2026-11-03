@@ -1,0 +1,203 @@
+SKILL_PKG_OK=1
+generated=2026-10-30T23:53:23
+package=skill
+python=python.exe
+cwd=empty temporary directory per check
+scope=each item self-test plus schema check
+
+## contract_selftest
+$ python fpga_agent_task_contract/check_contract.py --selftest
+exit=0
+CONTRACT_SECTION=goal status=PASS
+CONTRACT_SECTION=machine status=PASS
+CONTRACT_SECTION=whitelist status=PASS
+CONTRACT_SECTION=forbidden status=PASS
+CONTRACT_SECTION=deliverables status=PASS
+CONTRACT_MARKER=BLINKER_OK
+CONTRACT_BULLETS=whitelist count=2 status=PASS
+CONTRACT_BULLETS=forbidden count=1 status=PASS
+CONTRACT_BULLETS=deliverables count=2 status=PASS
+CONTRACT_RESULT=PASS
+CONTRACT_SECTION=goal status=PASS
+CONTRACT_SECTION=machine status=PASS
+CONTRACT_SECTION=whitelist status=FAIL
+CONTRACT_SECTION=forbidden status=PASS
+CONTRACT_SECTION=deliverables status=PASS
+CONTRACT_MARKER=BLINKER_OK
+CONTRACT_BULLETS=whitelist count=0 status=FAIL
+CONTRACT_BULLETS=forbidden count=1 status=PASS
+CONTRACT_BULLETS=deliverables count=2 status=PASS
+CONTRACT_RESULT=FAIL
+...
+EVIDENCE_RESULT=PASS
+EVIDENCE_LOG=evidence_nomark.log marker=MISSING checks_pass=1 checks_fail=0 test_result=PASS status=FAIL
+EVIDENCE_TOTAL pass=1 fail=0
+EVIDENCE_RESULT=FAIL
+EVIDENCE_LOG=evidence_fail.log marker=BLINKER_OK checks_pass=1 checks_fail=1 test_result=FAIL status=FAIL
+EVIDENCE_FAILED_CHECKS=B
+EVIDENCE_TOTAL pass=1 fail=1
+EVIDENCE_RESULT=FAIL
+EVIDENCE_LOG=evidence_zero.log marker=BLINKER_OK checks_pass=0 checks_fail=0 test_result=PASS status=FAIL
+EVIDENCE_TOTAL pass=0 fail=0
+EVIDENCE_RESULT=FAIL
+SELFTEST_TMP=C:\Users\Admin\AppData\Local\Temp\contract_selftest__7tcarpu
+SELFTEST_CASE=contract_good status=PASS want=True got=True
+SELFTEST_CASE=contract_missing_whitelist status=PASS want=False got=False
+SELFTEST_CASE=evidence_good status=PASS want=True got=True
+SELFTEST_CASE=evidence_missing_marker status=PASS want=False got=False
+SELFTEST_CASE=evidence_check_fail status=PASS want=False got=False
+SELFTEST_CASE=evidence_no_checks status=PASS want=False got=False
+SELFTEST_RESULT=PASS
+
+## contract_example
+$ python fpga_agent_task_contract/check_contract.py contract fpga_agent_task_contract/examples/contract_led_blink.md
+exit=0
+CONTRACT_SECTION=goal status=PASS
+CONTRACT_SECTION=machine status=PASS
+CONTRACT_SECTION=whitelist status=PASS
+CONTRACT_SECTION=forbidden status=PASS
+CONTRACT_SECTION=deliverables status=PASS
+CONTRACT_MARKER=BLINKER_OK
+CONTRACT_BULLETS=whitelist count=3 status=PASS
+CONTRACT_BULLETS=forbidden count=3 status=PASS
+CONTRACT_BULLETS=deliverables count=3 status=PASS
+CONTRACT_RESULT=PASS
+
+## evidence_example
+$ python fpga_agent_task_contract/check_contract.py evidence fpga_agent_task_contract/examples/evidence_led_blink.log --min-checks 3
+exit=0
+EVIDENCE_LOG=evidence_led_blink.log marker=BLINKER_OK checks_pass=3 checks_fail=0 test_result=PASS status=PASS
+EVIDENCE_TOTAL pass=3 fail=0
+EVIDENCE_RESULT=PASS
+
+## evidence_negative
+$ python fpga_agent_task_contract/check_contract.py evidence fpga_agent_task_contract/examples/evidence_led_blink_fail.log --min-checks 3
+exit=1
+EVIDENCE_LOG=evidence_led_blink_fail.log marker=BLINKER_OK checks_pass=2 checks_fail=1 test_result=FAIL status=FAIL
+EVIDENCE_FAILED_CHECKS=BLINK_PERIOD
+EVIDENCE_TOTAL pass=2 fail=1
+EVIDENCE_RESULT=FAIL
+
+## runner_selftest
+$ python vivado_headless_verify/run_vivado.py --selftest
+exit=0
+RUNNER_ATTEMPT=1 status=helper_crash retry=1
+RUNNER_LOG=C:\Users\Admin\AppData\Local\Temp\vivado_runner_selftest_ifnzs8bf\out_retry\vivado.log
+SELFTEST_CASE=retry_recovers status=PASS attempts=2 runs=2
+SELFTEST_CASE=bom_detected status=PASS
+SELFTEST_CASE=tclargs_last status=PASS
+RUNNER_LOG=C:\Users\Admin\AppData\Local\Temp\vivado_runner_selftest_ifnzs8bf\out_ok\vivado.log
+SELFTEST_CASE=clean_pass status=PASS attempts=1
+SELFTEST_TMP=C:\Users\Admin\AppData\Local\Temp\vivado_runner_selftest_ifnzs8bf
+SELFTEST_RESULT=PASS
+
+## runner_dryrun
+$ python vivado_headless_verify/run_vivado.py --dry-run --part xc7a35tcsg324-1 --top blinky --sources src_list.txt --xdc - --out-dir C:\Users\Admin\AppData\Local\Temp\skill_selftest_to47yk52\dry
+exit=0
+RUNNER_CMD=vivado -mode batch -nolog -nojournal -source E:\workspace\FPGA_Comp\skill\vivado_headless_verify\synth_verify.tcl -tclargs xc7a35tcsg324-1 blinky src_list.txt - C:\Users\Admin\AppData\Local\Temp\skill_selftest_to47yk52\dry
+RUNNER_TCLARGS_LAST=1
+RUNNER_RESULT=DRY_RUN
+
+## compare_selftest
+$ python vivado_headless_verify/compare_reports.py --selftest
+exit=0
+SELFTEST_CASE=parse_util_timing status=PASS
+SELFTEST_CASE=parse_markers status=PASS
+GATE=lut kind=max value=1108 limit=2000 status=PASS
+GATE=wns kind=min value=8.827 limit=0 status=PASS
+SELFTEST_CASE=gates_pass status=PASS
+GATE=lut kind=max value=1108 limit=500 status=FAIL
+SELFTEST_CASE=gate_fail_detected status=PASS
+GATE=wns kind=min value=-1.250 limit=0 status=FAIL
+SELFTEST_CASE=negative_wns_detected status=PASS
+GATE=lut kind=max value=missing limit=100 status=FAIL
+SELFTEST_CASE=missing_metric_detected status=PASS
+SELFTEST_TMP=C:\Users\Admin\AppData\Local\Temp\compare_reports_selftest_9evqxwnq
+SELFTEST_RESULT=PASS
+
+## stream_selftest
+$ python event_vision_bringup/check_stream.py --selftest
+exit=0
+SELFTEST_CASE=events_clean status=PASS
+SELFTEST_CASE=events_bad_detected status=PASS bad_time=1 oob=1 bad_pol=1
+SELFTEST_CASE=packets_clean status=PASS
+SELFTEST_CASE=packets_bad_detected status=PASS gaps=1 crc=1 oversize=1
+SELFTEST_CASE=stats_clean status=PASS
+SELFTEST_CASE=stats_bad_detected status=PASS nonzero=2
+SELFTEST_CASE=crc_vector status=PASS crc=0x29B1 want=0x29B1
+SELFTEST_CASE=crc_hex_parse status=PASS
+SELFTEST_TMP=C:\Users\Admin\AppData\Local\Temp\check_stream_selftest_kc9aq08j
+SELFTEST_RESULT=PASS
+
+## stream_clean
+$ python event_vision_bringup/check_stream.py report --events event_vision_bringup/examples/events_clean.csv --packets event_vision_bringup/examples/packets_clean.csv --stats event_vision_bringup/examples/stats_clean.json
+exit=0
+EVENTS_ROWS=3
+EVENTS_BAD_TIME=0 first_bad_ts=NA
+EVENTS_OUT_OF_RANGE=0 first_bad_coord=NA
+EVENTS_BAD_POL=0
+EVENTS_MAX_GAP_US=400 first_gap_ts=NA
+EVENTS_RESULT=PASS
+PACKETS_ROWS=3
+PACKETS_SEQ_GAPS=0 first_bad_seq=NA
+PACKETS_CRC_FAIL=0 first_crc_fail_seq=NA
+PACKETS_OVERSIZE=0 first_oversize_seq=NA
+PACKETS_RESULT=PASS
+STATS_KEYS=3
+STATS_NONZERO=0
+STATS_RESULT=PASS
+STREAM_RESULT=PASS
+
+## stream_negative
+$ python event_vision_bringup/check_stream.py report --events event_vision_bringup/examples/events_bad.csv --packets event_vision_bringup/examples/packets_bad.csv --stats event_vision_bringup/examples/stats_bad.json
+exit=1
+EVENTS_ROWS=5
+EVENTS_BAD_TIME=1 first_bad_ts=900
+EVENTS_OUT_OF_RANGE=1 first_bad_coord=500,20
+EVENTS_BAD_POL=1
+EVENTS_MAX_GAP_US=898700 first_gap_ts=900000
+EVENTS_RESULT=FAIL
+PACKETS_ROWS=3
+PACKETS_SEQ_GAPS=1 first_bad_seq=4
+PACKETS_CRC_FAIL=1 first_crc_fail_seq=4
+PACKETS_OVERSIZE=1 first_oversize_seq=4
+PACKETS_RESULT=FAIL
+STATS_KEYS=3
+STATS_NONZERO=2
+STATS_NONZERO_LIST=rx.drop=3,crc_fail=2
+STATS_RESULT=FAIL
+STREAM_RESULT=FAIL
+
+## crc_vector
+$ python event_vision_bringup/check_stream.py crc --hex 313233343536373839
+exit=0
+CRC16=0x29B1
+CRC_BYTES=9
+
+## readme_schema
+$ python _check/check_readme.py 
+exit=0
+SCHEMA_TOP_ITEM=fpga_agent_task_contract status=PASS
+SCHEMA_TOP_ITEM=vivado_headless_verify status=PASS
+SCHEMA_TOP_ITEM=event_vision_bringup status=PASS
+SCHEMA_TOP_TABLE status=PASS
+SCHEMA_SECTION=fpga_agent_task_contract/适用范围 status=PASS
+SCHEMA_SECTION=fpga_agent_task_contract/使用方法 status=PASS
+SCHEMA_SECTION=fpga_agent_task_contract/已验证效果 status=PASS
+SCHEMA_SECTION=fpga_agent_task_contract/失效条件 status=PASS
+SCHEMA_SECTION=fpga_agent_task_contract/来源 status=PASS
+SCHEMA_HOOK=fpga_agent_task_contract status=PASS
+SCHEMA_SECTION=vivado_headless_verify/适用范围 status=PASS
+SCHEMA_SECTION=vivado_headless_verify/使用方法 status=PASS
+SCHEMA_SECTION=vivado_headless_verify/已验证效果 status=PASS
+SCHEMA_SECTION=vivado_headless_verify/失效条件 status=PASS
+SCHEMA_SECTION=vivado_headless_verify/来源 status=PASS
+SCHEMA_HOOK=vivado_headless_verify status=PASS
+SCHEMA_SECTION=event_vision_bringup/适用范围 status=PASS
+SCHEMA_SECTION=event_vision_bringup/使用方法 status=PASS
+SCHEMA_SECTION=event_vision_bringup/已验证效果 status=PASS
+SCHEMA_SECTION=event_vision_bringup/失效条件 status=PASS
+SCHEMA_SECTION=event_vision_bringup/来源 status=PASS
+SCHEMA_HOOK=event_vision_bringup status=PASS
+SKILL_README_SCHEMA_OK=1
+

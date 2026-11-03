@@ -1,0 +1,5 @@
+CHOSEN=act8_uart
+SOURCE=RETE_TAG=act8_uart RETE_GENERICS="ETH_EN=1 UART_LINK_EN=1"
+REASON=act8 交付逻辑（v7b 两分类 + NN_MARGIN_MIN=16）+ 千兆网回传 + UART v3 链路（事件/遥测/CTRL），单板同时具备两条回传通道
+DATE=2026-10-31 17:13:52 +0800
+BUILD=build/build_inproc_v7.tcl (--full), 635 s

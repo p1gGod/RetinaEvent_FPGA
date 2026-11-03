@@ -1,0 +1,18 @@
+CHOSEN=act8_uart
+SOURCE=RETE_TAG=act8_uart RETE_GENERICS="ETH_EN=1 UART_LINK_EN=1"
+BIT_SIZE=2726527
+FULL_MD5=34843361199dcbea33ec16473a3fe308
+HEADER_LEN=127
+HDR_FIELD a=64 b=13 c=11 d=9
+HEADER_DATE=2026/10/31
+HEADER_TIME=17:13:52
+PAYLOAD_OFFSET=127
+PAYLOAD_LEN=2726400
+PAYLOAD_MD5=210a20fc22ff10d5532cbe03c1689502
+BUILD_END=2026-10-31T17:13:54+0800
+TIMING: WNS=+0.296 TNS=0.000 WHS=+0.042 THS=0.000
+STRATEGY: opt_design/place_design/route_design -directive Explore + phys_opt_design (tool/build_inproc_v7.tcl)
+UTIL: LUT 29266 (46.16%) FF 19638 BRAM 89.5 (66.30%) DSP 9 IOB 141 Slice 9990 (63.03%)
+UART_LINK_CELLS=2055 (g_uart_link.u_uart_link), ETH_UDP_CELLS=2443, UART_PORTS=2
+SOURCE_REPORT: docs/05_experiments/action_recognition_20261029/act8_uart_combined_bitstream_build_20261031.md
+NOTE: 与 variant_act8_final（2,839,107 B / 5ec55ec0…）的差异仅来自 UART 链路与位流内嵌时间戳，逻辑等价部分未变。

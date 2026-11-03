@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="719.28pt" height="224.036125pt" viewBox="0 0 719.28 224.036125" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-31T02:54:33.328902</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 224.036125 
+L 719.28 224.036125 
+L 719.28 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 109.78875 117.4794 
+L 170.620714 117.4794 
+Q 175.005 117.4794 175.005 113.4138 
+L 175.005 66.1512 
+Q 175.005 62.0856 170.620714 62.0856 
+L 109.78875 62.0856 
+Q 105.404464 62.0856 105.404464 66.1512 
+L 105.404464 113.4138 
+Q 105.404464 117.4794 109.78875 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #edf2f7; stroke: #2b6cb0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.417679 117.4794 
+L 246.249643 117.4794 
+Q 250.633929 117.4794 250.633929 113.4138 
+L 250.633929 66.1512 
+Q 250.633929 62.0856 246.249643 62.0856 
+L 185.417679 62.0856 
+Q 181.033393 62.0856 181.033393 66.1512 
+L 181.033393 113.4138 
+Q 181.033393 117.4794 185.417679 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #ebf8ff; stroke: #2b6cb0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 261.046607 117.4794 
+L 321.878571 117.4794 
+Q 326.262857 117.4794 326.262857 113.4138 
+L 326.262857 66.1512 
+Q 326.262857 62.0856 321.878571 62.0856 
+L 261.046607 62.0856 
+Q 256.662321 62.0856 256.662321 66.1512 
+L 256.662321 113.4138 
+Q 256.662321 117.4794 261.046607 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 336.675536 117.4794 
+L 397.5075 117.4794 
+Q 401.891786 117.4794 401.891786 113.4138 
+L 401.891786 66.1512 
+Q 401.891786 62.0856 397.5075 62.0856 
+L 336.675536 62.0856 
+Q 332.29125 62.0856 332.29125 66.1512 
+L 332.29125 113.4138 
+Q 332.29125 117.4794 336.675536 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 412.304464 117.4794 
+L 473.136429 117.4794 
+Q 477.520714 117.4794 477.520714 113.4138 
+L 477.520714 66.1512 
+Q 477.520714 62.0856 473.136429 62.0856 
+L 412.304464 62.0856 
+Q 407.920179 62.0856 407.920179 66.1512 
+L 407.920179 113.4138 
+Q 407.920179 117.4794 412.304464 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #faf5ff; stroke: #6b46c1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 487.933393 117.4794 
+L 548.765357 117.4794 
+Q 553.149643 117.4794 553.149643 113.4138 
+L 553.149643 66.1512 
+Q 553.149643 62.0856 548.765357 62.0856 
+L 487.933393 62.0856 
+Q 483.549107 62.0856 483.549107 66.1512 
+L 483.549107 113.4138 
+Q 483.549107 117.4794 487.933393 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #faf5ff; stroke: #6b46c1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 563.562321 117.4794 
+L 624.394286 117.4794 
+Q 628.778571 117.4794 628.778571 113.4138 
+L 628.778571 66.1512 
+Q 628.778571 62.0856 624.394286 62.0856 
+L 563.562321 62.0856 
+Q 559.178036 62.0856 559.178036 66.1512 
+L 559.178036 113.4138 
+Q 559.178036 117.4794 563.562321 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #fffaf0; stroke: #6b46c1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 639.19125 117.4794 
+L 700.023214 117.4794 
+Q 704.4075 117.4794 704.4075 113.4138 
+L 704.4075 66.1512 
+Q 704.4075 62.0856 700.023214 62.0856 
+L 639.19125 62.0856 
+Q 634.806964 62.0856 634.806964 66.1512 
+L 634.806964 113.4138 
+Q 634.806964 117.4794 639.19125 117.4794 
+z
+" clip-path="url(#p9dfe960e6c)" style="fill: #edf2f7; stroke: #6b46c1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: start" x="106.500536" y="21.4296" transform="rotate(-0 106.500536 21.4296)">图 F3  事件处理管线（逐像素流水线）</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(132.004732 83.364318)">输入</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(122.738092 92.136877)">800×480</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(124.75606 100.909436)">RGB565</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(189.450801 83.200078)">vps_resample</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(198.570739 92.172832)">2×2 抽点</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(194.26702 100.945391)">→400×240</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 174.907328 90.0366 
+Q 177.469327 90.0366 178.801489 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 175.201489 88.2366 
+L 178.801489 90.0366 
+L 175.201489 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(275.255417 87.554326)">px_luma</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(270.926714 96.591143)">RGB→亮度</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 250.536256 90.0366 
+Q 253.098256 90.0366 254.430418 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 250.830418 88.2366 
+L 254.430418 90.0366 
+L 250.830418 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(349.20719 87.574826)">luma_log</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(350.691518 96.570643)">对数压缩</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 326.165185 90.0366 
+Q 328.727184 90.0366 330.059346 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 326.459346 88.2366 
+L 330.059346 90.0366 
+L 326.459346 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(416.515681 83.056498)">temporal_diff</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(426.320446 92.108689)">时间差分</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(431.4794 101.088971)">+帧存</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 401.794113 90.0366 
+Q 404.356113 90.0366 405.688275 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 402.088275 88.2366 
+L 405.688275 90.0366 
+L 402.088275 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(497.834 83.076357)">spatial_lap</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(500.175484 92.08883)">中心-周边</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(499.390719 101.069111)">+2 行缓存</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 477.423042 90.0366 
+Q 479.985041 90.0366 481.317203 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 477.717203 88.2366 
+L 481.317203 90.0366 
+L 477.717203 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(573.83321 83.164764)">event_gen</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(581.678304 92.096518)">双阈值</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(585.778304 100.980705)">判决</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 553.05197 90.0366 
+Q 555.61397 90.0366 556.946132 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 553.346132 88.2366 
+L 556.946132 90.0366 
+L 553.346132 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(661.407232 83.220098)">输出</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(653.483342 91.992656)">ON/OFF</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(657.307232 101.053656)">事件流</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 628.680899 90.0366 
+Q 631.242898 90.0366 632.575061 90.0366 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 628.975061 88.2366 
+L 632.575061 90.0366 
+L 628.975061 91.8366 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Microsoft YaHei'; text-anchor: start" x="106.500536" y="141.873" transform="rotate(-0 106.500536 141.873)">每像素拍数：</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8.5px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #2b6cb0" x="183.225536" y="141.873" transform="rotate(-0 183.225536 141.873)">2 拍/像素（800×480 域）</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8.5px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #2c7a7b" x="380.518393" y="141.873" transform="rotate(-0 380.518393 141.873)">1 拍/像素（400×240 域，5 级）</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 8px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #555555" x="106.500536" y="162.201" transform="rotate(-0 106.500536 162.201)">事件输出与 100 ms 推理窗异步：事件先入 FIFO/双缓冲，推理引擎按窗读取。</text>
+   </g>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 6.8px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #555555" x="7.2" y="215.1" transform="rotate(-0 7.2 215.1)">数据来源: docs/assets/event_engine_pipeline.svg；docs/03_技术原理/04_动作识别选型与资源预算.md</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9dfe960e6c">
+   <rect x="98.28" y="7.2" width="613.8" height="182.952"/>
+  </clipPath>
+ </defs>
+</svg>

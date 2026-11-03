@@ -1,0 +1,417 @@
+DESIGN_REPRO_OK=1
+# M9m 设计报告复现与许可补强 + 跨文档数字一致性 证据日志
+DATE=2026-10-31 01:35:56 +0800
+GIT_HEAD=c35780488bd1f7d634e7ceb563b24c90e6f22685
+CWD=/e/workspace/FPGA_Comp
+
+## 1 设计报告检查器（模板/字数/表格/禁用词/链接/数字/步骤0/版本/匿名/act7/v7b/s100）
+CHECK H1_COUNT = 1 got=7
+CHECK H1_TITLES = 1 ["选题背景与创新点","设计原理与功能框图","软硬件划分依据与接口设计","优化过程与前后对比","大模型协作","技能包提炼过程","复现说明"]
+CHECK H4_PLUS = 1 
+CHECK CJK_GE_12000 = 1 cjk=14143
+CHECK TABLES_GE_8 = 1 tables=21
+CHECK TABLE_COLUMNS = 1 issues=0
+CHECK BANNED_TERMS = 1 hits=0
+CHECK REFS = 1 links=38 missing=0
+CHECK SOURCE_EXISTS_02_metric_register.md = 1 docs/06_facts/02_metric_register.md
+CHECK SOURCE_EXISTS_05_action_uplink_contract.md = 1 docs/03_tech/05_action_uplink_contract.md
+CHECK SOURCE_EXISTS_00_current_status.md = 1 docs/06_facts/00_current_status.md
+CHECK NUMBER_PRESENT_20559 = 1 20,559
+CHECK NUMBER_PRESENT_11850 = 1 11,850
+CHECK NUMBER_PRESENT_7327 = 1 7,327
+CHECK NUMBER_PRESENT_0306ns = 1 +0.306 ns
+CHECK NUMBER_PRESENT_2890875 = 1 2,890,875
+CHECK NUMBER_PRESENT_a5fff751 = 1 a5fff751
+CHECK NUMBER_PRESENT_15940 = 1 15,940
+CHECK NUMBER_PRESENT_207840 = 1 207,840
+CHECK NUMBER_PRESENT_5652 = 1 5,652
+CHECK NUMBER_PRESENT_09042 = 1 0.9042
+CHECK STEP0_0 = 1 步骤 0：厂家依赖前置
+CHECK STEP0_vendormanifestjson = 1 vendor_manifest.json
+CHECK STEP0_26 = 1 26 个文件
+CHECK STEP0_206613 = 1 206,613
+CHECK STEP0_a9693c2c = 1 a9693c2c
+CHECK STEP0_setupvendorrtlps1Check = 1 setup_vendor_rtl.ps1 -Check
+CHECK STEP0_VENDORMANIFESTOK1 = 1 VENDOR_MANIFEST_OK=1
+CHECK STEP0_ = 1 只做仿真
+CHECK VIVADO_Vivado20202 = 1 Vivado 2020.2
+CHECK VIVADO_20261 = 1 2026.1
+CHECK VIVADO_ = 1 迁移差异本版未测量
+CHECK ANON_STATEMENT = 1 
+CHECK ANON_NO_SCHOOL = 1 
+CHECK ANON_NO_ADVISOR = 1 
+CHECK ACT7_2835423 = 1 2,835,423
+CHECK ACT7_0059ns = 1 +0.059 ns
+CHECK ACT7_22371 = 1 22,371
+CHECK ACT7_7968 = 1 7,968
+CHECK ACT7_5027 = 1 50.27%
+CHECK V7B_83 = 1 8/3
+CHECK V7B_163 = 1 16/3
+CHECK V7B_244 = 1 24/4
+CHECK V7B_8874 = 1 88 降到 74
+CHECK V7B_1417 = 1 14/17
+CHECK V7B_00196 = 1 0.0196
+CHECK V7B_V7BMODELOK0 = 1 V7B_MODEL_OK 记 0
+CHECK V7B_465s = 1 46.5 s
+CHECK V7_1717 = 1 17/17
+CHECK V7_5510 = 1 5/510
+CHECK V7_00098 = 1 0.0098
+CHECK V7_task70 = 1 待 task-70 交付后回填
+CHECK V7_s100 = 1 同一模型在两种窗口径下的硬负率不同，报告统一采用 s100 板端口径
+STYLE_CHECK_OK=1
+REFS_OK=1
+CHECK_REPORT_EXIT=0
+
+## 2 跨文档数字一致性（design / evaluation / figure / registry / decision）
+METRIC act3c_bits = OK [design,eval,registry]
+METRIC act3c_wns = OK [design,eval,registry,figure]
+METRIC act3c_lut = OK [design,eval,registry,figure]
+METRIC act3c_ff = OK [design,eval,registry,figure]
+METRIC act3c_slice = OK [design,eval,registry,figure]
+METRIC act3c_bram = OK [design,eval,registry,figure]
+METRIC act3c_dsp = OK [design,eval,registry,figure]
+METRIC infer_cycles = OK [design,eval,registry,figure]
+METRIC infer_ms = OK [design,eval,registry,figure]
+METRIC v7_fold_recall = OK [design,eval,registry,figure]
+METRIC v7_wave_win = OK [design,eval,registry]
+METRIC v7_wave_hit = OK [design,eval,registry,figure]
+METRIC v7_s50_hardneg_rate = OK_ROUNDED [eval,figure]
+METRIC v7_s100_hardneg = OK [design,registry,decision]
+METRIC v7b_hardneg = OK [design,registry,decision]
+METRIC v7b_dwave = OK [design,registry,decision]
+METRIC v7b_ok = OK [design,registry,decision]
+METRIC act7_bits = OK [design,registry]
+METRIC act7_wns = OK [design,registry,decision]
+METRIC act7_lut = OK [design,registry]
+METRIC act7_slice = OK [design,registry]
+METRIC startup_pps = OK [design,registry]
+METRIC host_tests = OK [design,registry]
+SCOPE_DIFF v7_hardneg_scope resolved=1
+METRICS=23 OK=23 ROUNDED=1 GAP=0 CONFLICT=0 NO_SOURCE=0
+CROSSDOC_OK=1
+CROSSDOC_EXIT=0
+
+## 3 厂家依赖清单校验（26 文件 / 206,613 B / sha256）
+HASH_SOURCE=E:\workspace\FPGA_Comp\exp_ov5640_lcd_eth\prj_src\rtl
+VENDORFILES_COUNT=26
+CHECK ov5640_lcd.v bytes=11001 sha256=68084f5bc23135e57820fdcde8f6c59739d9afacc8bbfa0ba552fa8f8e3f8ac6
+CHECK picture_size.v bytes=4633 sha256=a32ab08f1079f38d6c464ad575269da1cc41461ffdef6c09de5dd7baf1beb8f9
+CHECK ov5640_dri.v bytes=5631 sha256=064fa5119b4bad23832ae62264ac06f37dc26ed49ce669176dcb429989ad71c5
+CHECK i2c_ov5640_rgb565_cfg.v bytes=18639 sha256=9b8d55b02207d38adce361b5be6cc3ace84fa7463b864c6a1d9106b0052af18e
+CHECK i2c_dri.v bytes=23634 sha256=c38715ed2cfbd39c2fc4b8a604b0873398b6126d34587397c0ada83b95ab42d0
+CHECK cmos_capture_data.v bytes=4473 sha256=a65b62dd1a2131dc04d4c82e7cad64eb34e330faa51523f754385c0520b9a7b9
+CHECK ddr3_top.v bytes=12290 sha256=53af3324df6c8d0c5c9ba59e037984782a9a6c0974fa86e4f64e30087c9a2dab
+CHECK ddr3_rw.v bytes=13132 sha256=765862ce46ea274f4ddad7c8631f9e74b19f4e7cda2e3d6dd305b20aa262151c
+CHECK ddr3_fifo_ctrl.v bytes=7649 sha256=81514f192b433ab3164c698628332e8650d2d293c9009f94b1ff054ed519436e
+CHECK lcd_rgb_top.v bytes=3932 sha256=5d6d5e506d85d13a96fcb9419cae3f21693dab00fa52ca5740e58ae564d0eb8c
+CHECK lcd_driver.v bytes=9567 sha256=63e7aac2259a2b33acc3a948a1c3f8ad1e0e7477a5bf28a35731831e3f077969
+CHECK rd_id.v bytes=2098 sha256=6cd6fd21405a988dafce9c906c5a434fe7e2e7b769b15e803d36067adb13bb04
+CHECK clk_div.v bytes=1866 sha256=27440c2c20830f1cf05152607aae52705dd521e22771b0c2807712ea68a2967c
+CHECK eth_top.v bytes=6706 sha256=11dcfc48ad79d44023ea64d60bcd060c6b63868d6ddf733a6e09948f9c98d228
+CHECK eth_ctrl.v bytes=3423 sha256=2d337ffd3c352f801b0e020eb7ce89acf4a23363b2e6bac3088628bc7cfa7ae8
+CHECK start_transfer_ctrl.v bytes=2148 sha256=03a3c46d079f76da9c767517d0e71bd6ee09c7a6618d4c1ab313b1602e8d3359
+CHECK eth/gmii_to_rgmii/gmii_to_rgmii.v bytes=2597 sha256=abdc806aa5caa30c9724fd50798373143cf86cea42db735ee08622f5ed289323
+CHECK eth/gmii_to_rgmii/rgmii_rx.v bytes=7766 sha256=8cb37294dbc50ff9d6e51141146ba4982db514df0661366b5096d5daeb6ef6b2
+CHECK eth/gmii_to_rgmii/rgmii_tx.v bytes=3096 sha256=4ec584a0b2e4f02278fe1c3667a57556b97eac391a839769b77e29b615096790
+CHECK eth/arp/arp.v bytes=4094 sha256=7c71839aabe0e47168b777cc2a2b17f619d696f0a47e5a501f7a58a5f1e8afd9
+CHECK eth/arp/arp_rx.v bytes=8831 sha256=6aea7cd4db6177b7bf0f234b9ad20fd9a696d4386a9afc918a90adcad2bc1e32
+CHECK eth/arp/arp_tx.v bytes=12057 sha256=529e227a243b341d9ef2f2f617660b4e7d6cb4263da8e66973078cd3c769b16c
+CHECK eth/arp/crc32_d8.v bytes=6881 sha256=2a499450f4aac8a3f657909d77a753c535f9b215d942a8e674a5322c3d68071f
+CHECK eth/udp/udp.v bytes=4451 sha256=9fa497269a2224aa069c2e5b5353b0836ddadc7bbf2985a1e98431720b20ef29
+CHECK eth/udp/udp_rx.v bytes=9790 sha256=eb8255bc85f8654dc9f8b8d499fd096b54bd5255412243c63efb4b3097c65c80
+CHECK eth/udp/udp_tx.v bytes=16228 sha256=cd5b463f5ddd14764c8c42157e15d7a05940f1255168e4201311d193f89e1955
+MANIFEST_FILES=26
+MANIFEST_BYTES=206613
+MANIFEST_SHA256=a9693c2cc5d1b6fce3b557ce06808367359908c49ac81f020d0969ceba6df1a0
+CHECKED_ENTRIES=26
+VENDOR_MANIFEST_OK=1
+VENDOR_CHECK_EXIT=0
+
+## 4 设计报告匿名扫描（学校名 / 指导教师）
+SCHOOL_HITS=0
+SCHOOL_LIST=
+ANON_EXIT=0
+ADVISOR_GREP_EXIT=1 (1=没有指导教师姓名)
+
+## 5 四份提交物匿名扫描（报告/海报/视频分镜/平台清单）
+== report/design_report.md
+SCHOOL_HITS=0 []
+ADVISOR=none
+== report/poster_en.md
+SCHOOL_HITS=0 []
+ADVISOR=none
+== report/demo_video_script.md
+SCHOOL_HITS=0 []
+ADVISOR=none
+== report/platform_checklist.md
+SCHOOL_HITS=0 []
+ADVISOR=none
+ANON_ALL_OK=1
+
+## 6 工作树（本任务只写白名单，未 git add / commit）
+ M "docs/04_\350\265\233\344\272\213\344\270\216\345\220\210\350\247\204/02_\346\217\220\344\272\244\347\211\251\346\270\205\345\215\225.md"
+ M "docs/04_\350\265\233\344\272\213\344\270\216\345\220\210\350\247\204/05_\345\217\202\350\265\233\346\226\207\346\241\243\345\244\247\347\272\262\344\270\216\346\226\207\351\243\216\347\272\246\346\235\237.md"
+ M "docs/06_\344\272\213\345\256\236\347\231\273\350\256\260\345\206\214/02_\345\217\202\350\265\233\345\217\243\345\276\204\347\231\273\350\256\260.md"
+ M report/design_report.md
+ M report/evidence/EVIDENCE_POSTER.log
+ M report/evidence/REPORT_DESIGN_OK.log
+ M report/evidence/check_report.mjs
+?? "docs/06_\344\272\213\345\256\236\347\231\273\350\256\260\345\206\214/03_v7b\351\203\250\347\275\262\350\243\201\345\206\263\344\270\216\351\243\216\351\231\251\346\216\245\345\217\227.md"
+?? report/evidence/crossdoc_check.mjs
+?? report/evidence/crossdoc_conflicts.md
+?? report/evidence/event_stream_stats.json
+
+## 7 结论
+DESIGN_REPRO_OK=1
+CROSSDOC_OK=1
+STYLE_CHECK_OK=1
+REFS_OK=1
+VENDOR_MANIFEST_OK=1
+ANON_ALL_OK=1
+
+## 8 2026-10-31 act8 烧板回填复跑（design_report / 登记册 / docs04 / docs05 / crossdoc）
+DATE=2026-10-31 02:11:12 +0800
+GIT_HEAD=95f7cbba83b1441b0e94a8f4b955e92111db0a68
+WORKTREE_NOTE=本轮只改文档与检查脚本；未改 RTL/host/nn，未重跑 Vivado、未烧板
+
+$ node report/evidence/check_report.mjs
+CHECK H1_COUNT = 1 got=7
+CHECK H1_TITLES = 1 ["选题背景与创新点","设计原理与功能框图","软硬件划分依据与接口设计","优化过程与前后对比","大模型协作","技能包提炼过程","复现说明"]
+CHECK H4_PLUS = 1 
+CHECK CJK_GE_12000 = 1 cjk=14453
+CHECK TABLES_GE_8 = 1 tables=22
+CHECK TABLE_COLUMNS = 1 issues=0
+CHECK BANNED_TERMS = 1 hits=0
+CHECK REFS = 1 links=41 missing=0
+CHECK SOURCE_EXISTS_02_metric_register.md = 1 docs/06_facts/02_metric_register.md
+CHECK SOURCE_EXISTS_05_action_uplink_contract.md = 1 docs/03_tech/05_action_uplink_contract.md
+CHECK SOURCE_EXISTS_00_current_status.md = 1 docs/06_facts/00_current_status.md
+CHECK NUMBER_PRESENT_20559 = 1 20,559
+CHECK NUMBER_PRESENT_11850 = 1 11,850
+CHECK NUMBER_PRESENT_7327 = 1 7,327
+CHECK NUMBER_PRESENT_0306ns = 1 +0.306 ns
+CHECK NUMBER_PRESENT_2890875 = 1 2,890,875
+CHECK NUMBER_PRESENT_a5fff751 = 1 a5fff751
+CHECK NUMBER_PRESENT_15940 = 1 15,940
+CHECK NUMBER_PRESENT_207840 = 1 207,840
+CHECK NUMBER_PRESENT_5652 = 1 5,652
+CHECK NUMBER_PRESENT_09042 = 1 0.9042
+CHECK STEP0_0 = 1 步骤 0：厂家依赖前置
+CHECK STEP0_vendormanifestjson = 1 vendor_manifest.json
+CHECK STEP0_26 = 1 26 个文件
+CHECK STEP0_206613 = 1 206,613
+CHECK STEP0_a9693c2c = 1 a9693c2c
+CHECK STEP0_setupvendorrtlps1Check = 1 setup_vendor_rtl.ps1 -Check
+CHECK STEP0_VENDORMANIFESTOK1 = 1 VENDOR_MANIFEST_OK=1
+CHECK STEP0_ = 1 只做仿真
+CHECK VIVADO_Vivado20202 = 1 Vivado 2020.2
+CHECK VIVADO_20261 = 1 2026.1
+CHECK VIVADO_ = 1 迁移差异本版未测量
+CHECK ANON_STATEMENT = 1 
+CHECK ANON_NO_SCHOOL = 1 
+CHECK ANON_NO_ADVISOR = 1 
+CHECK ACT7_2835423 = 1 2,835,423
+CHECK ACT7_0059ns = 1 +0.059 ns
+CHECK ACT7_22371 = 1 22,371
+CHECK ACT7_7968 = 1 7,968
+CHECK ACT7_5027 = 1 50.27%
+CHECK ACT8_2839107 = 1 2,839,107
+CHECK ACT8_5ec55e = 1 5ec55e
+CHECK ACT8_0215ns = 1 +0.215 ns
+CHECK ACT8_22383 = 1 22,383
+CHECK ACT8_8026 = 1 8,026
+CHECK ACT8_5064 = 1 50.64%
+CHECK ACT8_ = 1 已烧板
+CHECK V7B_83 = 1 8/3
+CHECK V7B_163 = 1 16/3
+CHECK V7B_244 = 1 24/4
+CHECK V7B_8874 = 1 88 降到 74
+CHECK V7B_1417 = 1 14/17
+CHECK V7B_00196 = 1 0.0196
+CHECK V7B_V7BMODELOK0 = 1 V7B_MODEL_OK 记 0
+CHECK V7B_465s = 1 46.5 s
+CHECK V7_1717 = 1 17/17
+CHECK V7_5510 = 1 5/510
+CHECK V7_00098 = 1 0.0098
+CHECK V7_v7b = 1 v7b 的板级动作计数与误触发率仍未产生
+CHECK V7_s100 = 1 同一模型在两种窗口径下的硬负率不同，报告统一采用 s100 板端口径
+STYLE_CHECK_OK=1
+REFS_OK=1
+CHECK_REPORT_EXIT=0
+
+$ node report/evidence/crossdoc_check.mjs
+METRIC act3c_bits = GAP [design,eval]
+METRIC act3c_wns = OK [design,eval,registry,figure]
+METRIC act3c_lut = OK [design,eval,registry,figure]
+METRIC act3c_ff = OK [design,eval,registry,figure]
+METRIC act3c_slice = OK [design,eval,registry,figure]
+METRIC act3c_bram = OK [design,eval,registry,figure]
+METRIC act3c_dsp = OK [design,eval,registry,figure]
+METRIC infer_cycles = OK [design,eval,registry,figure]
+METRIC infer_ms = OK [design,eval,registry,figure]
+METRIC v7_fold_recall = OK [design,eval,registry,figure]
+METRIC v7_wave_win = OK [design,eval,registry]
+METRIC v7_wave_hit = OK [design,eval,registry,figure]
+METRIC v7_s50_hardneg_rate = GAP [figure]
+METRIC v7_s100_hardneg = OK [design,registry,decision]
+METRIC v7b_hardneg = OK [design,registry,decision]
+METRIC v7b_dwave = OK [design,registry,decision]
+METRIC v7b_ok = OK [design,registry,decision]
+METRIC act7_bits = OK [design,registry]
+METRIC act7_wns = OK [design,registry,decision]
+METRIC act7_lut = OK [design,registry]
+METRIC act7_slice = OK [design,registry]
+METRIC act8_bits = OK [design,registry]
+METRIC act8_wns = OK [design,registry]
+METRIC act8_lut = OK [design,registry]
+METRIC act8_slice = OK [design,registry]
+METRIC startup_pps = OK [design,registry]
+METRIC host_tests = OK [design,registry]
+SCOPE_DIFF v7_hardneg_scope resolved=1
+METRICS=27 OK=25 ROUNDED=0 GAP=2 CONFLICT=0 NO_SOURCE=0
+CROSSDOC_OK=1
+CROSSDOC_EXIT=0
+
+ACT8_BITS=2,839,107 B
+ACT8_MD5=5ec55ec07c44f2503df63f1bb160a6e6
+ACT8_WNS=+0.215 ns / TNS 0 / WHS +0.017 ns / THS 0
+ACT8_RES=LUT 22,383 / FF 14,325 / Slice 8,026 / BRAM 86.5 / DSP 8 / IOB 140
+ACT8_BURN=2026-10-31 02:02, PROG_RESULT=OK, DONE_PIN=1, EOS=1
+M5_STATUS=方案，act8 已烧板，验收未执行（P4 INT8_CONTRACT.md 未闭环）
+REGISTRY_COUNT=50
+
+DESIGN_REPRO_OK=1
+
+## 9 2026-10-31 勘误复跑（风险表口径 / A11 证据状态 / crossdoc GAP 说明）
+DATE=2026-10-31 02:14:11 +0800
+GIT_HEAD_BEFORE=0896e2b
+CHANGE=仅改文档文字与 crossdoc 说明，未改任何数字或代码
+
+$ node report/evidence/check_report.mjs
+CHECK H1_COUNT = 1 got=7
+CHECK H1_TITLES = 1 ["选题背景与创新点","设计原理与功能框图","软硬件划分依据与接口设计","优化过程与前后对比","大模型协作","技能包提炼过程","复现说明"]
+CHECK H4_PLUS = 1 
+CHECK CJK_GE_12000 = 1 cjk=14451
+CHECK TABLES_GE_8 = 1 tables=22
+CHECK TABLE_COLUMNS = 1 issues=0
+CHECK BANNED_TERMS = 1 hits=0
+CHECK REFS = 1 links=41 missing=0
+CHECK SOURCE_EXISTS_02_metric_register.md = 1 docs/06_facts/02_metric_register.md
+CHECK SOURCE_EXISTS_05_action_uplink_contract.md = 1 docs/03_tech/05_action_uplink_contract.md
+CHECK SOURCE_EXISTS_00_current_status.md = 1 docs/06_facts/00_current_status.md
+CHECK NUMBER_PRESENT_20559 = 1 20,559
+CHECK NUMBER_PRESENT_11850 = 1 11,850
+CHECK NUMBER_PRESENT_7327 = 1 7,327
+CHECK NUMBER_PRESENT_0306ns = 1 +0.306 ns
+CHECK NUMBER_PRESENT_2890875 = 1 2,890,875
+CHECK NUMBER_PRESENT_a5fff751 = 1 a5fff751
+CHECK NUMBER_PRESENT_15940 = 1 15,940
+CHECK NUMBER_PRESENT_207840 = 1 207,840
+CHECK NUMBER_PRESENT_5652 = 1 5,652
+CHECK NUMBER_PRESENT_09042 = 1 0.9042
+CHECK STEP0_0 = 1 步骤 0：厂家依赖前置
+CHECK STEP0_vendormanifestjson = 1 vendor_manifest.json
+CHECK STEP0_26 = 1 26 个文件
+CHECK STEP0_206613 = 1 206,613
+CHECK STEP0_a9693c2c = 1 a9693c2c
+CHECK STEP0_setupvendorrtlps1Check = 1 setup_vendor_rtl.ps1 -Check
+CHECK STEP0_VENDORMANIFESTOK1 = 1 VENDOR_MANIFEST_OK=1
+CHECK STEP0_ = 1 只做仿真
+CHECK VIVADO_Vivado20202 = 1 Vivado 2020.2
+CHECK VIVADO_20261 = 1 2026.1
+CHECK VIVADO_ = 1 迁移差异本版未测量
+CHECK ANON_STATEMENT = 1 
+CHECK ANON_NO_SCHOOL = 1 
+CHECK ANON_NO_ADVISOR = 1 
+CHECK ACT7_2835423 = 1 2,835,423
+CHECK ACT7_0059ns = 1 +0.059 ns
+CHECK ACT7_22371 = 1 22,371
+CHECK ACT7_7968 = 1 7,968
+CHECK ACT7_5027 = 1 50.27%
+CHECK ACT8_2839107 = 1 2,839,107
+CHECK ACT8_5ec55e = 1 5ec55e
+CHECK ACT8_0215ns = 1 +0.215 ns
+CHECK ACT8_22383 = 1 22,383
+CHECK ACT8_8026 = 1 8,026
+CHECK ACT8_5064 = 1 50.64%
+CHECK ACT8_ = 1 已烧板
+CHECK V7B_83 = 1 8/3
+CHECK V7B_163 = 1 16/3
+CHECK V7B_244 = 1 24/4
+CHECK V7B_8874 = 1 88 降到 74
+CHECK V7B_1417 = 1 14/17
+CHECK V7B_00196 = 1 0.0196
+CHECK V7B_V7BMODELOK0 = 1 V7B_MODEL_OK 记 0
+CHECK V7B_465s = 1 46.5 s
+CHECK V7_1717 = 1 17/17
+CHECK V7_5510 = 1 5/510
+CHECK V7_00098 = 1 0.0098
+CHECK V7_v7b = 1 v7b 的板级动作计数与误触发率仍未产生
+CHECK V7_s100 = 1 同一模型在两种窗口径下的硬负率不同，报告统一采用 s100 板端口径
+STYLE_CHECK_OK=1
+REFS_OK=1
+CHECK_REPORT_EXIT=0
+
+$ node report/evidence/crossdoc_check.mjs
+METRIC act3c_bits = GAP [design,eval]
+METRIC act3c_wns = OK [design,eval,registry,figure]
+METRIC act3c_lut = OK [design,eval,registry,figure]
+METRIC act3c_ff = OK [design,eval,registry,figure]
+METRIC act3c_slice = OK [design,eval,registry,figure]
+METRIC act3c_bram = OK [design,eval,registry,figure]
+METRIC act3c_dsp = OK [design,eval,registry,figure]
+METRIC infer_cycles = OK [design,eval,registry,figure]
+METRIC infer_ms = OK [design,eval,registry,figure]
+METRIC v7_fold_recall = OK [design,eval,registry,figure]
+METRIC v7_wave_win = OK [design,eval,registry]
+METRIC v7_wave_hit = OK [design,eval,registry,figure]
+METRIC v7_s50_hardneg_rate = GAP [figure]
+METRIC v7_s100_hardneg = OK [design,registry,decision]
+METRIC v7b_hardneg = OK [design,registry,decision]
+METRIC v7b_dwave = OK [design,registry,decision]
+METRIC v7b_ok = OK [design,registry,decision]
+METRIC act7_bits = OK [design,registry]
+METRIC act7_wns = OK [design,registry,decision]
+METRIC act7_lut = OK [design,registry]
+METRIC act7_slice = OK [design,registry]
+METRIC act8_bits = OK [design,registry]
+METRIC act8_wns = OK [design,registry]
+METRIC act8_lut = OK [design,registry]
+METRIC act8_slice = OK [design,registry]
+METRIC startup_pps = OK [design,registry]
+METRIC host_tests = OK [design,registry]
+SCOPE_DIFF v7_hardneg_scope resolved=1
+METRICS=27 OK=25 ROUNDED=0 GAP=2 CONFLICT=0 NO_SOURCE=0
+CROSSDOC_OK=1
+CROSSDOC_EXIT=0
+
+CJK_FINAL=14451
+TABLES_FINAL=22
+LINKS_FINAL=41
+REGISTRY_COUNT=50
+DESIGN_REPRO_OK=1
+
+## 10 2026-10-31 payload md5 口径订正（m04547）
+DATE=2026-10-31 02:22 +0800
+CORRECTION=载荷 md5 dcbcf543210c33cb22625128bc5f6b97；头 127 B，载荷 2,838,980 B；旧口径按 168 B 计算有误（rtl 复核发现）。可复现结论不变：act8e/act8r 的 bytes[127:] 逐字节相同。
+CHANGED=docs/06_facts/02_metric_register.md:20 M12；report/design_report.md:269；docs/06_facts/00_current_status.md:32/:302；docs/04_contest/02_提交物清单.md:14 与 05_report_outline_and_style.md:13 的 CJK 计数同步为 14,454
+GREP_SCOPE=docs/06_facts/02_metric_register.md report/design_report.md docs/06_facts/00_current_status.md
+GREP_OLD_VALUES=0 命中
+REMAINING=sim/nn/EVIDENCE_M3j.md 与 sim/nn/EVIDENCE_REVIEW_V8.md 仍含旧口径；前者属 rtl2 待订正，后者是 task-71 的差异发现记录。本卡未改这两个文件。
+$ node report/evidence/check_report.mjs
+CHECK CJK_GE_12000 = 1 cjk=14454
+CHECK TABLES_GE_8 = 1 tables=22
+CHECK REFS = 1 links=41 missing=0
+STYLE_CHECK_OK=1
+REFS_OK=1
+CHECK_REPORT_EXIT=0
+$ node report/evidence/crossdoc_check.mjs
+SCOPE_DIFF v7_hardneg_scope resolved=1
+METRICS=27 OK=25 ROUNDED=0 GAP=2 CONFLICT=0 NO_SOURCE=0
+CROSSDOC_OK=1
+CROSSDOC_EXIT=0
+CJK_FINAL=14454
+TABLES_FINAL=22
+LINKS_FINAL=41
+REGISTRY_COUNT=50
+DESIGN_REPRO_OK=1

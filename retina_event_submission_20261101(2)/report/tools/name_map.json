@@ -1,0 +1,438 @@
+{
+  "schema": 1,
+  "description": "Pack-time path normalization: official rule requires ASCII lowercase paths inside the submission tree. Keys are paths relative to the pack root (or to the repo for dir prefixes); values are the normalized paths. Every key must be consumed by report/tools/normalize_pack.mjs or the packer fails.",
+  "allow": [
+    "README.md",
+    "LICENSE",
+    "skill/README.md"
+  ],
+  "dirs": {
+    "docs/01_product": "docs/01_product",
+    "docs/02_design": "docs/02_design",
+    "docs/03_tech": "docs/03_tech",
+    "docs/04_contest": "docs/04_contest",
+    "docs/05_experiments": "docs/05_experiments",
+    "docs/05_experiments/action_recognition_20261029": "docs/05_experiments/action_recognition_20261029",
+    "docs/05_experiments/recording_and_labeling_20261030": "docs/05_experiments/recording_and_labeling_20261030",
+    "docs/06_facts": "docs/06_facts",
+    "docs/07_review": "docs/07_review"
+  },
+  "files": {
+    "docs/01_product/collaboration_notes_legacy.md": "docs/01_product/collaboration_notes_legacy.md",
+    "docs/01_product/product_manual.md": "docs/01_product/product_manual.md",
+    "docs/02_design/02_memory_hierarchy.md": "docs/02_design/02_memory_hierarchy.md",
+    "docs/03_tech/04_action_recognition_selection.md": "docs/03_tech/04_action_recognition_selection.md",
+    "docs/03_tech/05_action_uplink_contract.md": "docs/03_tech/05_action_uplink_contract.md",
+    "docs/03_tech/06_rtl_design_and_pitfalls.md": "docs/03_tech/06_rtl_design_and_pitfalls.md",
+    "docs/04_contest/00_official_topic_guide.txt": "docs/04_contest/00_official_topic_guide.txt",
+    "docs/04_contest/05_report_outline_and_style.md": "docs/04_contest/05_report_outline_and_style.md",
+    "docs/05_experiments/m5_board_acceptance_20261029.md": "docs/05_experiments/m5_board_acceptance_20261029.md",
+    "docs/05_experiments/action_recognition_20261029/act8_empty_baseline_20261031.md": "docs/05_experiments/action_recognition_20261029/act8_empty_baseline_20261031.md",
+    "docs/05_experiments/action_recognition_20261029/m5_board_acceptance_v2_20261030.md": "docs/05_experiments/action_recognition_20261029/m5_board_acceptance_v2_20261030.md",
+    "docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md": "docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md",
+    "docs/05_experiments/action_recognition_20261029/report.md": "docs/05_experiments/action_recognition_20261029/report.md",
+    "docs/05_experiments/action_recognition_20261029/capture_log_v7hands_20261030.md": "docs/05_experiments/action_recognition_20261029/capture_log_v7hands_20261030.md",
+    "docs/05_experiments/recording_and_labeling_20261030/evidence_anno.log": "docs/05_experiments/recording_and_labeling_20261030/evidence_anno.log",
+    "docs/06_facts/01_fact_register.md": "docs/06_facts/01_fact_register.md",
+    "docs/06_facts/02_metric_register.md": "docs/06_facts/02_metric_register.md",
+    "docs/06_facts/03_v7b_deployment_decision.md": "docs/06_facts/03_v7b_deployment_decision.md",
+    "docs/05_experiments/action_recognition_20261029/act8_board_acceptance_a1a4_20261031.md": "docs/05_experiments/action_recognition_20261029/act8_board_acceptance_a1a4_20261031.md",
+    "docs/05_experiments/action_recognition_20261029/act8_uart_combined_bitstream_build_20261031.md": "docs/05_experiments/action_recognition_20261029/act8_uart_combined_bitstream_build_20261031.md",
+    "docs/05_experiments/action_recognition_20261029/uart_action_status_polling_20261031.md": "docs/05_experiments/action_recognition_20261029/uart_action_status_polling_20261031.md",
+    "docs/07_review/08_phase_review_20261031.md": "docs/07_review/08_phase_review_20261031.md",
+    "board/evidence_board_doc.log": "board/evidence_board_doc.log",
+    "report/evidence/act8_artifacts.txt": "report/evidence/act8_artifacts.txt",
+    "report/evidence/report_eval_ok.log": "report/evidence/report_eval_ok.log",
+    "docs/06_facts/00_current_status.md": "docs/06_facts/00_current_status.md",
+    "board/readme.md": "board/readme.md"
+  },
+  "basenames": {
+    "collaboration_notes_legacy.md": "collaboration_notes_legacy.md",
+    "product_manual.md": "product_manual.md",
+    "02_memory_hierarchy.md": "02_memory_hierarchy.md",
+    "04_action_recognition_selection.md": "04_action_recognition_selection.md",
+    "05_action_uplink_contract.md": "05_action_uplink_contract.md",
+    "06_rtl_design_and_pitfalls.md": "06_rtl_design_and_pitfalls.md",
+    "00_official_topic_guide.txt": "00_official_topic_guide.txt",
+    "05_report_outline_and_style.md": "05_report_outline_and_style.md",
+    "m5_board_acceptance_20261029.md": "m5_board_acceptance_20261029.md",
+    "act8_empty_baseline_20261031.md": "act8_empty_baseline_20261031.md",
+    "m5_board_acceptance_v2_20261030.md": "m5_board_acceptance_v2_20261030.md",
+    "measure_v5_false_triggers_20261030.md": "measure_v5_false_triggers_20261030.md",
+    "capture_log_v7hands_20261030.md": "capture_log_v7hands_20261030.md",
+    "01_fact_register.md": "01_fact_register.md",
+    "02_metric_register.md": "02_metric_register.md",
+    "03_v7b_deployment_decision.md": "03_v7b_deployment_decision.md",
+    "act8_board_acceptance_a1a4_20261031.md": "act8_board_acceptance_a1a4_20261031.md",
+    "act8_uart_combined_bitstream_build_20261031.md": "act8_uart_combined_bitstream_build_20261031.md",
+    "uart_action_status_polling_20261031.md": "uart_action_status_polling_20261031.md",
+    "08_phase_review_20261031.md": "08_phase_review_20261031.md",
+    "act8_artifacts.txt": "act8_artifacts.txt",
+    "report_eval_ok.log": "report_eval_ok.log",
+    "evidence_board_doc.log": "evidence_board_doc.log",
+    "evidence_anno.log": "evidence_anno.log",
+    "00_current_status.md": "00_current_status.md"
+  },
+  "content_rules": [
+    {
+      "glob": "*.md",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.md",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.md",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.md",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.md",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.md",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.md",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.md",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.txt",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.txt",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.txt",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.txt",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.txt",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.txt",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.txt",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.txt",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.json",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.json",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.json",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.json",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.json",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.json",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.json",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.json",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.mjs",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.py",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.py",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.py",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.py",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.py",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.py",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.py",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.py",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.tcl",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.ps1",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.log",
+      "from": "build/build_inproc_v7.tcl",
+      "to": "build/build_inproc_v7.tcl"
+    },
+    {
+      "glob": "*.log",
+      "from": "docs/06_facts/00_current_status.md",
+      "to": "docs/06_facts/00_current_status.md"
+    },
+    {
+      "glob": "*.log",
+      "from": "vendor_manifest.json",
+      "to": "vendor_manifest.json"
+    },
+    {
+      "glob": "*.log",
+      "from": "src/rtl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.log",
+      "from": "sim/",
+      "to": "sim/"
+    },
+    {
+      "glob": "*.log",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.log",
+      "from": "build/",
+      "to": "build/"
+    },
+    {
+      "glob": "*.log",
+      "from": "NOTICE",
+      "to": "NOTICE"
+    },
+    {
+      "glob": "*.f",
+      "from": "src/hdl/",
+      "to": "src/rtl/"
+    },
+    {
+      "glob": "*.md",
+      "from": "build/CHOSEN.txt",
+      "to": "build/chosen.txt"
+    },
+    {
+      "glob": "*.txt",
+      "from": "build/CHOSEN.txt",
+      "to": "build/chosen.txt"
+    },
+    {
+      "glob": "*.md",
+      "from": "CHOSEN.txt",
+      "to": "chosen.txt"
+    },
+    {
+      "glob": "*.txt",
+      "from": "CHOSEN.txt",
+      "to": "chosen.txt"
+    },
+    {
+      "glob": "*.md",
+      "from": "board/readme.md",
+      "to": "board/readme.md"
+    },
+    {
+      "glob": "*.txt",
+      "from": "board/readme.md",
+      "to": "board/readme.md"
+    },
+    {
+      "glob": "*.json",
+      "from": "board/readme.md",
+      "to": "board/readme.md"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+figure,metric,value,expected,source_path:line,equal
+f1,功能块/连线,9 节点 / 10 箭头,9 节点 / 10 箭头,docs/assets/system_architecture.svg; report/figures/make_figures.py:519,YES
+f2,事件率 empty_A,27 事件/秒,27,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:19,YES
+f2,事件率 open_L,20748 事件/秒,20748,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:28,YES
+f2,事件率 wave_L,34755 事件/秒,34755,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:37,YES
+f2,事件率 gap_away,39 事件/秒,39,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:46,YES
+f2,事件率 open_L_near,30769 事件/秒,30769,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:55,YES
+f2,事件率 open_L_far,14529 事件/秒,14529,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:65,YES
+f2,事件率 wave_L_far,36359 事件/秒,36359,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:75,YES
+f2,事件率 typing,43879 事件/秒,43879,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:92,YES
+f2,事件率 cup_paper,82627 事件/秒,82627,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:100,YES
+f2,事件率 still_B,686 事件/秒,686,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:108,YES
+f2,事件率 empty_A2,35 事件/秒,35,records/20261030-222201_v7hands/chunk-000.events.csv:2（逐行）; report/figures/v7_zones.json:123,YES
+f2,v5probe 帧数,11516,11516,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v5probe 事件数,10312327,10312327,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v5probe 板卡跨度,432.143 s,432.143,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v5probe 有效帧率,26.646 fps,26.646,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v5probe 事件率,23863.23 事件/秒,23863.23,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v5probe CSV/原始字节,0.03607,0.03607,"records/20261030-212214_v5probe/meta.json:19,20,23; records/20261030-212214_v5probe/chunk-000.frames.csv:2",YES
+f2,v6clean-384 帧数,587,587,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean-384 事件数,2052,2052,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean-384 板卡跨度,21.978 s,21.978,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean-384 有效帧率,26.663 fps,26.663,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean-384 事件率,93.37 事件/秒,93.37,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean-384 CSV/原始字节,0.00013,0.00013,"records/20261030-214353_v6clean/meta.json:19,20,23; records/20261030-214353_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean 帧数,5174,5174,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean 事件数,6012765,6012765,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean 板卡跨度,194.356 s,194.356,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean 有效帧率,26.616 fps,26.616,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean 事件率,30936.86 事件/秒,30936.86,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v6clean CSV/原始字节,0.04589,0.04589,"records/20261030-215700_v6clean/meta.json:19,20,23; records/20261030-215700_v6clean/chunk-000.frames.csv:2",YES
+f2,v7hands 帧数,6831,6831,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f2,v7hands 事件数,7913893,7913893,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f2,v7hands 板卡跨度,256.088 s,256.088,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f2,v7hands 有效帧率,26.671 fps,26.671,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f2,v7hands 事件率,30903.02 事件/秒,30903.02,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f2,v7hands CSV/原始字节,0.04665,0.04665,"records/20261030-222201_v7hands/meta.json:19,20,23; records/20261030-222201_v7hands/chunk-000.frames.csv:2",YES
+f3,流水级数,8,8,docs/assets/event_engine_pipeline.svg:1; report/figures/make_figures.py:598,YES
+f3,每像素拍数,2（800×480）/ 1（400×240 五级）,2（800×480）/ 1（400×240 五级）,docs/03_tech/04_action_recognition_selection.md:20,YES
+f4,LUT 已用,20559,20559,retina_event/build/variant_act3c/inproc_util_impl.rpt:34,YES
+f4,LUT 占比,32.43%,32.43,retina_event/build/variant_act3c/inproc_util_impl.rpt:34,YES
+f4,FF 已用,11850,11850,retina_event/build/variant_act3c/inproc_util_impl.rpt:39,YES
+f4,FF 占比,9.35%,9.35,retina_event/build/variant_act3c/inproc_util_impl.rpt:39,YES
+f4,Slice 已用,7327,7327,retina_event/build/variant_act3c/inproc_util_impl.rpt:72,YES
+f4,Slice 占比,46.23%,46.23,retina_event/build/variant_act3c/inproc_util_impl.rpt:72,YES
+f4,BRAM 已用,87,87,retina_event/build/variant_act3c/inproc_util_impl.rpt:104,YES
+f4,BRAM 占比,64.44%,64.44,retina_event/build/variant_act3c/inproc_util_impl.rpt:104,YES
+f4,DSP 已用,7,7,retina_event/build/variant_act3c/inproc_util_impl.rpt:119,YES
+f4,DSP 占比,2.92%,2.92,retina_event/build/variant_act3c/inproc_util_impl.rpt:119,YES
+f4,IOB 已用,140,140,retina_event/build/variant_act3c/inproc_util_impl.rpt:130,YES
+f4,IOB 占比,49.12%,49.12,retina_event/build/variant_act3c/inproc_util_impl.rpt:130,YES
+f4,act7 LUT 占比,35.29%,35.29,retina_event/sim/nn/EVIDENCE_M3f.md:108,YES
+f4,act8 LUT 占比,35.30%,35.3,retina_event/build/variant_act8_final/util.rpt:34,YES
+f4,act7 FF 占比,11.30%,11.3,retina_event/sim/nn/EVIDENCE_M3f.md:111,YES
+f4,act8 FF 占比,11.30%,11.3,retina_event/build/variant_act8_final/util.rpt:39,YES
+f4,act7 Slice 占比,50.27%,50.27,retina_event/sim/nn/EVIDENCE_M3f.md:112,YES
+f4,act8 Slice 占比,50.64%,50.64,retina_event/build/variant_act8_final/util.rpt:72,YES
+f4,act7 BRAM 占比,64.44%,64.44,retina_event/sim/nn/EVIDENCE_M3f.md:113,YES
+f4,act8 BRAM 占比,64.07%,64.07,retina_event/build/variant_act8_final/util.rpt:104,YES
+f4,act7 DSP 占比,3.33%,3.33,retina_event/sim/nn/EVIDENCE_M3f.md:116,YES
+f4,act8 DSP 占比,3.33%,3.33,retina_event/build/variant_act8_final/util.rpt:119,YES
+f4,act7 IOB 占比,49.12%,49.12,retina_event/sim/nn/EVIDENCE_M3f.md:117,YES
+f4,act8 IOB 占比,49.12%,49.12,retina_event/build/variant_act8_final/util.rpt:130,YES
+f4,M0 基线 LUT,18973,18973,docs/03_tech/04_action_recognition_selection.md:77,YES
+f4,M0 基线 FF,11296,11296,docs/03_tech/04_action_recognition_selection.md:78,YES
+f4,M0 基线 Slice,6721,6721,docs/03_tech/04_action_recognition_selection.md:79,YES
+f4,M0 基线 BRAM,77.5,77.5,docs/03_tech/04_action_recognition_selection.md:80,YES
+f4,M0 基线 DSP,6,6,docs/03_tech/04_action_recognition_selection.md:81,YES
+f4,M0 基线 IOB,140,140,docs/03_tech/04_action_recognition_selection.md:82,YES
+f4,预算增量 Slice LUT,+2800,2800,docs/03_tech/04_action_recognition_selection.md:177,YES
+f4,预算增量 Slice FF,+3200,3200,docs/03_tech/04_action_recognition_selection.md:178,YES
+f4,预算增量 Slices,+800,800,docs/03_tech/04_action_recognition_selection.md:179,YES
+f4,预算增量 BRAM36 Tile,+7,7,docs/03_tech/04_action_recognition_selection.md:180,YES
+f4,预算增量 DSP48E1,+8,8,docs/03_tech/04_action_recognition_selection.md:181,YES
+f4,预算增量 IOB,0,0,docs/03_tech/04_action_recognition_selection.md:182,YES
+f4,实测增量 LUT,+1586.0,1586,docs/03_tech/04_action_recognition_selection.md:77; retina_event/build/variant_act3c/inproc_util_impl.rpt:34,YES
+f4,实测增量 FF,+554.0,554,docs/03_tech/04_action_recognition_selection.md:78; retina_event/build/variant_act3c/inproc_util_impl.rpt:39,YES
+f4,实测增量 BRAM,+9.5,9.5,docs/03_tech/04_action_recognition_selection.md:80; retina_event/build/variant_act3c/inproc_util_impl.rpt:104,YES
+f4,实测增量 DSP,+1.0,1,docs/03_tech/04_action_recognition_selection.md:81; retina_event/build/variant_act3c/inproc_util_impl.rpt:119,YES
+f5,v1 WNS,-7.001 ns,-7.001,retina_event/sim/nn/EVIDENCE_M3.md:205,YES
+f5,v2 WNS,+8.827 ns,8.827,retina_event/sim/nn/EVIDENCE_M3.md:205,YES
+f5,中间版 WNS,-0.175 ns,-0.175,retina_event/build/variant_act3c/inproc_timing.rpt:131,YES
+f5,交付 WNS,+0.306 ns,0.306,retina_event/build/variant_act3c/timing_deliver.rpt:131,YES
+f5,交付 WHS,+0.036 ns,0.036,retina_event/build/variant_act3c/timing_deliver.rpt:131,YES
+f5,交付端点,76854,76854,retina_event/build/variant_act3c/timing_deliver.rpt:131,YES
+f5,act7 WNS,+0.059 ns,0.059,retina_event/sim/nn/EVIDENCE_M3f.md:15,YES
+f5,act7 WHS,+0.027 ns,0.027,retina_event/sim/nn/EVIDENCE_M3f.md:15,YES
+f5,act7 端点,84405,84405,retina_event/sim/nn/EVIDENCE_M3f.md:57,YES
+f5,act8 WNS,+0.215 ns,0.215,report/evidence/act8_artifacts.txt:7,YES
+f5,act8 WHS,+0.017 ns,0.017,report/evidence/act8_artifacts.txt:9,YES
+f5,act8 端点,84390,84390,report/evidence/act8_artifacts.txt:11,YES
+f6,MAC 拍,416160,416160,retina_event/sim/nn/EVIDENCE_M3.md:121,YES
+f6,像素固定开销拍,23922,23922,retina_event/sim/nn/EVIDENCE_M3.md:121,YES
+f6,固定拍,5,5,retina_event/sim/nn/EVIDENCE_M3.md:121,YES
+f6,单窗总拍,440087,440087,retina_event/sim/nn/EVIDENCE_M3.md:121,YES
+f6,100 ms 窗推理,8.80 ms,8.8,retina_event/sim/nn/EVIDENCE_M3.md:29,YES
+f6,100 ms 窗占空比,8.80%,8.8,retina_event/sim/nn/EVIDENCE_M3.md:123,YES
+f7,开合 pulse 率,30.769 次/分,30.769,nn/out_v7/results_v7_final.json:4676,YES
+f7,挥手 pulse 率,0.000 次/分,0.0,nn/out_v7/results_v7_final.json:4642,YES
+f7,静止 pulse 率,0.000 次/分,0.0,nn/out_v7/results_v7_final.json:4647,YES
+f7,空桌面 pulse 率,0.000 次/分,0.0,nn/out_v7/results_v7_final.json:4750,YES
+f7,硬负 pulse 率,1.212 次/分,1.212,nn/out_v7/results_v7_final.json:4776,YES
+f7,开合时长,1.30 min,1.3,nn/out_v7/results_v7_final.json:4673,YES
+f7,挥手时长,0.85 min,0.85,nn/out_v7/results_v7_final.json:4641,YES
+f7,静止时长,0.3333 min,0.3333,nn/out_v7/results_v7_final.json:4646,YES
+f7,空桌面时长,0.5167 min,0.5167,nn/out_v7/results_v7_final.json:4649,YES
+f7,硬负时长,0.8251 min,0.8251,nn/out_v7/results_v7_final.json:4773,YES
+f8,v5 挥手窗级命中,0.652,0.652,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:129,YES
+f8,v5 开合块召回,1.000,1.0,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:135,YES
+f8,c3 挥手窗级命中,0.0817,0.0817,nn/REPORT_v6_表征实验.md:56,YES
+f8,c3 开合块召回,1.000,1.0,nn/REPORT_v6_表征实验.md:56,YES
+f8,c5 挥手窗级命中,0.0575,0.0575,nn/REPORT_v6_表征实验.md:59,YES
+f8,c5 开合块召回,1.000,1.0,nn/REPORT_v6_表征实验.md:59,YES
+f8,v7 挥手窗级命中,0.0098,0.0098,nn/out_v7/results_v7_final.json:4643,YES
+f8,v7 开合块召回,0.9412,0.9412,nn/out_v7/results_v7_final.json:4637,YES
+f9,开合窗数,1560,1560,"nn/REPORT_v7_数据集.md:20,23,24",YES
+f9,挥手窗数,1020,1020,"nn/REPORT_v7_数据集.md:21,25",YES
+f9,静止窗数,400,400,nn/REPORT_v7_数据集.md:29,YES
+f9,空桌面窗数,619,619,"nn/REPORT_v7_数据集.md:19,31",YES
+f9,硬负窗数,990,990,"nn/REPORT_v7_数据集.md:22,27,28",YES
+f9,npz y=0,5067,5067,nn/REPORT_v7_数据集.md:41,YES
+f9,npz y=1,5480,5480,nn/REPORT_v7_数据集.md:41,YES
+f9,npz y=2,3900,3900,nn/REPORT_v7_数据集.md:41,YES
+f10,板端推理,8.80 ms,8.8,retina_event/sim/nn/EVIDENCE_M3.md:29,YES
+f10,帧锁存粒度,37.49 ms,37.49,docs/05_experiments/action_recognition_20261029/capture_log_v7hands_20261030.md:53,YES
+f10,上位机匹配 p50,85.612 ms,85.612,docs/05_experiments/action_recognition_20261029/EVIDENCE_EVAL.log:51,YES
+f10,上位机匹配 p95,97.555 ms,97.555,docs/05_experiments/action_recognition_20261029/EVIDENCE_EVAL.log:51,YES
+f10,契约 R3 上限,300 ms,300,docs/03_tech/05_action_uplink_contract.md:462,YES
+f10,卡片轮询周期,500 ms,500,docs/03_tech/05_action_uplink_contract.md:462,YES
+f11,8/3 开合块,17/17,17/17,nn/out_v7b/s100_threshold_sweep.json:3,YES
+f11,8/3 硬负 pulse,3,3,nn/out_v7b/s100_threshold_sweep.json:3,YES
+f11,8/3 总 pulse,88,88,nn/out_v7b/s100_threshold_sweep.json:3,YES
+f11,16/3 开合块,17/17,17/17,nn/out_v7b/s100_threshold_sweep.json:75,YES
+f11,16/3 硬负 pulse,2,2,nn/out_v7b/s100_threshold_sweep.json:75,YES
+f11,16/3 总 pulse,74,74,nn/out_v7b/s100_threshold_sweep.json:75,YES
+f11,24/4 开合块,14/17,14/17,nn/out_v7b/s100_threshold_sweep.json:123,YES
+f11,24/4 硬负 pulse,1,1,nn/out_v7b/s100_threshold_sweep.json:123,YES
+f11,24/4 总 pulse,32,32,nn/out_v7b/s100_threshold_sweep.json:123,YES
+f11,v7b 开合块,17/17,17/17,nn/REPORT_v7b_部署口径重训.md:210,YES
+f11,v7b 挥手 pulse,1,1,nn/REPORT_v7b_部署口径重训.md:212,YES
+f11,v7b 硬负 pulse,2,2,nn/REPORT_v7b_部署口径重训.md:213,YES
+f11,v7b 总 pulse,74,74,nn/REPORT_v7b_部署口径重训.md:216,YES
+f11,v7b int8 一致率,0.9299,0.9299,nn/REPORT_v7b_部署口径重训.md:245,YES
+f12,act3c WNS,0.306 ns,0.306,retina_event/build/variant_act3c/timing_deliver.rpt:131,YES
+f12,act7 WNS,0.059 ns,0.059,retina_event/sim/nn/EVIDENCE_M3f.md:15,YES
+f12,act3c WHS,0.036 ns,0.036,retina_event/build/variant_act3c/timing_deliver.rpt:131,YES
+f12,act7 WHS,0.027 ns,0.027,retina_event/sim/nn/EVIDENCE_M3f.md:15,YES
+f12,act7 LUT,"22,371",22371,retina_event/sim/nn/EVIDENCE_M3f.md:108,YES
+f12,act7 LUT 占比,35.29%,35.29,retina_event/sim/nn/EVIDENCE_M3f.md:108,YES
+f12,act7 FF,"14,325",14325,retina_event/sim/nn/EVIDENCE_M3f.md:111,YES
+f12,act7 FF 占比,11.30%,11.3,retina_event/sim/nn/EVIDENCE_M3f.md:111,YES
+f12,act7 Slice,"7,968",7968,retina_event/sim/nn/EVIDENCE_M3f.md:112,YES
+f12,act7 Slice 占比,50.27%,50.27,retina_event/sim/nn/EVIDENCE_M3f.md:112,YES
+f12,act7 BRAM,87,87,retina_event/sim/nn/EVIDENCE_M3f.md:113,YES
+f12,act7 BRAM 占比,64.44%,64.44,retina_event/sim/nn/EVIDENCE_M3f.md:113,YES
+f12,act7 DSP,8,8,retina_event/sim/nn/EVIDENCE_M3f.md:116,YES
+f12,act7 DSP 占比,3.33%,3.33,retina_event/sim/nn/EVIDENCE_M3f.md:116,YES
+f12,act7 IOB,140,140,retina_event/sim/nn/EVIDENCE_M3f.md:117,YES
+f12,act7 IOB 占比,49.12%,49.12,retina_event/sim/nn/EVIDENCE_M3f.md:117,YES
+f12,act7 位流,"2,835,423",2835423,retina_event/sim/nn/EVIDENCE_M3f.md:128,YES
+f12,act7 位流 md5,9c13668c029c9d3a248cf69cbec03582,9c13668c029c9d3a248cf69cbec03582,retina_event/sim/nn/EVIDENCE_M3f.md:129,YES
+f12,act7 构建耗时,10 分 06 秒,10 分 06 秒,retina_event/sim/nn/EVIDENCE_M3f.md:42,YES
+f12,act8 WNS,+0.215 ns,0.215,report/evidence/act8_artifacts.txt:7,YES
+f12,act8 WHS,+0.017 ns,0.017,report/evidence/act8_artifacts.txt:9,YES
+f12,act8 LUT,"22,383",22383,report/evidence/act8_artifacts.txt:14,YES
+f12,act8 LUT 占比,35.30%,35.3,report/evidence/act8_artifacts.txt:14,YES
+f12,act8 FF,"14,325",14325,report/evidence/act8_artifacts.txt:15,YES
+f12,act8 FF 占比,11.30%,11.3,report/evidence/act8_artifacts.txt:15,YES
+f12,act8 Slice,"8,026",8026,report/evidence/act8_artifacts.txt:16,YES
+f12,act8 Slice 占比,50.64%,50.64,report/evidence/act8_artifacts.txt:16,YES
+f12,act8 BRAM,86.5,86.5,report/evidence/act8_artifacts.txt:17,YES
+f12,act8 BRAM 占比,64.07%,64.07,report/evidence/act8_artifacts.txt:17,YES
+f12,act8 DSP,8,8,report/evidence/act8_artifacts.txt:18,YES
+f12,act8 DSP 占比,3.33%,3.33,report/evidence/act8_artifacts.txt:18,YES
+f12,act8 IOB,140,140,report/evidence/act8_artifacts.txt:19,YES
+f12,act8 IOB 占比,49.12%,49.12,report/evidence/act8_artifacts.txt:19,YES
+f12,act8 位流,"2,839,107",2839107,report/evidence/act8_artifacts.txt:4,YES
+f12,act8 位流 md5,5ec55ec07c44f2503df63f1bb160a6e6,5ec55ec07c44f2503df63f1bb160a6e6,report/evidence/act8_artifacts.txt:5,YES
+f12,act3c 位流,"2,890,875",2890875,docs/06_facts/00_current_status.md:28,YES
+f12,LUT 增量,"+1,812",1812,retina_event/sim/nn/EVIDENCE_M3f.md:108,YES
+f12,FF 增量,"+2,475",2475,retina_event/sim/nn/EVIDENCE_M3f.md:111,YES
+f12,Slice 增量,+641,641,retina_event/sim/nn/EVIDENCE_M3f.md:112,YES
+f12,DSP 增量,+1,1,retina_event/sim/nn/EVIDENCE_M3f.md:116,YES

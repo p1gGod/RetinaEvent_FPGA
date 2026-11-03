@@ -1,0 +1,201 @@
+{
+  "schema": 1,
+  "source": {
+    "vendor": "正点原子（广州市星翼电子科技有限公司）",
+    "board": "达芬奇Pro（XC7A100T-FGG484-2）",
+    "package": "随板例程 37 与 60",
+    "routine_37": "摄像头 → DDR3 → LCD 显示通路",
+    "routine_60": "以太网协议栈（ARP / UDP / RGMII）",
+    "source_dir": "exp_ov5640_lcd_eth/prj_src/rtl/",
+    "target_dir": "retina_event/ref_original/",
+    "note": "厂家 RTL 版权归正点原子，不随仓库与提交包分发；由 setup_vendor_rtl.ps1 在本地补齐。"
+  },
+  "files": [
+    {
+      "path": "ov5640_lcd.v",
+      "routine": "37",
+      "bytes": 11001,
+      "sha256": "68084f5bc23135e57820fdcde8f6c59739d9afacc8bbfa0ba552fa8f8e3f8ac6",
+      "used_by": "N/A (not instantiated): 例程 37 显示顶层，仅作结构参考（display_path.v 直接例化其子模块）"
+    },
+    {
+      "path": "picture_size.v",
+      "routine": "37",
+      "bytes": 4633,
+      "sha256": "a32ab08f1079f38d6c464ad575269da1cc41461ffdef6c09de5dd7baf1beb8f9",
+      "used_by": "display_path.v:247（u_picture_size，直接例化）"
+    },
+    {
+      "path": "ov5640_dri.v",
+      "routine": "37",
+      "bytes": 5631,
+      "sha256": "064fa5119b4bad23832ae62264ac06f37dc26ed49ce669176dcb429989ad71c5",
+      "used_by": "display_path.v:279（u_ov5640_dri，直接例化）"
+    },
+    {
+      "path": "i2c_ov5640_rgb565_cfg.v",
+      "routine": "37",
+      "bytes": 18639,
+      "sha256": "9b8d55b02207d38adce361b5be6cc3ace84fa7463b864c6a1d9106b0052af18e",
+      "used_by": "display_path.v → ov5640_dri.v:72（u_i2c_cfg，间接）"
+    },
+    {
+      "path": "i2c_dri.v",
+      "routine": "37",
+      "bytes": 23634,
+      "sha256": "c38715ed2cfbd39c2fc4b8a604b0873398b6126d34587397c0ada83b95ab42d0",
+      "used_by": "display_path.v → ov5640_dri.v:93（u_i2c_dri，间接）"
+    },
+    {
+      "path": "cmos_capture_data.v",
+      "routine": "37",
+      "bytes": 4473,
+      "sha256": "a65b62dd1a2131dc04d4c82e7cad64eb34e330faa51523f754385c0520b9a7b9",
+      "used_by": "display_path.v → ov5640_dri.v:117（u_cmos_capture_data，间接）"
+    },
+    {
+      "path": "ddr3_top.v",
+      "routine": "37",
+      "bytes": 12290,
+      "sha256": "53af3324df6c8d0c5c9ba59e037984782a9a6c0974fa86e4f64e30087c9a2dab",
+      "used_by": "display_path.v:374（u_ddr3_top，直接例化）"
+    },
+    {
+      "path": "ddr3_rw.v",
+      "routine": "37",
+      "bytes": 13132,
+      "sha256": "765862ce46ea274f4ddad7c8631f9e74b19f4e7cda2e3d6dd305b20aa262151c",
+      "used_by": "display_path.v → ddr3_top.v:87（u_ddr3_rw，间接）"
+    },
+    {
+      "path": "ddr3_fifo_ctrl.v",
+      "routine": "37",
+      "bytes": 7649,
+      "sha256": "81514f192b433ab3164c698628332e8650d2d293c9009f94b1ff054ed519436e",
+      "used_by": "display_path.v → ddr3_top.v:165（u_ddr3_fifo_ctrl，间接）"
+    },
+    {
+      "path": "lcd_rgb_top.v",
+      "routine": "37",
+      "bytes": 3932,
+      "sha256": "5d6d5e506d85d13a96fcb9419cae3f21693dab00fa52ca5740e58ae564d0eb8c",
+      "used_by": "N/A (not instantiated): 例程 37 显示顶层，仅作参考（display_path.v 直接例化 lcd_driver/rd_id）"
+    },
+    {
+      "path": "lcd_driver.v",
+      "routine": "37",
+      "bytes": 9567,
+      "sha256": "63e7aac2259a2b33acc3a948a1c3f8ad1e0e7477a5bf28a35731831e3f077969",
+      "used_by": "display_path.v:421（u_lcd_driver，直接例化）"
+    },
+    {
+      "path": "rd_id.v",
+      "routine": "37",
+      "bytes": 2098,
+      "sha256": "6cd6fd21405a988dafce9c906c5a434fe7e2e7b769b15e803d36067adb13bb04",
+      "used_by": "display_path.v:413（u_rd_id，直接例化）"
+    },
+    {
+      "path": "clk_div.v",
+      "routine": "37",
+      "bytes": 1866,
+      "sha256": "27440c2c20830f1cf05152607aae52705dd521e22771b0c2807712ea68a2967c",
+      "used_by": "N/A (not instantiated): 原为 lcd_rgb_top.v 的像素时钟分频；display_path.v 用 clk_rst_gen.v 生成时钟，仅保留参考"
+    },
+    {
+      "path": "eth_top.v",
+      "routine": "60",
+      "bytes": 6706,
+      "sha256": "11dcfc48ad79d44023ea64d60bcd060c6b63868d6ddf733a6e09948f9c98d228",
+      "used_by": "eth_udp.v:252（u_eth_top，直接例化）"
+    },
+    {
+      "path": "eth_ctrl.v",
+      "routine": "60",
+      "bytes": 3423,
+      "sha256": "2d337ffd3c352f801b0e020eb7ce89acf4a23363b2e6bac3088628bc7cfa7ae8",
+      "used_by": "eth_udp.v → eth_top.v:168（u_eth_ctrl，间接）"
+    },
+    {
+      "path": "start_transfer_ctrl.v",
+      "routine": "60",
+      "bytes": 2148,
+      "sha256": "03a3c46d079f76da9c767517d0e71bd6ee09c7a6618d4c1ab313b1602e8d3359",
+      "used_by": "N/A (not instantiated): 自研 eth_udp.v 自行实现起流与组包，仅保留参考"
+    },
+    {
+      "path": "eth/gmii_to_rgmii/gmii_to_rgmii.v",
+      "routine": "60",
+      "bytes": 2597,
+      "sha256": "abdc806aa5caa30c9724fd50798373143cf86cea42db735ee08622f5ed289323",
+      "used_by": "eth_udp.v → eth_top.v:85（u_gmii_to_rgmii，间接）"
+    },
+    {
+      "path": "eth/gmii_to_rgmii/rgmii_rx.v",
+      "routine": "60",
+      "bytes": 7766,
+      "sha256": "8cb37294dbc50ff9d6e51141146ba4982db514df0661366b5096d5daeb6ef6b2",
+      "used_by": "eth_udp.v → eth_top.v → gmii_to_rgmii.v:47（u_rgmii_rx，间接）"
+    },
+    {
+      "path": "eth/gmii_to_rgmii/rgmii_tx.v",
+      "routine": "60",
+      "bytes": 3096,
+      "sha256": "4ec584a0b2e4f02278fe1c3667a57556b97eac391a839769b77e29b615096790",
+      "used_by": "eth_udp.v → eth_top.v → gmii_to_rgmii.v:63（u_rgmii_tx，间接）"
+    },
+    {
+      "path": "eth/arp/arp.v",
+      "routine": "60",
+      "bytes": 4094,
+      "sha256": "7c71839aabe0e47168b777cc2a2b17f619d696f0a47e5a501f7a58a5f1e8afd9",
+      "used_by": "eth_udp.v → eth_top.v（u_arp，间接）"
+    },
+    {
+      "path": "eth/arp/arp_rx.v",
+      "routine": "60",
+      "bytes": 8831,
+      "sha256": "6aea7cd4db6177b7bf0f234b9ad20fd9a696d4386a9afc918a90adcad2bc1e32",
+      "used_by": "eth_udp.v → eth_top.v → arp.v:65（u_arp_rx，间接）"
+    },
+    {
+      "path": "eth/arp/arp_tx.v",
+      "routine": "60",
+      "bytes": 12057,
+      "sha256": "529e227a243b341d9ef2f2f617660b4e7d6cb4263da8e66973078cd3c769b16c",
+      "used_by": "eth_udp.v → eth_top.v → arp.v:83（u_arp_tx，间接）"
+    },
+    {
+      "path": "eth/arp/crc32_d8.v",
+      "routine": "60",
+      "bytes": 6881,
+      "sha256": "2a499450f4aac8a3f657909d77a753c535f9b215d942a8e674a5322c3d68071f",
+      "used_by": "eth_udp.v → eth_top.v → arp.v:108 与 udp.v:110（u_crc32_d8，间接）"
+    },
+    {
+      "path": "eth/udp/udp.v",
+      "routine": "60",
+      "bytes": 4451,
+      "sha256": "9fa497269a2224aa069c2e5b5353b0836ddadc7bbf2985a1e98431720b20ef29",
+      "used_by": "eth_udp.v → eth_top.v（u_udp，间接）"
+    },
+    {
+      "path": "eth/udp/udp_rx.v",
+      "routine": "60",
+      "bytes": 9790,
+      "sha256": "eb8255bc85f8654dc9f8b8d499fd096b54bd5255412243c63efb4b3097c65c80",
+      "used_by": "eth_udp.v → eth_top.v → udp.v:67（u_udp_rx，间接）"
+    },
+    {
+      "path": "eth/udp/udp_tx.v",
+      "routine": "60",
+      "bytes": 16228,
+      "sha256": "cd5b463f5ddd14764c8c42157e15d7a05940f1255168e4201311d193f89e1955",
+      "used_by": "eth_udp.v → eth_top.v → udp.v:84（u_udp_tx，间接）"
+    }
+  ],
+  "total": {
+    "files": 26,
+    "bytes": 206613
+  }
+}

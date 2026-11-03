@@ -1,0 +1,1094 @@
+{
+ "generated_at": "2026-10-29T20:50:02",
+ "data_root": "E:\\workspace\\FPGA_Comp\\row_datas\\原始采集数据\\动作一 从握拳到张开手掌（手心朝向摄像头）",
+ "grid": {
+  "shift": 3,
+  "w": 50,
+  "h": 30,
+  "cells": 1500
+ },
+ "channels": [
+  "ON_now",
+  "OFF_now",
+  "ON_prev",
+  "OFF_prev"
+ ],
+ "saturation": {
+  "dtype": "int8",
+  "max": 127
+ },
+ "activity_detector": {
+  "hi_events_per_frame": 500,
+  "lo_events_per_frame": 120,
+  "gap_ms": 400,
+  "extend_ms": 200
+ },
+ "cycle_split_heuristic": {
+  "name": "envelope_dip",
+  "min_segment_ms": 2000,
+  "dip_frac_of_peak": 0.25,
+  "min_low_bins": 2,
+  "min_phase_ms": 500,
+  "bin_ms": 100,
+  "note": "宁可少切：段长 >=2s 且平滑事件包络持续低于峰值 25% 才切；切点两侧各需 >=500ms 活动"
+ },
+ "sessions": [
+  {
+   "file": "retina-events-20261029-190957",
+   "action": 1,
+   "theta": 1,
+   "delta": 20,
+   "group": "theta1_delta20",
+   "events": 58946,
+   "frames": 76,
+   "duration_s": 4.763,
+   "fps": 15.96,
+   "events_per_s": 12375.8
+  },
+  {
+   "file": "retina-events-20261029-191620",
+   "action": 1,
+   "theta": 1,
+   "delta": 32,
+   "group": "theta1_delta32",
+   "events": 68780,
+   "frames": 46,
+   "duration_s": 3.03,
+   "fps": 15.18,
+   "events_per_s": 22699.7
+  },
+  {
+   "file": "retina-events-20261029-191905",
+   "action": 1,
+   "theta": 3,
+   "delta": 18,
+   "group": "theta3_delta18",
+   "events": 85918,
+   "frames": 97,
+   "duration_s": 4.724,
+   "fps": 20.53,
+   "events_per_s": 18187.6
+  },
+  {
+   "file": "retina-events-20261029-194250",
+   "action": 1,
+   "theta": 1,
+   "delta": 20,
+   "group": "theta1_delta20",
+   "events": 61715,
+   "frames": 73,
+   "duration_s": 4.503,
+   "fps": 16.21,
+   "events_per_s": 13705.3
+  },
+  {
+   "file": "retina-events-20261029-194508",
+   "action": 1,
+   "theta": 1,
+   "delta": 32,
+   "group": "theta1_delta32",
+   "events": 45768,
+   "frames": 48,
+   "duration_s": 3.783,
+   "fps": 12.69,
+   "events_per_s": 12098.3
+  },
+  {
+   "file": "retina-events-20261029-194707",
+   "action": 1,
+   "theta": 3,
+   "delta": 18,
+   "group": "theta3_delta18",
+   "events": 57940,
+   "frames": 111,
+   "duration_s": 4.854,
+   "fps": 22.87,
+   "events_per_s": 11936.5
+  },
+  {
+   "file": "retina-events-20261029-192251",
+   "action": 2,
+   "theta": 1,
+   "delta": 20,
+   "group": "theta1_delta20",
+   "events": 46069,
+   "frames": 43,
+   "duration_s": 4.575,
+   "fps": 9.4,
+   "events_per_s": 10069.7
+  },
+  {
+   "file": "retina-events-20261029-192531",
+   "action": 2,
+   "theta": 1,
+   "delta": 32,
+   "group": "theta1_delta32",
+   "events": 66939,
+   "frames": 54,
+   "duration_s": 3.215,
+   "fps": 16.8,
+   "events_per_s": 20820.8
+  },
+  {
+   "file": "retina-events-20261029-192720",
+   "action": 2,
+   "theta": 3,
+   "delta": 18,
+   "group": "theta3_delta18",
+   "events": 129288,
+   "frames": 111,
+   "duration_s": 4.872,
+   "fps": 22.78,
+   "events_per_s": 26536.9
+  },
+  {
+   "file": "retina-events-20261029-195138",
+   "action": 2,
+   "theta": 1,
+   "delta": 20,
+   "group": "theta1_delta20",
+   "events": 65839,
+   "frames": 94,
+   "duration_s": 4.838,
+   "fps": 19.43,
+   "events_per_s": 13608.7
+  },
+  {
+   "file": "retina-events-20261029-195348",
+   "action": 2,
+   "theta": 1,
+   "delta": 32,
+   "group": "theta1_delta32",
+   "events": 33197,
+   "frames": 31,
+   "duration_s": 1.634,
+   "fps": 18.97,
+   "events_per_s": 20316.4
+  },
+  {
+   "file": "retina-events-20261029-195624",
+   "action": 2,
+   "theta": 3,
+   "delta": 18,
+   "group": "theta3_delta18",
+   "events": 59775,
+   "frames": 118,
+   "duration_s": 4.87,
+   "fps": 24.23,
+   "events_per_s": 12274.1
+  }
+ ],
+ "coverage": {
+  "1": {
+   "sessions": 6,
+   "segments": 9,
+   "cycles": 9,
+   "coverage_s": 12.292,
+   "recording_s": 25.657,
+   "coverage_frac": 0.4791,
+   "split_segments": [],
+   "cycles_per_group": {
+    "theta1_delta20": {
+     "sessions": 2,
+     "segments": 2,
+     "cycles": 2
+    },
+    "theta1_delta32": {
+     "sessions": 2,
+     "segments": 3,
+     "cycles": 3
+    },
+    "theta3_delta18": {
+     "sessions": 2,
+     "segments": 4,
+     "cycles": 4
+    }
+   }
+  },
+  "2": {
+   "sessions": 6,
+   "segments": 10,
+   "cycles": 10,
+   "coverage_s": 12.385,
+   "recording_s": 24.004,
+   "coverage_frac": 0.516,
+   "split_segments": [],
+   "cycles_per_group": {
+    "theta1_delta20": {
+     "sessions": 2,
+     "segments": 3,
+     "cycles": 3
+    },
+    "theta1_delta32": {
+     "sessions": 2,
+     "segments": 3,
+     "cycles": 3
+    },
+    "theta3_delta18": {
+     "sessions": 2,
+     "segments": 4,
+     "cycles": 4
+    }
+   }
+  }
+ },
+ "windows": {
+  "100": {
+   "n_windows": 976,
+   "win_ms": 100,
+   "stride_ms": 50,
+   "per_class": {
+    "0": 488,
+    "1": 244,
+    "2": 244
+   },
+   "per_class_named": {
+    "none": 488,
+    "action1": 244,
+    "action2": 244
+   },
+   "per_group": {
+    "theta1_delta20": {
+     "windows": 368,
+     "per_class": {
+      "0": 238,
+      "1": 68,
+      "2": 62
+     }
+    },
+    "theta1_delta32": {
+     "windows": 227,
+     "per_class": {
+      "0": 76,
+      "1": 83,
+      "2": 68
+     }
+    },
+    "theta3_delta18": {
+     "windows": 381,
+     "per_class": {
+      "0": 174,
+      "1": 93,
+      "2": 114
+     }
+    }
+   },
+   "per_file": {
+    "retina-events-20261029-190957": {
+     "windows": 94,
+     "per_class": {
+      "0": 56,
+      "1": 38,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191620": {
+     "windows": 59,
+     "per_class": {
+      "0": 20,
+      "1": 39,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191905": {
+     "windows": 93,
+     "per_class": {
+      "0": 39,
+      "1": 54,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-192251": {
+     "windows": 90,
+     "per_class": {
+      "0": 72,
+      "1": 0,
+      "2": 18
+     }
+    },
+    "retina-events-20261029-192531": {
+     "windows": 63,
+     "per_class": {
+      "0": 19,
+      "1": 0,
+      "2": 44
+     }
+    },
+    "retina-events-20261029-192720": {
+     "windows": 96,
+     "per_class": {
+      "0": 31,
+      "1": 0,
+      "2": 65
+     }
+    },
+    "retina-events-20261029-194250": {
+     "windows": 89,
+     "per_class": {
+      "0": 59,
+      "1": 30,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194508": {
+     "windows": 74,
+     "per_class": {
+      "0": 30,
+      "1": 44,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194707": {
+     "windows": 96,
+     "per_class": {
+      "0": 57,
+      "1": 39,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-195138": {
+     "windows": 95,
+     "per_class": {
+      "0": 51,
+      "1": 0,
+      "2": 44
+     }
+    },
+    "retina-events-20261029-195348": {
+     "windows": 31,
+     "per_class": {
+      "0": 7,
+      "1": 0,
+      "2": 24
+     }
+    },
+    "retina-events-20261029-195624": {
+     "windows": 96,
+     "per_class": {
+      "0": 47,
+      "1": 0,
+      "2": 49
+     }
+    }
+   },
+   "cell": {
+    "class0": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 13.0,
+      "zero_frac": 0.9994918032786885
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 15.0,
+      "zero_frac": 0.9992827868852459
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 13.0,
+      "zero_frac": 0.9994180327868852
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 15.0,
+      "zero_frac": 0.9991857923497268
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 15.0,
+      "zero_frac": 0.9993446038251366
+     }
+    },
+    "class1": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 20.0,
+      "max": 55.0,
+      "zero_frac": 0.8961475409836066
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 26.0,
+      "max": 66.0,
+      "zero_frac": 0.8928606557377049
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 20.0,
+      "max": 55.0,
+      "zero_frac": 0.8951830601092896
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 26.0,
+      "max": 66.0,
+      "zero_frac": 0.8919398907103825
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 23.0,
+      "max": 66.0,
+      "zero_frac": 0.8940327868852459
+     }
+    },
+    "class2": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 19.0,
+      "max": 56.0,
+      "zero_frac": 0.8963251366120218
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 28.0,
+      "max": 75.0,
+      "zero_frac": 0.8929453551912568
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 19.0,
+      "max": 56.0,
+      "zero_frac": 0.895587431693989
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 28.0,
+      "max": 75.0,
+      "zero_frac": 0.8920382513661202
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 1.0,
+      "p99": 24.0,
+      "max": 75.0,
+      "zero_frac": 0.894224043715847
+     }
+    }
+   },
+   "on_off": {
+    "class1": {
+     "on": 322705.0,
+     "off": 429393.0,
+     "on_ratio": 0.4291
+    },
+    "class2": {
+     "on": 316705.0,
+     "off": 468680.0,
+     "on_ratio": 0.4032
+    }
+   }
+  },
+  "150": {
+   "n_windows": 643,
+   "win_ms": 150,
+   "stride_ms": 75,
+   "per_class": {
+    "0": 319,
+    "1": 163,
+    "2": 161
+   },
+   "per_class_named": {
+    "none": 319,
+    "action1": 163,
+    "action2": 161
+   },
+   "per_group": {
+    "theta1_delta20": {
+     "windows": 244,
+     "per_class": {
+      "0": 157,
+      "1": 46,
+      "2": 41
+     }
+    },
+    "theta1_delta32": {
+     "windows": 149,
+     "per_class": {
+      "0": 50,
+      "1": 55,
+      "2": 44
+     }
+    },
+    "theta3_delta18": {
+     "windows": 250,
+     "per_class": {
+      "0": 112,
+      "1": 62,
+      "2": 76
+     }
+    }
+   },
+   "per_file": {
+    "retina-events-20261029-190957": {
+     "windows": 62,
+     "per_class": {
+      "0": 37,
+      "1": 25,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191620": {
+     "windows": 39,
+     "per_class": {
+      "0": 13,
+      "1": 26,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191905": {
+     "windows": 61,
+     "per_class": {
+      "0": 25,
+      "1": 36,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-192251": {
+     "windows": 60,
+     "per_class": {
+      "0": 48,
+      "1": 0,
+      "2": 12
+     }
+    },
+    "retina-events-20261029-192531": {
+     "windows": 41,
+     "per_class": {
+      "0": 12,
+      "1": 0,
+      "2": 29
+     }
+    },
+    "retina-events-20261029-192720": {
+     "windows": 63,
+     "per_class": {
+      "0": 20,
+      "1": 0,
+      "2": 43
+     }
+    },
+    "retina-events-20261029-194250": {
+     "windows": 59,
+     "per_class": {
+      "0": 38,
+      "1": 21,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194508": {
+     "windows": 49,
+     "per_class": {
+      "0": 20,
+      "1": 29,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194707": {
+     "windows": 63,
+     "per_class": {
+      "0": 37,
+      "1": 26,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-195138": {
+     "windows": 63,
+     "per_class": {
+      "0": 34,
+      "1": 0,
+      "2": 29
+     }
+    },
+    "retina-events-20261029-195348": {
+     "windows": 20,
+     "per_class": {
+      "0": 5,
+      "1": 0,
+      "2": 15
+     }
+    },
+    "retina-events-20261029-195624": {
+     "windows": 63,
+     "per_class": {
+      "0": 30,
+      "1": 0,
+      "2": 33
+     }
+    }
+   },
+   "cell": {
+    "class0": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 13.0,
+      "zero_frac": 0.9992351097178683
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 15.0,
+      "zero_frac": 0.998871473354232
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 26.0,
+      "zero_frac": 0.9988965517241379
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 31.0,
+      "zero_frac": 0.9982403343782654
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 31.0,
+      "zero_frac": 0.9988108672936259
+     }
+    },
+    "class1": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 3.0,
+      "p99": 24.0,
+      "max": 62.0,
+      "zero_frac": 0.8677873210633947
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 4.0,
+      "p99": 32.0,
+      "max": 77.0,
+      "zero_frac": 0.8642822085889571
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 3.0,
+      "p99": 25.0,
+      "max": 62.0,
+      "zero_frac": 0.866359918200409
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 4.0,
+      "p99": 32.0,
+      "max": 77.0,
+      "zero_frac": 0.8632065439672801
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 4.0,
+      "p99": 29.0,
+      "max": 77.0,
+      "zero_frac": 0.8654089979550103
+     }
+    },
+    "class2": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 3.0,
+      "p99": 24.0,
+      "max": 69.0,
+      "zero_frac": 0.8680207039337474
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 4.0,
+      "p99": 35.0,
+      "max": 82.0,
+      "zero_frac": 0.8654824016563147
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 3.0,
+      "p99": 24.0,
+      "max": 69.0,
+      "zero_frac": 0.8673250517598343
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 4.0,
+      "p99": 35.0,
+      "max": 82.0,
+      "zero_frac": 0.8645051759834369
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 3.0,
+      "p99": 31.0,
+      "max": 82.0,
+      "zero_frac": 0.8663333333333333
+     }
+    }
+   },
+   "on_off": {
+    "class1": {
+     "on": 322081.0,
+     "off": 428058.0,
+     "on_ratio": 0.4294
+    },
+    "class2": {
+     "on": 312987.0,
+     "off": 464068.0,
+     "on_ratio": 0.4028
+    }
+   }
+  },
+  "200": {
+   "n_windows": 479,
+   "win_ms": 200,
+   "stride_ms": 100,
+   "per_class": {
+    "0": 237,
+    "1": 122,
+    "2": 120
+   },
+   "per_class_named": {
+    "none": 237,
+    "action1": 122,
+    "action2": 120
+   },
+   "per_group": {
+    "theta1_delta20": {
+     "windows": 181,
+     "per_class": {
+      "0": 117,
+      "1": 34,
+      "2": 30
+     }
+    },
+    "theta1_delta32": {
+     "windows": 111,
+     "per_class": {
+      "0": 36,
+      "1": 41,
+      "2": 34
+     }
+    },
+    "theta3_delta18": {
+     "windows": 187,
+     "per_class": {
+      "0": 84,
+      "1": 47,
+      "2": 56
+     }
+    }
+   },
+   "per_file": {
+    "retina-events-20261029-190957": {
+     "windows": 46,
+     "per_class": {
+      "0": 27,
+      "1": 19,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191620": {
+     "windows": 29,
+     "per_class": {
+      "0": 9,
+      "1": 20,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-191905": {
+     "windows": 46,
+     "per_class": {
+      "0": 19,
+      "1": 27,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-192251": {
+     "windows": 44,
+     "per_class": {
+      "0": 35,
+      "1": 0,
+      "2": 9
+     }
+    },
+    "retina-events-20261029-192531": {
+     "windows": 31,
+     "per_class": {
+      "0": 9,
+      "1": 0,
+      "2": 22
+     }
+    },
+    "retina-events-20261029-192720": {
+     "windows": 47,
+     "per_class": {
+      "0": 15,
+      "1": 0,
+      "2": 32
+     }
+    },
+    "retina-events-20261029-194250": {
+     "windows": 44,
+     "per_class": {
+      "0": 29,
+      "1": 15,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194508": {
+     "windows": 36,
+     "per_class": {
+      "0": 15,
+      "1": 21,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-194707": {
+     "windows": 47,
+     "per_class": {
+      "0": 27,
+      "1": 20,
+      "2": 0
+     }
+    },
+    "retina-events-20261029-195138": {
+     "windows": 47,
+     "per_class": {
+      "0": 26,
+      "1": 0,
+      "2": 21
+     }
+    },
+    "retina-events-20261029-195348": {
+     "windows": 15,
+     "per_class": {
+      "0": 3,
+      "1": 0,
+      "2": 12
+     }
+    },
+    "retina-events-20261029-195624": {
+     "windows": 47,
+     "per_class": {
+      "0": 23,
+      "1": 0,
+      "2": 24
+     }
+    }
+   },
+   "cell": {
+    "class0": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 13.0,
+      "zero_frac": 0.9989760900140647
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 15.0,
+      "zero_frac": 0.9984500703234881
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 33.0,
+      "zero_frac": 0.995746835443038
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 42.0,
+      "zero_frac": 0.9947398030942335
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "max": 42.0,
+      "zero_frac": 0.996978199718706
+     }
+    },
+    "class1": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 6.0,
+      "p99": 29.0,
+      "max": 70.0,
+      "zero_frac": 0.8398633879781421
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 8.0,
+      "p99": 37.0,
+      "max": 84.0,
+      "zero_frac": 0.8368743169398907
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 6.0,
+      "p99": 29.0,
+      "max": 70.0,
+      "zero_frac": 0.8404918032786886
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 8.0,
+      "p99": 37.0,
+      "max": 84.0,
+      "zero_frac": 0.8373825136612022
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 6.0,
+      "p99": 33.0,
+      "max": 84.0,
+      "zero_frac": 0.8386530054644808
+     }
+    },
+    "class2": {
+     "ON_now": {
+      "p50": 0.0,
+      "p90": 5.0,
+      "p99": 29.0,
+      "max": 73.0,
+      "zero_frac": 0.8429
+     },
+     "OFF_now": {
+      "p50": 0.0,
+      "p90": 8.0,
+      "p99": 42.0,
+      "max": 102.0,
+      "zero_frac": 0.8409166666666666
+     },
+     "ON_prev": {
+      "p50": 0.0,
+      "p90": 5.0,
+      "p99": 29.0,
+      "max": 73.0,
+      "zero_frac": 0.8442888888888889
+     },
+     "OFF_prev": {
+      "p50": 0.0,
+      "p90": 8.0,
+      "p99": 41.0,
+      "max": 102.0,
+      "zero_frac": 0.8425722222222222
+     },
+     "all_channels": {
+      "p50": 0.0,
+      "p90": 6.0,
+      "p99": 36.0,
+      "max": 102.0,
+      "zero_frac": 0.8426694444444445
+     }
+    }
+   },
+   "on_off": {
+    "class1": {
+     "on": 320963.0,
+     "off": 426938.0,
+     "on_ratio": 0.4292
+    },
+    "class2": {
+     "on": 311215.0,
+     "off": 461649.0,
+     "on_ratio": 0.4027
+    }
+   }
+  }
+ },
+ "holdout_plan": {
+  "rule": "按会话文件整体切分（禁止按窗口随机切）；每类取 file_idx 最小的 (3,18) 会话做测试集，其余训练",
+  "test_files": [
+   "retina-events-20261029-191905",
+   "retina-events-20261029-192720"
+  ],
+  "train_files": [
+   "retina-events-20261029-190957",
+   "retina-events-20261029-191620",
+   "retina-events-20261029-194250",
+   "retina-events-20261029-194508",
+   "retina-events-20261029-194707",
+   "retina-events-20261029-192251",
+   "retina-events-20261029-192531",
+   "retina-events-20261029-195138",
+   "retina-events-20261029-195348",
+   "retina-events-20261029-195624"
+  ],
+  "test_windows_w100": 189,
+  "note": "单留出测试窗约 60~70 个，统计意义弱；M2 应另做留一参数组交叉验证"
+ },
+ "deployment_subset": {
+  "group": "theta3_delta18",
+  "note": "板卡部署参数 TH3/DL18",
+  "class1": {
+   "windows": 93,
+   "non_overlap_est": 46
+  },
+  "class2": {
+   "windows": 114,
+   "non_overlap_est": 57
+  }
+ },
+ "sample_gap": {
+  "class1": {
+   "windows_overlap": 244,
+   "windows_non_overlap_est": 122,
+   "coverage_s": 12.292,
+   "recording_s": 25.657,
+   "coverage_frac": 0.4791,
+   "target_non_overlap": 500,
+   "needed_coverage_s": 50.0,
+   "needed_recording_s": 104.4,
+   "needed_recording_min": 1.74,
+   "extra_recording_min": 1.31
+  },
+  "class2": {
+   "windows_overlap": 244,
+   "windows_non_overlap_est": 122,
+   "coverage_s": 12.385,
+   "recording_s": 24.004,
+   "coverage_frac": 0.516,
+   "target_non_overlap": 500,
+   "needed_coverage_s": 50.0,
+   "needed_recording_s": 96.9,
+   "needed_recording_min": 1.61,
+   "extra_recording_min": 1.21
+  }
+ },
+ "recommendation": {
+  "grid_shift": 3,
+  "grid_shift_reason": "GRID_SHIFT=2 => 100x60=6000 格，100ms 窗内大量格为 0（过稀）；GRID_SHIFT=4 => 25x15=375 格，手部空间细节丢失；=3（50x30）实测每窗每格 1~2 事件，与 uint16/int8 特征匹配",
+  "win_ms": 100,
+  "win_ms_reason": "100ms ≈ 2.6 帧；200ms 会把时间分辨率降到 5Hz 并模糊开合过渡；150/200 作为逃生口已产出，主配置保持 100ms（板端特征更新率 10Hz）"
+ }
+}

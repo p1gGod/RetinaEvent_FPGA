@@ -1,0 +1,86 @@
+=== repo_size_audit（仓库同步后库容 / 大文件 / 密钥 / 干净克隆体检）===
+AUDIT_TIME=2026-10-31T03:34:41.157Z
+REPO=E:\workspace\FPGA_Comp
+HEAD=ee5cd013a3e773e66e3c7fb3cdb87b2535204d92
+HEAD_SHORT=ee5cd01
+BRANCH=main
+REMOTE_ORIGIN_URL=https://github.com/scissorlight/FPGA_comp.git
+[   0.2s] 统计 HEAD 已跟踪文件（git ls-tree -r -l -z）
+TRACKED_FILES=4998
+TRACKED_BLOBS=4998
+TREE_BYTES=797580981
+TREE_MIB=760.63
+GEN_TRACKED=1187
+# 说明: TRACKED_FILES 含 gitlink(0 个非 blob 条目)
+[   0.3s] 扫描 HEAD 可达对象的最大 blob（git rev-list --objects | git cat-file --batch-check）
+OBJECTS_REACHABLE=6047
+BLOBS_REACHABLE=3862
+MAX_BLOB_BYTES=62915419
+MAX_BLOB_MIB=60.00
+MAX_BLOB_SHA=03a5ab19cce7fdfcea86a5e7be948124c2e7d3b3
+MAX_BLOB_PATH=docs/05_experiments/板会_20261013/raw/mtu60_dump_sampled.bin
+MAX_HEAD_BLOB_BYTES=62915419
+MAX_HEAD_BLOB_PATH=docs/05_experiments/板会_20261013/raw/mtu60_dump_sampled.bin
+BLOB_TOP1=62915419	60.00MiB	docs/05_experiments/板会_20261013/raw/mtu60_dump_sampled.bin
+BLOB_TOP2=27941747	26.65MiB	doc/FPGA_board/01_厂家文档教程/正点原子产品选型手册_20240826.pdf
+BLOB_TOP3=15756798	15.03MiB	doc/FPGA_board/01_厂家文档教程/达芬奇Pro之PCIe开发指南_Linux系统版_V2.0.pdf
+BLOB_TOP4=15728862	15.00MiB	doc/FPGA_board/01_厂家文档教程/达芬奇Pro之Microblaze开发指南_V2.0.pdf
+BLOB_TOP5=15627232	14.90MiB	nn/v7b/windows_v7b.npz
+BLOB_TOP6=15405322	14.69MiB	doc/FPGA_board/01_厂家文档教程/达芬奇Pro之PCIe开发指南_Windows系统版_V2.0.pdf
+BLOB_TOP7=14874266	14.19MiB	exp_ov5640_lcd37/prj_src37/prj/ov5640_lcd.gen/sources_1/ip/rd_fifo/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd
+BLOB_TOP8=14871912	14.18MiB	retina_event/prj/retina_event.srcs/sources_1/ip/ila_sccb/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd
+BLOB_TOP9=14870105	14.18MiB	exp_ov5640_eth60/prj_ge1_probe/ov5640_udp_pc_ge1/src/ip/async_fifo_2048x8b/async_fifo_2048x8b/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd
+BLOB_TOP10=10543792	10.06MiB	doc/FPGA_board/01_厂家文档教程/FPGA静态时序分析与时序约束_V2.3.pdf
+[   0.7s] 密钥特征扫描（git grep -I，7 条特征）
+SECRET_PATTERNS=7
+SECRET_HITS=0
+[   2.2s] 统计 .git 目录体积（git count-objects + fs 遍历）
+GIT_PACK_MIB=269.38
+GIT_LOOSE_OBJECTS=6152
+GIT_IN_PACK_OBJECTS=5012
+GIT_DIR_BYTES=656624467
+GIT_DIR_MIB=626.21
+GIT_DIR_FILES=6188
+[   2.9s] git ls-remote origin main（只读，验证远端 tip）
+REMOTE_MAIN=ee5cd013a3e773e66e3c7fb3cdb87b2535204d92
+REMOTE_MAIN_MATCH=1
+WORKTREE_DIRTY_TRACKED=3
+WORKTREE_UNTRACKED=3
+CLONE_DIR=E:\workspace\FPGA_Comp\temp_test\repo_audit_20261031\clone
+[   5.4s] git clone --no-hardlinks（本地路径克隆，模拟队友 clone 后的视角）
+CLONE_SECONDS=14.6
+CLONE_HEAD=ee5cd013a3e773e66e3c7fb3cdb87b2535204d92
+CLONE_HEAD_MATCH=1
+CLONE_TRACKED_FILES=4998
+CLONE_FSCK_EXIT=0
+CLONE_FSCK_TROUBLE_LINES=0
+CLONE_FSCK_LINE=dangling blob 31c19d0ad504fb5f380bf126565335eea8d22973
+CLONE_FSCK_LINE=dangling blob e8c1d4651e616645e5690d3ed69ddee5420b9bd4
+CLONE_FSCK_LINE=dangling blob 77c28161d345766b8f7f4c388f9d4e1f17ab0942
+CLONE_FSCK_LINE=dangling blob 70843ea5083e8923e6e191f40c80cec15b168e7e
+CLONE_FSCK_LINE=dangling blob cc04c103cdf5416b37dcbcd114b399f735eadcdf
+CLONE_BYTES=1454172572
+CLONE_MIB=1409
+CLONE_FILES_ON_DISK=11181
+DU_CLONE_MIB=1409
+[  29.2s] 删除临时克隆目录（--keep-clone 可保留）
+CLONE_DIR_REMOVED=1
+
+=== 判据核对 ===
+CHECK TREE_MIB=760.63  (<= 800)  PASS
+CHECK MAX_BLOB_BYTES=62915419  (<= 104857600)  PASS
+CHECK SECRET_HITS=0  (= 0)  PASS
+CHECK CLONE_OK=1  (= 1)  PASS
+# GEN_TRACKED=1187（只报告，不参与判定；Vivado IP 的 .gen/ 生成产物）
+
+=== 机读结果 ===
+TRACKED_FILES=4998
+TREE_MIB=760.63
+MAX_BLOB_BYTES=62915419
+GEN_TRACKED=1187
+SECRET_HITS=0
+CLONE_OK=1
+CLONE_MIB=1409
+GIT_DIR_MIB=626.21
+AUDIT_SECONDS=33.7
+REPO_HYGIENE_OK=1

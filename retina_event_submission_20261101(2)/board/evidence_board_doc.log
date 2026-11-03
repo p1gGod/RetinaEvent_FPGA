@@ -1,0 +1,222 @@
+BOARD_DOC_OK=1
+CMD: python board/extract_measurements.py
+EXIT_CODE: 0
+ENTRIES: 155
+HARD_ASSERTIONS: 6/6 PASS
+CROSS_CHECKS: 31/31 PASS
+COPIES: 8 files, md5 identical
+LINKS: 17 checked, 0 missing
+STYLE: 0 violations
+OUTPUT: board/measurements.md lines=295 sha256=b9e7540da629f378e6047f52ffac6153d30f4850b5bbbd8314963e698b5e1c04
+---- hard assertions ----
+HARD act3c_wns_ns got=0.306 exp=0.306 PASS
+HARD act7_wns_ns got=0.059 exp=0.059 PASS
+HARD act3c_lut got=20559 exp=20559 PASS
+HARD act7_lut got=22371 exp=22371 PASS
+HARD act3c_bit_md5 got=a5fff751e20019d7e80a3a953f7f8c5a exp=a5fff751e20019d7e80a3a953f7f8c5a PASS
+HARD act7_bit_md5 got=9c13668c029c9d3a248cf69cbec03582 exp=9c13668c029c9d3a248cf69cbec03582 PASS
+---- cross checks ----
+CROSS act3c_timing_clean got=0 exp=0 PASS
+CROSS act7_timing_clean got=0 exp=0 PASS
+CROSS lut_capacity_equal got=63,400 exp=63,400 PASS
+CROSS ff_capacity_equal got=126,800 exp=126,800 PASS
+CROSS slice_capacity_equal got=15,850 exp=15,850 PASS
+CROSS bram_capacity_equal got=135 exp=135 PASS
+CROSS dsp_capacity_equal got=240 exp=240 PASS
+CROSS iob_capacity_equal got=285 exp=285 PASS
+CROSS sum_board_zones got=118 exp=118 PASS
+CROSS sum_offline_zones got=116 exp=116 PASS
+CROSS sum_confident got=85 exp=85 PASS
+CROSS sum_phase got=27 exp=27 PASS
+CROSS sum_iso_board got=6 exp=6 PASS
+CROSS sum_iso_offline got=4 exp=4 PASS
+CROSS delta_matches_totals got=2 exp=2 PASS
+CROSS act3c_wns_doc_match got=0.306 exp=0.306 PASS
+CROSS act7_wns_doc_match got=0.059 exp=0.059 PASS
+CROSS act3c_lut_doc_match got=20559 exp=20559 PASS
+CROSS act7_lut_doc_match got=22371 exp=22371 PASS
+CROSS meta_v5probe_frames got=11516 exp=11516 PASS
+CROSS meta_v5probe_events got=10312327 exp=10312327 PASS
+CROSS stats_v5probe_frames got=11516 exp=11516 PASS
+CROSS meta_v6clean384_frames got=587 exp=587 PASS
+CROSS meta_v6clean384_events got=2052 exp=2052 PASS
+CROSS stats_v6clean384_frames got=587 exp=587 PASS
+CROSS meta_v6clean_frames got=5174 exp=5174 PASS
+CROSS meta_v6clean_events got=6012765 exp=6012765 PASS
+CROSS stats_v6clean_frames got=5174 exp=5174 PASS
+CROSS meta_v7hands_frames got=6831 exp=6831 PASS
+CROSS meta_v7hands_events got=7913893 exp=7913893 PASS
+CROSS stats_v7hands_frames got=6831 exp=6831 PASS
+---- copy md5 ----
+COPY board/pin.xdc b17af2ba6a6be9c129c7a50acc0350a4 = retina_event/prj/retina_event.srcs/constrs_1/new/pin.xdc
+COPY board/retina_event.xdc 5df67771b8d6c165a2c1a2a2c0bf697b = retina_event/src/constraints/retina_event.xdc
+COPY board/program_retina.tcl 8601b48203a5d4c1331a99d9effc861a = build/program_retina.tcl
+COPY board/flash_program.tcl 66f39dc0f076eab5a5432e619fe276dd = build/flash_program.tcl
+COPY board/flash_program_v3.tcl 4a2e87ec0a98263888f395a093dd14d5 = build/flash_program_v3.tcl
+COPY board/flash_retry.tcl 0d6d6b89fb3a653b7d2cad7f2e0b946a = build/flash_retry.tcl
+COPY board/flash_detect.tcl a7534720ab531d6165cf7cd05593f295 = docs/05_experiments/Flash固化_20261009/flash_detect.tcl
+COPY board/board_vs_offline_v5.md dd1ad7ec932f72a0b3bb9e5e9cd43189 = temp_test/vs/out/board_vs_offline_v5explicit.md
+---- pack_map ----
+PACK_MAP_TARGETS: present=10 missing=2 of 12 board files
+PACK_MAP_NEED: board/board_vs_offline_v5.md
+PACK_MAP_NEED: board/evidence_board_doc.log
+---- style ----
+STYLE_OK 0 violations
+---- entries ----
+key,value,source
+value is quoted if it contains a comma
+act3_bit_bytes,"2,909,183",sim/nn/EVIDENCE_M4C.md:39
+act3_bit_md5,ce8685419b95417c347fe5d3b31aa0f7,sim/nn/EVIDENCE_M4C.md:39
+act3_burn_time,2026-10-29 23:32,docs/06_facts/01_fact_register.md:617
+act3_delivery_wns_ns,0.228,sim/nn/EVIDENCE_M4C.md:40
+act3_full_build_lut,"20,501",sim/nn/EVIDENCE_M4C.md:54
+act3b_bit_bytes,"2,675,095",docs/06_facts/00_current_status.md:298
+act3b_bit_md5,361713e0a455e5c1436365fe39dbd821,docs/06_facts/00_current_status.md:298
+act3b_weight_note,v4 两分类,docs/06_facts/00_current_status.md:298
+act3c_bit_bytes,"2,890,875",docs/06_facts/00_current_status.md:28
+act3c_bit_md5,a5fff751e20019d7e80a3a953f7f8c5a,docs/06_facts/00_current_status.md:28
+act3c_burn_time,2026-10-30 21:10:36,docs/06_facts/00_current_status.md:28
+act7_bit_bytes,"2,835,423",sim/nn/EVIDENCE_M3f.md:5
+act7_bit_md5,9c13668c029c9d3a248cf69cbec03582,sim/nn/EVIDENCE_M3f.md:14
+act7_build_start,2026-10-31T00:46:42,sim/nn/EVIDENCE_M3f.md:40
+act7_build_end,2026-10-31 00:56:48,sim/nn/EVIDENCE_M3f.md:41
+act7_build_total,10 分 06 秒,sim/nn/EVIDENCE_M3f.md:42
+act3c_drc_warnings,95,sim/nn/EVIDENCE_M2E.md:107
+act3c_drc_errors,0,sim/nn/EVIDENCE_M2E.md:107
+act7_drc_warnings,98,sim/nn/EVIDENCE_M3f.md:141
+act7_drc_errors,0,sim/nn/EVIDENCE_M3f.md:141
+act3c_build_flow,9 分 39 秒,sim/nn/EVIDENCE_M2E.md:103
+act3c_timingfix,4 分 30 秒,sim/nn/EVIDENCE_M2E.md:122
+act3c_build_total,14 分 09 秒,sim/nn/EVIDENCE_M2E.md:145
+act3c_wns_ns,0.306,build/variant_act3c/timing_deliver.rpt:131
+act3c_tns_ns,0.000,build/variant_act3c/timing_deliver.rpt:131
+act3c_whs_ns,0.036,build/variant_act3c/timing_deliver.rpt:131
+act3c_ths_ns,0.000,build/variant_act3c/timing_deliver.rpt:131
+act3c_setup_endpoints,"76,854",build/variant_act3c/timing_deliver.rpt:131
+act3c_hold_endpoints,"76,831",build/variant_act3c/timing_deliver.rpt:131
+act7_wns_ns,0.059,build/variant_act7/inproc_timing.rpt:131
+act7_tns_ns,0.000,build/variant_act7/inproc_timing.rpt:131
+act7_whs_ns,0.027,build/variant_act7/inproc_timing.rpt:131
+act7_ths_ns,0.000,build/variant_act7/inproc_timing.rpt:131
+act7_setup_endpoints,"84,405",build/variant_act7/inproc_timing.rpt:131
+act7_hold_endpoints,"84,382",build/variant_act7/inproc_timing.rpt:131
+act3c_lut,"20,559",build/variant_act3c/inproc_util_impl.rpt:34
+act3c_lut_pct,32.43,build/variant_act3c/inproc_util_impl.rpt:34
+act3c_lut_capacity,"63,400",build/variant_act3c/inproc_util_impl.rpt:34
+act3c_ff,"11,850",build/variant_act3c/inproc_util_impl.rpt:39
+act3c_ff_pct,9.35,build/variant_act3c/inproc_util_impl.rpt:39
+act3c_ff_capacity,"126,800",build/variant_act3c/inproc_util_impl.rpt:39
+act3c_slice,"7,327",build/variant_act3c/inproc_util_impl.rpt:72
+act3c_slice_pct,46.23,build/variant_act3c/inproc_util_impl.rpt:72
+act3c_slice_capacity,"15,850",build/variant_act3c/inproc_util_impl.rpt:72
+act3c_bram,87,build/variant_act3c/inproc_util_impl.rpt:104
+act3c_bram_pct,64.44,build/variant_act3c/inproc_util_impl.rpt:104
+act3c_bram_capacity,135,build/variant_act3c/inproc_util_impl.rpt:104
+act3c_dsp,7,build/variant_act3c/inproc_util_impl.rpt:119
+act3c_dsp_pct,2.92,build/variant_act3c/inproc_util_impl.rpt:119
+act3c_dsp_capacity,240,build/variant_act3c/inproc_util_impl.rpt:119
+act3c_iob,140,build/variant_act3c/inproc_util_impl.rpt:130
+act3c_iob_pct,49.12,build/variant_act3c/inproc_util_impl.rpt:130
+act3c_iob_capacity,285,build/variant_act3c/inproc_util_impl.rpt:130
+act7_lut,"22,371",build/variant_act7/inproc_util_impl.rpt:34
+act7_lut_pct,35.29,build/variant_act7/inproc_util_impl.rpt:34
+act7_lut_capacity,"63,400",build/variant_act7/inproc_util_impl.rpt:34
+act7_ff,"14,325",build/variant_act7/inproc_util_impl.rpt:39
+act7_ff_pct,11.30,build/variant_act7/inproc_util_impl.rpt:39
+act7_ff_capacity,"126,800",build/variant_act7/inproc_util_impl.rpt:39
+act7_slice,"7,968",build/variant_act7/inproc_util_impl.rpt:72
+act7_slice_pct,50.27,build/variant_act7/inproc_util_impl.rpt:72
+act7_slice_capacity,"15,850",build/variant_act7/inproc_util_impl.rpt:72
+act7_bram,87,build/variant_act7/inproc_util_impl.rpt:104
+act7_bram_pct,64.44,build/variant_act7/inproc_util_impl.rpt:104
+act7_bram_capacity,135,build/variant_act7/inproc_util_impl.rpt:104
+act7_dsp,8,build/variant_act7/inproc_util_impl.rpt:119
+act7_dsp_pct,3.33,build/variant_act7/inproc_util_impl.rpt:119
+act7_dsp_capacity,240,build/variant_act7/inproc_util_impl.rpt:119
+act7_iob,140,build/variant_act7/inproc_util_impl.rpt:130
+act7_iob_pct,49.12,build/variant_act7/inproc_util_impl.rpt:130
+act7_iob_capacity,285,build/variant_act7/inproc_util_impl.rpt:130
+board_empty_desk,0,board/board_vs_offline_v5.md:13
+offline_empty_desk,0,board/board_vs_offline_v5.md:13
+board_absent,1,board/board_vs_offline_v5.md:14
+offline_absent,1,board/board_vs_offline_v5.md:14
+board_openclose,61,board/board_vs_offline_v5.md:15
+offline_openclose,60,board/board_vs_offline_v5.md:15
+board_static_a,0,board/board_vs_offline_v5.md:16
+offline_static_a,1,board/board_vs_offline_v5.md:16
+board_reposition,8,board/board_vs_offline_v5.md:17
+offline_reposition,7,board/board_vs_offline_v5.md:17
+board_static_b,0,board/board_vs_offline_v5.md:18
+offline_static_b,0,board/board_vs_offline_v5.md:18
+board_wave,47,board/board_vs_offline_v5.md:19
+offline_wave,46,board/board_vs_offline_v5.md:19
+board_end,1,board/board_vs_offline_v5.md:20
+offline_end,1,board/board_vs_offline_v5.md:20
+board_openclose_confident,53,board/board_vs_offline_v5.md:15
+board_openclose_phase,4,board/board_vs_offline_v5.md:15
+board_wave_confident,23,board/board_vs_offline_v5.md:19
+board_wave_phase,23,board/board_vs_offline_v5.md:19
+dt_p50_absent,55.0,board/board_vs_offline_v5.md:14
+dt_p90_absent,55.0,board/board_vs_offline_v5.md:14
+dt_p50_openclose,71.0,board/board_vs_offline_v5.md:15
+dt_p90_openclose,317.4,board/board_vs_offline_v5.md:15
+dt_p50_reposition,61.0,board/board_vs_offline_v5.md:17
+dt_p90_reposition,442.8,board/board_vs_offline_v5.md:17
+dt_p50_wave,61.0,board/board_vs_offline_v5.md:19
+dt_p90_wave,358.6,board/board_vs_offline_v5.md:19
+dt_p50_end,434.0,board/board_vs_offline_v5.md:20
+dt_p90_end,434.0,board/board_vs_offline_v5.md:20
+board_events,118,board/board_vs_offline_v5.md:21
+offline_events,116,board/board_vs_offline_v5.md:21
+board_offline_delta,+2,board/board_vs_offline_v5.md:21
+matched_confident,85,board/board_vs_offline_v5.md:21
+phase_drift_pairs,27,board/board_vs_offline_v5.md:21
+isolated_board,6,board/board_vs_offline_v5.md:21
+isolated_offline,4,board/board_vs_offline_v5.md:21
+offline_windows,"8,641",board/board_vs_offline_v5.md:7
+offline_decision_points,"4,320",board/board_vs_offline_v5.md:7
+offline_g0_ms,37,board/board_vs_offline_v5.md:7
+frame_offset_ms,1793365856477.0,board/board_vs_offline_v5.md:51
+align_residual_median_ms,9.0,board/board_vs_offline_v5.md:51
+board_record_events,121,board/board_vs_offline_v5.md:53
+board_kept_events,120,board/board_vs_offline_v5.md:53
+params_sha256,1903bc994b3e2a6ffe5782e0691aebf27f04a9c00ab14c2da86c8cc3815be583,board/board_vs_offline_v5.md:5
+measure_openclose_count,61,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:13
+measure_wave_count,47,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:13
+measure_swap_count,8,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:13
+measure_still_count,0,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:13
+conf_sat_count,76,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:93
+conf_sat_total,118,docs/05_experiments/action_recognition_20261029/measure_v5_false_triggers_20261030.md:93
+board_pps,"15,940",docs/06_facts/00_current_status.md:32
+part_number,xc7a100tfgg484-2,docs/06_facts/02_metric_register.md:11
+vivado_version,2020.2,docs/06_facts/02_metric_register.md:12
+modelsim_version,2020.4,docs/06_facts/02_metric_register.md:12
+sys_clk_mhz,50,docs/06_facts/02_metric_register.md:13
+stream_v5probe_frames,"11,516",report/evidence/event_stream_stats.json:8
+stream_v5probe_events,"10,312,327",report/evidence/event_stream_stats.json:9
+stream_v5probe_span_s,432.143,report/evidence/event_stream_stats.json:13
+stream_v5probe_events_per_s,23863.23,report/evidence/event_stream_stats.json:15
+stream_v5probe_events_per_frame,895.48,report/evidence/event_stream_stats.json:16
+stream_v5probe_droppedFrames,0,records/20261030-212214_v5probe/meta.json:29
+stream_v5probe_droppedEvents,0,records/20261030-212214_v5probe/meta.json:30
+stream_v6clean384_frames,587,report/evidence/event_stream_stats.json:45
+stream_v6clean384_events,"2,052",report/evidence/event_stream_stats.json:46
+stream_v6clean384_span_s,21.978,report/evidence/event_stream_stats.json:50
+stream_v6clean384_events_per_s,93.37,report/evidence/event_stream_stats.json:52
+stream_v6clean384_events_per_frame,3.5,report/evidence/event_stream_stats.json:53
+stream_v6clean384_droppedFrames,0,records/20261030-214353_v6clean/meta.json:21
+stream_v6clean384_droppedEvents,0,records/20261030-214353_v6clean/meta.json:22
+stream_v6clean_frames,"5,174",report/evidence/event_stream_stats.json:82
+stream_v6clean_events,"6,012,765",report/evidence/event_stream_stats.json:83
+stream_v6clean_span_s,194.356,report/evidence/event_stream_stats.json:87
+stream_v6clean_events_per_s,30936.86,report/evidence/event_stream_stats.json:89
+stream_v6clean_events_per_frame,1162.11,report/evidence/event_stream_stats.json:90
+stream_v6clean_droppedFrames,0,records/20261030-215700_v6clean/meta.json:21
+stream_v6clean_droppedEvents,0,records/20261030-215700_v6clean/meta.json:22
+stream_v7hands_frames,"6,831",report/evidence/event_stream_stats.json:119
+stream_v7hands_events,"7,913,893",report/evidence/event_stream_stats.json:120
+stream_v7hands_span_s,256.088,report/evidence/event_stream_stats.json:124
+stream_v7hands_events_per_s,30903.02,report/evidence/event_stream_stats.json:126
+stream_v7hands_events_per_frame,1158.53,report/evidence/event_stream_stats.json:127
+stream_v7hands_droppedFrames,0,records/20261030-222201_v7hands/meta.json:21
+stream_v7hands_droppedEvents,0,records/20261030-222201_v7hands/meta.json:22

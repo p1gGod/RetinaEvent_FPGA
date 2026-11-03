@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="680.832pt" height="331.136125pt" viewBox="0 0 680.832 331.136125" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-31T02:54:32.583553</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 331.136125 
+L 680.832 331.136125 
+L 680.832 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 104.808906 109.665 
+L 199.521509 109.665 
+Q 203.901283 109.665 203.901283 105.705 
+L 203.901283 64.62 
+Q 203.901283 60.66 199.521509 60.66 
+L 104.808906 60.66 
+Q 100.429132 60.66 100.429132 64.62 
+L 100.429132 105.705 
+Q 100.429132 109.665 104.808906 109.665 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #ebf8ff; stroke: #2b6cb0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 225.252679 109.665 
+L 303.541132 109.665 
+Q 307.920906 109.665 307.920906 105.705 
+L 307.920906 64.62 
+Q 307.920906 60.66 303.541132 60.66 
+L 225.252679 60.66 
+Q 220.872906 60.66 220.872906 64.62 
+L 220.872906 105.705 
+Q 220.872906 109.665 225.252679 109.665 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #ebf8ff; stroke: #2b6cb0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 332.00966 75.015 
+L 437.671698 75.015 
+Q 442.051472 75.015 442.051472 71.055 
+L 442.051472 29.97 
+Q 442.051472 26.01 437.671698 26.01 
+L 332.00966 26.01 
+Q 327.629887 26.01 327.629887 29.97 
+L 327.629887 71.055 
+Q 327.629887 75.015 332.00966 75.015 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #f7fafc; stroke: #4a5568; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 332.00966 159.165 
+L 437.671698 159.165 
+Q 442.051472 159.165 442.051472 155.205 
+L 442.051472 109.17 
+Q 442.051472 105.21 437.671698 105.21 
+L 332.00966 105.21 
+Q 327.629887 105.21 327.629887 109.17 
+L 327.629887 155.205 
+Q 327.629887 159.165 332.00966 159.165 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 463.402868 159.165 
+L 563.590189 159.165 
+Q 567.969962 159.165 567.969962 155.205 
+L 567.969962 109.17 
+Q 567.969962 105.21 563.590189 105.21 
+L 463.402868 105.21 
+Q 459.023094 105.21 459.023094 109.17 
+L 459.023094 155.205 
+Q 459.023094 159.165 463.402868 159.165 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 463.402868 75.015 
+L 563.590189 75.015 
+Q 567.969962 75.015 567.969962 71.055 
+L 567.969962 29.97 
+Q 567.969962 26.01 563.590189 26.01 
+L 463.402868 26.01 
+Q 459.023094 26.01 459.023094 29.97 
+L 459.023094 71.055 
+Q 459.023094 75.015 463.402868 75.015 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #faf5ff; stroke: #6b46c1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 594.796075 75.015 
+L 662.135094 75.015 
+Q 666.514868 75.015 666.514868 71.055 
+L 666.514868 29.97 
+Q 666.514868 26.01 662.135094 26.01 
+L 594.796075 26.01 
+Q 590.416302 26.01 590.416302 29.97 
+L 590.416302 71.055 
+Q 590.416302 75.015 594.796075 75.015 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #f7fafc; stroke: #4a5568; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 463.402868 243.315 
+L 563.590189 243.315 
+Q 567.969962 243.315 567.969962 239.355 
+L 567.969962 198.27 
+Q 567.969962 194.31 563.590189 194.31 
+L 463.402868 194.31 
+Q 459.023094 194.31 459.023094 198.27 
+L 459.023094 239.355 
+Q 459.023094 243.315 463.402868 243.315 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #fffaf0; stroke: #c05621; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 594.796075 243.315 
+L 662.135094 243.315 
+Q 666.514868 243.315 666.514868 239.355 
+L 666.514868 198.27 
+Q 666.514868 194.31 662.135094 194.31 
+L 594.796075 194.31 
+Q 590.416302 194.31 590.416302 198.27 
+L 590.416302 239.355 
+Q 590.416302 243.315 594.796075 243.315 
+z
+" clip-path="url(#p3f8a5e8730)" style="fill: #fffaf0; stroke: #c05621; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 432.744453 75.015 
+L 450.263547 88.875 
+L 450.263547 219.06 
+" clip-path="url(#p3f8a5e8730)" style="fill: none; stroke: #c05621; stroke-width: 1.1; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Microsoft YaHei'; text-anchor: start" x="101.524075" y="23.04" transform="rotate(-0 101.524075 23.04)">图 F1  系统功能框图（交付位流 variant_act3c）</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(122.920676 78.66416)">OV5640 摄像头</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(118.036551 87.436719)">800×480 RGB565</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(129.095661 96.401625)">约 26.67 fps</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(247.982171 82.962514)">cam_tap</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(239.796906 91.942955)">只读并联抓取</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(337.818804 48.540736)">显示通路（厂家例程 37）</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(335.719476 57.313295)">DDR3 乒乓 + lcd_rgb_top</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(363.261867 130.003529)">retina_core</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(349.760695 138.951939)">事件引擎 400×240</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(487.952247 125.597391)">event_render</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(483.743341 134.58552)">事件位图 BRAM</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(484.134122 143.358078)">400×240×4 bit</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(494.981185 48.332373)">disp_mux</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(480.227591 57.273096)">显示源选择 · HUD</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(604.216007 48.412611)">4.3 英寸 LCD</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(602.114116 57.360861)">原始/事件画面</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(491.2662 216.564467)">udp_merge</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(481.975216 225.641002)">单流合并 24 B 头</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(609.701038 216.716455)">PC 上位机</text>
+    <text style="font-size: 8.2px; font-family: 'Microsoft YaHei'; fill: #1a202c" transform="translate(600.362647 225.689049)">拆分/录制/推理</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 203.807587 85.41 
+Q 211.838203 85.41 218.638981 85.41 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 215.038981 83.61 
+L 218.638981 85.41 
+L 215.038981 87.21 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 307.412596 84.600428 
+Q 317.228792 71.053803 326.323359 58.503046 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 322.753436 60.361984 
+L 326.323359 58.503046 
+L 325.668556 62.474347 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 307.28181 86.299393 
+Q 317.227951 105.705051 326.613141 124.016254 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 326.572973 119.991532 
+L 326.613141 124.016254 
+L 323.369263 121.633556 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 441.957776 131.94 
+Q 449.988391 131.94 456.78917 131.94 
+" style="fill: none; stroke: #2c7a7b; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 453.18917 130.14 
+L 456.78917 131.94 
+L 453.18917 133.74 
+z
+" style="fill: #2c7a7b; stroke: #2c7a7b; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 441.904847 56.388208 
+Q 449.989624 53.730061 456.906092 51.456037 
+" style="fill: none; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 452.923989 50.870496 
+L 456.906092 51.456037 
+L 454.048397 54.290394 
+z
+" style="fill: #4a5568; stroke: #4a5568; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 513.222792 105.198821 
+Q 513.222792 90.606167 513.222792 77.24335 
+" style="fill: none; stroke: #2c7a7b; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 511.422792 80.84335 
+L 513.222792 77.24335 
+L 515.022792 80.84335 
+z
+" style="fill: #2c7a7b; stroke: #2c7a7b; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 567.87219 50.76 
+Q 578.644764 50.76 588.187501 50.76 
+" style="fill: none; stroke: #6b46c1; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 584.587501 48.96 
+L 588.187501 50.76 
+L 584.587501 52.56 
+z
+" style="fill: #6b46c1; stroke: #6b46c1; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 513.222792 160.164608 
+Q 513.222792 176.739211 513.222792 192.083977 
+" style="fill: none; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 515.022792 188.483977 
+L 513.222792 192.083977 
+L 511.422792 188.483977 
+z
+" style="fill: #c05621; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 514.226346 219.06 
+Q 551.82142 219.06 588.186657 219.06 
+" style="fill: none; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 584.586657 217.26 
+L 588.186657 219.06 
+L 584.586657 220.86 
+z
+" style="fill: #c05621; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 451.260117 219.06 
+Q 454.643153 219.06 456.796351 219.06 
+" style="fill: none; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+    <path d="M 453.196351 217.26 
+L 456.796351 219.06 
+L 453.196351 220.86 
+z
+" style="fill: #c05621; stroke: #c05621; stroke-width: 1.1; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.2px; font-family: 'Microsoft YaHei'; fill: #c05621" transform="translate(458.71569 167.475) rotate(-90)">原始帧</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #555555" x="320.512755" y="263.61" transform="rotate(-0 320.512755 263.61)">KEY0 切换显示源；HUD 恒叠加；动作分类结果写数据帧 byte23（每帧锁存一次）</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 6.8px; font-family: 'Microsoft YaHei'; text-anchor: start; fill: #555555" x="7.2" y="322.2" transform="rotate(-0 7.2 322.2)">数据来源: docs/assets/system_architecture.svg；docs/03_技术原理/05_动作回传与上位机契约.md §2</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3f8a5e8730">
+   <rect x="93.312" y="7.2" width="580.32" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>

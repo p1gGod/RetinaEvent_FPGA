@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>动作标注 annotator · M7c</title>
+<link rel="stylesheet" href="./ui/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">动作标注<span class="brand-sub">annotator · M7c</span></div>
+  <label class="field">会话 <select id="sessionSelect"></select></label>
+  <label class="field">分段 <select id="chunkSelect"></select></label>
+  <div class="spacer"></div>
+  <div id="saveStatus" class="save-status">未加载</div>
+  <button id="saveBtn" class="btn" type="button" title="Ctrl+S">保存</button>
+  <button id="exportBtn" class="btn" type="button">导出 segments.csv</button>
+</header>
+
+<div id="banner" class="banner hidden" role="alert">
+  <span id="bannerText"></span>
+  <button id="bannerAction" class="btn btn-ghost hidden" type="button">重试保存</button>
+</div>
+
+<main class="layout">
+  <section class="panel stage">
+    <div class="panel-head">画面 <span id="videoMeta" class="muted"></span></div>
+    <div class="video-wrap">
+      <video id="video" playsinline preload="metadata"></video>
+    </div>
+    <div class="player-bar">
+      <button id="playBtn" type="button" title="Space">▶</button>
+      <button id="prevFrameBtn" type="button" title="← 逐帧">‹</button>
+      <button id="nextFrameBtn" type="button" title="→ 逐帧">›</button>
+      <span id="clock" class="mono">00:00.000</span>
+      <span id="frameInfo" class="muted mono">frame -</span>
+    </div>
+  </section>
+
+  <section class="panel timeline-panel">
+    <div class="panel-head">时间轴 <span class="muted" id="timelineHint">滚轮缩放 · 拖空白建段 · 拖两端改边界 · 拖中间移动</span></div>
+    <canvas id="timeline"></canvas>
+    <div class="timeline-foot">
+      <span id="zoomInfo" class="muted mono"></span>
+      <span id="eventInfo" class="muted"></span>
+      <span class="spacer"></span>
+      <button id="fitBtn" class="btn btn-ghost" type="button">适应窗口</button>
+    </div>
+  </section>
+
+  <aside class="panel types-panel">
+    <div class="panel-head">动作类型 <span class="muted">Alt+1..9 打标</span></div>
+    <ul id="typeList" class="type-list"></ul>
+    <div class="type-actions">
+      <button id="addTypeBtn" class="btn btn-ghost" type="button">+ 新类型</button>
+      <span class="spacer"></span>
+      <span id="hotkeyModeText" class="muted small">当前：Alt+数字 + 数字键</span>
+      <label class="small muted" title="部分输入法会吞掉 Alt+数字，可只用无修饰数字键">
+        <input id="bareDigitToggle" type="checkbox" checked /> 数字键备用
+      </label>
+    </div>
+    <div class="panel-head seg-head">片段 <span id="segCount" class="muted"></span></div>
+    <ul id="segmentList" class="segment-list"></ul>
+  </aside>
+</main>
+
+<footer class="statusbar">
+  <span id="statusLeft"></span>
+  <span class="spacer"></span>
+  <span id="hotkeyBadge" class="badge">打标：Alt+1..9（1..9 备用）</span>
+</footer>
+
+<div id="emptyState" class="empty-state hidden">
+  <div class="empty-card">
+    <h2 id="emptyTitle">还没有可标注的数据</h2>
+    <p id="emptyWhy"></p>
+    <ol>
+      <li>确认长录已经落盘：<code>records/&lt;session&gt;/meta.json</code> 与 <code>chunk-00N.video.mp4</code>（录制中会是 <code>chunk-00N.recording.mp4</code>）。</li>
+      <li>换了数据目录的话，用 <code>node server.mjs --root D:\你的\records</code> 重新打开；默认根目录是 <code>E:\workspace\FPGA_Comp\records</code>。</li>
+      <li>没有真实数据也能先看界面：README 里写了怎么用 <code>temp_test/anno_fixture/</code> 的假会话跑起来。</li>
+    </ol>
+    <p class="muted small">本工具只读 records/，写入的只有 <code>chunk-00N.labels.json</code>；不会碰录像文件。</p>
+    <p id="emptyDetail" class="err small"></p>
+  </div>
+</div>
+
+<script type="module" src="./ui/app.js"></script>
+</body>
+</html>

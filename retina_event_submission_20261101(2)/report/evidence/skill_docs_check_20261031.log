@@ -1,0 +1,38 @@
+=== skill_docs_check（fpga-board-docs 机读验收）===
+CHECK_TIME=2026-10-31T05:30:09.848Z
+SCRIPT=E:\workspace\FPGA_Comp\.agents\skills\fpga-board-docs\tools\skill_docs_check.mjs
+SKILL_DIR=E:\workspace\FPGA_Comp\.agents\skills\fpga-board-docs
+REPO=E:\workspace\FPGA_Comp
+DOCS=E:\workspace\FPGA_Comp\doc\FPGA_board
+FILES_CHECKED=4  (SKILL.md + references/{doc-map,traps,hard-facts}.md)
+
+--- 结构 ---
+SKILL_LINES=329  (上限 330)
+MAINT_DATE=2026-10-31
+NEW_TRAPS=4  (§4 中 22~25 命中)
+REPO_SECTION=1  (含「仓库…库容」的二级标题)
+PROJECT_ROOTS=9  (命中: nn/ host/ report/ board/ skill/ submission/ records/ row_datas/ trainingData/)
+
+--- 路径 ---
+PATHS_CHECKED=212
+PATHS_MISSING=0
+PATHS_SKIPPED_LEGACY=30  (C:\ 旧机路径，skill 记为"本机不存在")
+PATHS_SKIPPED_WILDCARD=57  (通配/占位/省略号)
+PATHS_SKIPPED_CODE=34  (代码片段/赋值/标识符对/dotfile 链)
+PATHS_SKIPPED_BARE=11  (纯扩展名/纯数字)
+PATHS_DOCUMENTED_ABSENT=2  (skill 自述"不存在/瞬时")
+
+--- 链接 ---
+DOC_LINKS_CHECKED=3
+DOC_LINKS_MISSING=0
+
+--- 判据汇总 ---
+CHECK MAINT_DATE=2026-10-31 (= 2026-10-31) PASS
+CHECK PATHS_MISSING=0 (= 0) PASS
+CHECK DOC_LINKS_MISSING=0 (= 0) PASS
+CHECK SKILL_LINES=329 (<= 330) PASS
+CHECK NEW_TRAPS=4 (>= 4) PASS
+CHECK REPO_SECTION=1 (= 1) PASS
+CHECK PROJECT_ROOTS=9 (>= 8) PASS
+
+SKILL_MAINT_OK=1

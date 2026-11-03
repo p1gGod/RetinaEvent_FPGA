@@ -1,0 +1,320 @@
+/* style.css — 上位机前端样式（源自 host/design/ui/common.css 的视觉规范）
+   为什么整段照抄设计稿：ON/OFF 语义色、等宽数字、四窗格栅格和断点是"冻结的视觉口径"，
+   前端自己另发明一套就会和截图/文档对不上。这里只在末尾追加真实控件（button/canvas）需要的规则。 */
+
+:root{
+  --bg:#080b11; --bg2:#0d1220; --panel:#111827; --panel2:#0f1626;
+  --line:#1e2a3d; --line2:#27364d;
+  --tx:#e7eefa; --tx2:#a9b8ce; --tx3:#6b7d96;
+  --on:#ff4d63; --off:#4d9bff; --ok:#34d399; --warn:#fbbf24; --info:#38bdf8;
+  --accent:#5b8cff;
+  --mono:"Cascadia Mono","Consolas","SFMono-Regular",monospace;
+  --sans:"Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  --r:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--tx); font-family:var(--sans);
+  font-size:13px; line-height:1.45; overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--tx3)}
+.t2{color:var(--tx2)}
+.hidden{display:none!important}
+
+/* ---------- 应用骨架 ---------- */
+.app{display:grid;grid-template-rows:56px 1fr 104px minmax(28px,auto);height:100vh;width:100vw}
+.topbar{
+  display:flex;align-items:center;gap:14px;padding:0 16px;
+  background:linear-gradient(180deg,#101a2e,#0c1322);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:26px;height:26px;border-radius:7px;
+  background:conic-gradient(from 210deg,var(--on),var(--accent),var(--off),var(--on));
+  box-shadow:0 0 14px rgba(91,140,255,.45)}
+.brand b{font-size:15px;letter-spacing:.3px}
+.brand span{font-size:11px;color:var(--tx3)}
+.spacer{flex:1}
+
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--line2);background:#0e1728;font-size:12px;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.dot.off{background:var(--tx3);box-shadow:none}
+.dot.warn{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+
+.seg{display:flex;border:1px solid var(--line2);border-radius:7px;overflow:hidden}
+.seg div{padding:5px 12px;font-size:12px;color:var(--tx2);background:#0e1728;cursor:pointer}
+.seg div.sel{background:#1d2f52;color:#fff}
+.btn{padding:5px 12px;border-radius:7px;border:1px solid var(--line2);background:#0e1728;
+  color:var(--tx2);font-size:12px;cursor:pointer;white-space:nowrap;
+  font-family:inherit;font-size:12px;appearance:none}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.ghost{border-style:dashed;color:var(--tx3)}
+.btn:disabled{cursor:not-allowed;opacity:.72}
+
+/* ---------- 主区 ---------- */
+.main{display:grid;grid-template-columns:1fr 380px;min-height:0}
+.stage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+  gap:10px;padding:10px;min-height:0}
+.side{border-left:1px solid var(--line);background:var(--bg2);
+  padding:8px;display:flex;flex-direction:column;gap:6px;min-height:0;
+  /* 横屏/低高度时六张卡必然超过一屏：必须能滚，不能裁掉最后一张的参数/图层开关。
+     overflow-x:hidden 防滑条把卡片撑宽；子项 flex:0 0 auto 防 flex 收缩时被压扁。 */
+  overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;scrollbar-color:#3e5274 #0b1220}
+.side>*{flex:0 0 auto}
+.side::-webkit-scrollbar{width:8px}
+.side::-webkit-scrollbar-track{background:#0b1220;border-radius:4px}
+.side::-webkit-scrollbar-thumb{background:#3e5274;border-radius:4px;border:2px solid #0b1220}
+.side::-webkit-scrollbar-thumb:hover{background:#50688f}
+
+/* ---------- 视窗 ---------- */
+.pane{display:flex;flex-direction:column;min-height:0;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pane>header{display:flex;align-items:center;gap:8px;padding:6px 10px;
+  border-bottom:1px solid var(--line);background:#0e1524;flex:0 0 auto}
+.pane>header .tag{font-size:10px;padding:2px 6px;border-radius:4px;background:#1b2740;color:var(--tx2);
+  flex:0 0 auto;white-space:nowrap}
+.pane>header .ttl{font-size:12.5px;font-weight:600;flex:0 0 auto;white-space:nowrap}
+/* meta 可以被压缩并省略号截断（它是辅助信息），但 tag/ttl 绝不能被压成两行 */
+.pane>header .meta{font-size:10.5px;color:var(--tx3);font-family:var(--mono);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pane .frame{position:relative;flex:1;min-height:0;background:#04060a;display:grid;place-items:center}
+.pane .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.pane .frame img.raw{image-rendering:auto}
+.pane .frame img.px{image-rendering:pixelated}
+.corner{position:absolute;left:8px;top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.corner .c{font-size:10px;font-family:var(--mono);padding:2px 6px;border-radius:4px;
+  background:rgba(8,12,20,.78);border:1px solid var(--line2);color:var(--tx2)}
+.badgex{position:absolute;right:8px;bottom:8px;font-size:10px;font-family:var(--mono);
+  padding:2px 7px;border-radius:4px;background:rgba(8,12,20,.78);border:1px solid var(--line2);color:var(--tx3)}
+
+/* ---------- 侧栏卡片 ---------- */
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:6px 8px}
+.card>h4{font-size:11px;font-weight:600;color:var(--tx2);letter-spacing:.4px;
+  display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.card>h4 .r{margin-left:auto;font-size:10px;color:var(--tx3);font-family:var(--mono)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:11px;line-height:1.32}
+.kv dt{color:var(--tx3)}
+.kv dd{text-align:right;font-family:var(--mono);color:var(--tx)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.stat{background:#0c1322;border:1px solid var(--line);border-radius:6px;padding:4px 7px}
+.stat .l{font-size:10px;color:var(--tx3)}
+.stat .v{font-size:16px;font-family:var(--mono);font-weight:600;letter-spacing:-.3px}
+.stat .u{font-size:10px;color:var(--tx3);margin-left:3px}
+.stat .v.on{color:var(--on)} .stat .v.off{color:var(--off)}
+.stat .v.ok{color:var(--ok)} .stat .v.warn{color:var(--warn)}
+.bar{height:8px;border-radius:4px;background:#1a2438;overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.bar i.on{background:linear-gradient(90deg,#ff4d63,#ff8a5c)}
+.bar i.off{background:linear-gradient(90deg,#3b7fe0,#4d9bff)}
+.legend{display:flex;justify-content:space-between;font-size:10px;color:var(--tx3);margin-top:4px}
+.legend b{font-family:var(--mono);color:var(--on)}
+.legend b.b{color:var(--off)}
+
+/* ---------- 图层栈 ---------- */
+.layers{display:flex;flex-direction:column;gap:3px}
+.layer{display:flex;align-items:center;gap:7px;padding:2px 6px;border-radius:5px;
+  border:1px solid transparent;background:#0c1322}
+.layer.dim{opacity:.42}
+.layer .z{font-size:9.5px;font-family:var(--mono);color:var(--tx3);width:16px}
+.layer .n{font-size:11.5px}
+.layer .n em{font-style:normal;color:var(--tx3);font-size:10px;margin-left:5px}
+.layer .b{margin-left:auto;font-size:9.5px;font-family:var(--mono);color:var(--tx3)}
+.layer .sw{width:24px;height:13px;border-radius:7px;background:#243149;position:relative;flex:0 0 auto;cursor:pointer}
+.layer .sw::after{content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;
+  background:#5a6b85;transition:none}
+.layer .sw.on{background:#1f4d3a}
+.layer .sw.on::after{left:13px;background:var(--ok)}
+.layer.sel{border-color:#2c4a7a;background:#101c30}
+
+/* ---------- 参数行 ---------- */
+.ctl{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:3px 0}
+.ctl .nm{color:var(--tx2);flex:1}
+.ctl .val{font-family:var(--mono);font-size:11px;color:var(--tx3)}
+/* θ/守卫的数字框：滑动条只能拖到"差不多"，而这两个数是要抄进 RTL 的 —— 必须能精确输入 */
+.ctl input.valnum{width:54px;flex:none;font-family:var(--mono);font-size:11px;text-align:right;
+  background:#0d1424;color:var(--tx);border:1px solid var(--line2);border-radius:4px;padding:1px 4px}
+.ctl input.valnum:focus{outline:none;border-color:var(--info);color:var(--info)}
+.ctl input.valnum:disabled{color:var(--tx3);cursor:not-allowed;opacity:.7}
+.readonly{font-size:9.5px;padding:1px 5px;border-radius:3px;background:#2a2233;color:#c2a2d8;border:1px solid #3d3050}
+/* 只读徽标但"当前这一项是可调的"（如上位机模拟档位下的 θ）：换成可操作的配色 */
+.readonly.live{background:#123024;color:#7fe3b6;border-color:#1f5c44}
+.ctlbox{display:flex;border:1px solid var(--line2);border-radius:5px;overflow:hidden}
+.ctlbox span{padding:2px 7px;font-size:10.5px;font-family:var(--mono);color:var(--tx3);background:#0c1322}
+.ctlbox span.sel{background:#1d2f52;color:#fff}
+/* 只读分段控件：可以点，但必须一眼看出"这不是给你改的"（点了会解释原因） */
+.ctlbox.ro span{cursor:not-allowed;opacity:.62}
+.ctlbox.ro span:hover{background:#241c33;color:#c2a2d8}
+
+/* 运动预测卡：状态行与算法注脚（不改 c3 的滑条外观） */
+.motionnote{font-size:9.5px;color:var(--tx3);font-family:var(--mono);margin:1px 0 4px}
+.motionstat{font-size:10.5px;font-family:var(--mono);color:var(--info);padding:3px 6px;
+  background:#0c1322;border:1px solid var(--line2);border-radius:4px;margin-bottom:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.motionstat.warn{color:var(--warn)}
+
+/* 可调参数滑动条（θ / 守卫）：板端三档用刻度标出来，点刻度可一键跳过去 */
+.sliderrow{margin:3px 0 7px}
+.sliderrow .ctl{padding:1px 0}
+.sliderrow.ro{opacity:.62}
+.sliderrow.ro .slider{cursor:not-allowed}
+.sliderwrap{position:relative;padding:1px 1px 13px}
+input.slider{-webkit-appearance:none;appearance:none;display:block;width:100%;height:14px;
+  background:transparent;cursor:pointer;margin:0}
+input.slider::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:#22304c;border:1px solid var(--line2)}
+input.slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;margin-top:-5px;border-radius:50%;
+  background:var(--info);border:1px solid #0b1220;box-shadow:0 0 6px #38bdf880}
+input.slider:disabled::-webkit-slider-thumb{background:#5a6478;box-shadow:none}
+input.slider::-moz-range-track{height:4px;border-radius:2px;background:#22304c;border:1px solid var(--line2)}
+input.slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--info);border:1px solid #0b1220}
+input.slider:disabled::-moz-range-thumb{background:#5a6478}
+.ticks{position:relative;height:11px}
+.ticks .tick{position:absolute;top:0;transform:translateX(-50%);font-size:9px;font-family:var(--mono);
+  color:var(--tx3);cursor:pointer;padding:0 2px;white-space:nowrap}
+.ticks .tick:hover{color:var(--info)}
+.sliderrow.ro .ticks .tick{cursor:not-allowed}
+.sliderrow.ro .ticks .tick:hover{color:var(--tx3)}
+/* 实测工作点预设：θ 与守卫的组合决定的是**输出形态**（连通区域 vs 碎片边缘），
+   不是两个各自独立调到最优的旋钮 —— 实测过的点直接给按钮，别让人反复拖 */
+.presets{display:flex;flex-wrap:wrap;gap:4px;margin:3px 0 7px}
+.presets button{font-size:10px;font-family:var(--mono);padding:2px 7px;border-radius:4px;cursor:pointer;
+  background:#0c1322;color:var(--tx2);border:1px solid var(--line2)}
+.presets button:hover:enabled{background:#16233c;color:var(--tx);border-color:#2f4b7d}
+.presets button.sel{background:#1d2f52;color:#fff;border-color:#2f4b7d}
+.presets button:disabled{cursor:not-allowed;opacity:.5}
+
+/* 操作反馈条（toast）：所有"点了没反应"的地方都必须在这里说一句话 */
+.toastwrap{position:fixed;right:14px;bottom:14px;z-index:99;display:flex;flex-direction:column;gap:6px;
+  max-width:min(460px,42vw);pointer-events:none}
+.toast{font-size:11.5px;line-height:1.5;padding:7px 11px;border-radius:7px;color:var(--tx);
+  background:#162034;border:1px solid var(--line2);border-left:3px solid var(--info);
+  box-shadow:0 6px 22px #0007;animation:toastin .16s ease-out}
+.toast.ok{border-left-color:var(--ok)}
+.toast.warn{border-left-color:var(--warn)}
+.toast.error{border-left-color:var(--on)}
+@keyframes toastin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- 底栏 ---------- */
+.bottom{border-top:1px solid var(--line);background:var(--bg2);display:grid;
+  grid-template-columns:1fr;grid-template-rows:auto auto;padding:8px 12px;gap:7px;min-height:0}
+.tl{display:flex;align-items:center;gap:10px}
+.tl .track{position:relative;flex:1;height:26px;border-radius:5px;background:#0b1220;
+  border:1px solid var(--line);overflow:hidden}
+.tl .chunk{position:absolute;top:3px;bottom:3px;background:#16233c;border-radius:3px}
+.tl .chunk.ev{background:#1d2a46}
+.tl .head{position:absolute;top:0;bottom:0;width:2px;background:var(--on);box-shadow:0 0 8px var(--on)}
+.tl .head::after{content:"";position:absolute;top:-1px;left:-4px;border:5px solid transparent;border-top-color:var(--on)}
+.tl .lblright{font-size:11px;font-family:var(--mono);color:var(--tx2)}
+.rec{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--off)}
+.rec i{width:9px;height:9px;border-radius:50%;background:var(--off);display:block}
+.rec.live i{background:var(--on);box-shadow:0 0 8px var(--on)}
+.exports{display:flex;align-items:center;gap:8px}
+.exports .lbl{font-size:11px;color:var(--tx3);margin-right:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:4px 9px;
+  border-radius:6px;border:1px solid var(--line2);background:#0e1728;color:var(--tx2)}
+.chip .k{font-size:10px;color:var(--tx3)}
+.chip.ghost{border-style:dashed;color:var(--tx3)}
+/* 5 个导出按钮从"装饰 span"变成真按钮：必须给出可点的视觉反馈，
+   否则和之前那批"点了没反应"的芯片长得一模一样，改了用户也不知道。 */
+button.chip{font:inherit;cursor:pointer;font-family:inherit}
+button.chip:hover:enabled{background:#16233c;color:var(--tx);border-color:#2f4b7d}
+button.chip:active:enabled{background:#1d2f52}
+button.chip:disabled{cursor:not-allowed;opacity:.5}
+/* 导出进行中：进度要写在按钮旁边，而不是只弹一个会自动消失的提示 */
+.expprog{font-size:11px;font-family:var(--mono);color:var(--info);white-space:nowrap}
+/* 下拉框用 select.sel（不是裸 .sel：时间轴上那个选区 div 也是 .sel-* 家族，
+   裸类名会和它互相污染 —— 这类"类名撞车"在 03 文档踩坑表里出现过一次） */
+select.sel{font:inherit;font-size:11.5px;padding:4px 6px;border-radius:6px;border:1px solid var(--line2);
+  background:#0e1728;color:var(--tx2);cursor:pointer;max-width:170px}
+select.sel:hover{border-color:#2f4b7d;color:var(--tx)}
+/* 时间轴选区：拖出来之后要一眼看到"将要导出哪一段" */
+.tl .sel-range{position:absolute;top:2px;bottom:2px;background:rgba(52,211,153,.22);
+  border-left:1px solid var(--ok);border-right:1px solid var(--ok);border-radius:3px;pointer-events:none}
+.tl .track{cursor:crosshair}
+
+/* ---------- 状态栏 ---------- */
+/* flex-wrap + min-height：15 个计数器必须常驻（原则 P6），宽屏一行、窄屏折行，
+   绝不靠 overflow:hidden 把计数器切掉（那就是"内容被裁掉且无法访问"）。
+   行高用 minmax(28px,auto)，折行时由 1fr 主区让出高度，视口不会被撑破。 */
+.status{display:flex;align-items:center;gap:14px;row-gap:2px;flex-wrap:wrap;padding:0 12px;
+  min-height:28px;white-space:nowrap;
+  background:#0a0f1a;border-top:1px solid var(--line);font-size:10.5px;color:var(--tx3);
+  font-family:var(--mono)}
+.status .grp{display:flex;gap:10px}
+.status .grp.counters{gap:8px;font-size:10px}
+.status .grp b{color:var(--tx2);font-weight:500}
+.status .ok{color:var(--ok)} .status .warn{color:var(--warn)} .status .bad{color:var(--on)}
+
+/* ================= 响应式断点 =================
+   基准 1600×1000；T1 紧凑档 1280~1599 宽；T2 折叠档 <1280 宽或 <800 高（侧栏变抽屉）。
+   判据：任何断点下都不允许出现"内容被裁掉且无法访问"（tool/shot.mjs 报 clipped 为空）。 */
+@media (max-width:1599px),(max-height:999px){
+  .main{grid-template-columns:1fr 332px}
+  .side{gap:6px;padding:6px}
+  .card{padding:6px 8px}
+  .card>h4{margin-bottom:5px}
+  .stats{gap:4px}
+  .stat{padding:4px 6px}
+  .stat .v{font-size:15px}
+  .stat .l{font-size:9.5px}
+  .kv{gap:1px 8px;font-size:10.5px}
+  .layer{padding:1.5px 5px}
+  .layer .n{font-size:11px}
+  .ctl{padding:2px 0;font-size:11px}
+  .opt{display:none!important}
+  .bottom{padding:6px 10px;gap:5px}
+  .status{gap:10px;font-size:10px}
+  .pane>header{padding:5px 8px}
+  .stage{gap:8px;padding:8px}
+  .topbar{gap:10px;padding:0 12px}
+}
+@media (max-width:1279px),(max-height:799px){
+  .main{grid-template-columns:1fr}
+  .side{display:none}
+  .app{grid-template-rows:52px 1fr 30px minmax(24px,auto)}
+  .bottom .tl{display:none}
+}
+.foldbar{display:none!important}
+@media (max-width:1279px),(max-height:799px){ .foldbar{display:inline-flex!important} }
+
+/* ---------- 真实前端追加规则（静态原型里没有的部分） ---------- */
+/* 画布：必须绝对定位铺满 .frame —— 百分比/不定高容器里用自然尺寸会把画面撑破（设计稿踩坑 #6） */
+.pane .frame canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* 单窗格聚焦（快捷键 1~4）：只放大被聚焦的那个，其余隐藏 */
+.stage.focusing .pane{display:none}
+.stage.focusing .pane.focus{display:flex;grid-column:1/3;grid-row:1/3}
+.stage.focusing .pane.focus>header .meta{white-space:normal}
+/* T2 抽屉：断点里 .side 是 display:none，靠这个类打开（否则"有按钮没元素"= 规格与实现不一致） */
+@media (max-width:1279px),(max-height:799px){
+  .side.open{display:flex;position:fixed;right:0;top:52px;bottom:54px;width:332px;z-index:30;
+    border-left:1px solid var(--line2);box-shadow:-14px 0 30px rgba(0,0,0,.5)}
+}
+.sparkline{width:100%;height:26px;display:block}
+.srcbadge{font-size:10px;font-family:var(--mono);padding:2px 7px;border-radius:4px;
+  border:1px solid #1d5c44;background:#123426;color:#6ee7b7;white-space:nowrap}
+.srcbadge.synth{border-color:#5c4a1d;background:#33290f;color:#ffd88a}
+.framehint{position:absolute;left:0;right:0;top:46%;text-align:center;font-size:11px;color:var(--tx3);font-family:var(--mono)}
+
+/* ---------- 动作识别卡片（M4：byte23 → 类别/置信度 + 三行映射） ---------- */
+.actresult{font-family:var(--mono);font-size:11px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.actmap{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:3px 6px;align-items:center;margin-top:6px}
+.actmap .cls{font-family:var(--mono);font-size:10px;color:var(--tx3);white-space:nowrap}
+.actmap select.sel{width:100%;min-width:0;font-size:10.5px;padding:1px 3px}
+.actmap select.sel:disabled{opacity:.55}
+.actfoot{display:flex;align-items:center;gap:6px;margin-top:6px}
+.actfoot .readonly{margin-right:auto;font-size:10px}
+
+/* ---------- API 文档弹窗（契约 §5.7：纯前端，不发请求） ---------- */
+.apidoc-mask{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:60;display:flex;align-items:center;justify-content:center;padding:16px}
+.apidoc{width:min(780px,96vw);max-height:84vh;overflow:auto;background:var(--panel);border:1px solid var(--line2);border-radius:8px;padding:12px 16px;box-shadow:0 18px 48px rgba(0,0,0,.6)}
+.apidoc header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.apidoc header h3{margin:0;font-size:14px;color:var(--tx);font-weight:600}
+.apidoc header .btn{margin-left:auto}
+.apidoc p{margin:6px 0;font-size:11px;color:var(--tx2);line-height:1.5}
+.apidoc table{width:100%;border-collapse:collapse;font-size:10.5px;margin:6px 0}
+.apidoc th,.apidoc td{border:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}
+.apidoc th{color:var(--tx2);background:var(--panel2)}
+.apidoc code{font-family:var(--mono);color:var(--info)}
+.apidoc pre{font-family:var(--mono);font-size:10px;line-height:1.45;color:var(--tx2);background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:8px;overflow:auto}

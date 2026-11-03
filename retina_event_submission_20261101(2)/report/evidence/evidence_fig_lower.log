@@ -1,0 +1,182 @@
+FIG_LOWER_OK=1
+
+# M9o 图表文件名小写化与全仓引用同步 — 证据日志
+
+- 任务: task-66 (rev2)，owner anno
+- 时间: 2026-10-31 (+08)
+- 写范围: report/**；未改 docs、nn、retina_event、gateway、host 源码；未执行 git 写操作；未安装依赖。
+- 目标: 图表文件名改为纯小写，正文显示名「图 F1」保持不变；SVG 内容只允许路径文本变化，图形内容逐字节不变。
+
+## 1. 结论
+
+- report/figures 下 10 个 SVG 已全部改为小写；文件名正则违规 0。
+- report 工作树内大写 SVG 路径引用 0；除本证据日志的旧名对照表外，大写 SVG 文件名引用 0；正文显示名保留，style 检查 figure_refs=10。
+- 10 个图表 SVG 的 sha256 与改名后备份 10/10 一致；report 下 11 个 SVG 的 XML 全部可解析。
+- make_figures.py 重跑 EXIT=0，末行 FIGURES_OK=1，输出文件名全部小写，figure_data_table.csv 110 行、figure 列 f1..f10。
+- verify_numbers.py EXIT=0，checks=107 ... fails=0，末行 NUMBERS_VERIFIED=1；checks 数量与任务前一致。
+- style_check.py EXIT=0，末行 STYLE_CHECK_OK=1。
+
+## 2. 改名对照与 sha256
+
+| 旧名 | 新名 | 字节 | sha256 | 一致 |
+|---|---|---:|---|---|
+| F1_system_arch.svg | f1_system_arch.svg | 13241 | b70f7ae758703eb06495b78b5970ade5d21a1a9991307ed1f92aa26bda7293f1 | YES |
+| F2_data_volume.svg | f2_data_volume.svg | 47202 | f67dd6c13af961e0abc9e39e1efc2d2ef6dca26e76fc845c3751f07665945643 | YES |
+| F3_event_pipeline.svg | f3_event_pipeline.svg | 12250 | 057a34ffa056cefce45eefe51c953f0797fcd181334d398c94cd04bc5cf45f78 | YES |
+| F4_resources.svg | f4_resources.svg | 30919 | c9ddefb6d41342574fe36eabdff5903b0253f0ffa8c9cc2e9ee6a6497196fab3 | YES |
+| F5_timing.svg | f5_timing.svg | 12566 | 7451d2063285d70810b28c8563b14db8d13b44302a6cb50e585d3bb58063d734 | YES |
+| F6_cycle_budget.svg | f6_cycle_budget.svg | 14916 | f874f604e024957c001d1ba00cd4b3787c6d79fe77d3016b5e700bc66e1c29db | YES |
+| F7_heldout_rates.svg | f7_heldout_rates.svg | 14103 | f190c81d8b2957658e453e15cde242f40a473e08baeb76e389b88384e91f9a0d | YES |
+| F8_iteration.svg | f8_iteration.svg | 14517 | 879aed0bdf0c5859adce3ca1022188e02b3819318db6349fd40cac16f7ad5f44 | YES |
+| F9_data_composition.svg | f9_data_composition.svg | 22096 | 1be5279a6f007fd469f85e3145401d800d3e096cf3944aad3a057083ab8b3b76 | YES |
+| F10_latency.svg | f10_latency.svg | 14920 | ebbf31dfa41905bb71c49cef503d503960169331c081c683b0e81c6d9039fd69 | YES |
+
+说明:
+- 先备份 10 个原文件，再执行操作系统 rename；rename 不修改文件内容。
+- make_figures.py 重跑会写入新的 dc:date，导致 10 个 SVG 的 sha256 全变；为满足「只改文件名、内容逐字节不变」，重跑后用备份恢复 10 个 SVG 的原始字节，再执行 sha256sum -b 与基线 diff。
+- 最终复核命令: diff -u /tmp/fig_hashes_baseline.txt /tmp/fig_hashes_final.txt
+- 最终复核结果: HASH_DIFF_MATCH=10/10；基线、最终文件行数均为 10。
+
+## 3. 引用同步
+
+同步前按具体文件名 grep 到 56 处，分布在 10 个文件:
+
+| 文件 | 命中数 |
+|---|---:|
+| report/design_report.md | 2 |
+| report/evaluation_report.md | 4 |
+| report/poster_en.md | 3 |
+| report/poster_en.svg | 2 |
+| report/platform_checklist.md | 6 |
+| report/demo_video_script.md | 1 |
+| report/evidence/EVIDENCE_POSTER.log | 2 |
+| report/evidence/REPORT_DESIGN_OK.log | 4 |
+| report/evidence/report_eval_ok.log | 22 |
+| report/figures/make_figures.py | 10 |
+
+另 verify_numbers.py 不含具体 SVG 文件名，但其 SVG glob 与 CSV figure 断言已同步为小写代码，见第 4.2 节。
+
+同步后检查（均在 E:/workspace/FPGA_Comp 下执行）:
+
+    grep -RInE --exclude=EVIDENCE_FIG_LOWER.log 'report/figures/F[0-9]|figures/F[0-9]' report
+    结果: 0 行
+
+    grep -RInE --exclude=EVIDENCE_FIG_LOWER.log 'F(10|[1-9])_[a-z_]+[.]svg' report
+    结果: 0 行
+
+    git grep -nE 'figures/F[0-9]' -- .
+    结果: 无命中（GIT_GREP_PATH_NONE）
+
+    grep -RInE --exclude-dir=.git --exclude-dir=temp_test 'figures/F[0-9]' .
+    结果: 0 行（全仓工作树，含 docs/host/nn/retina_event）
+
+本证据日志必须保留 10 行旧名→新名对照（判据 f），因此全仓裸文件名 grep 会命中这 10 行；
+判据 (b) 指定的大写路径模式 figures/F[0-9] 在本日志内也无命中。统计时按 --exclude 排除本日志。
+排除本日志后，全仓裸文件名命中 0。
+
+保留项:
+- evaluation_report.md 中「图 F1」至「图 F10」显示名仍存在，共 18 处文本出现；style 检查 figure_refs=10，覆盖 F1..F10 全部十图。
+- report/figures/figure_data_table.csv 的 figure 列改为 f1..f10，source_path:line 列保持不变；表头仍精确为 figure,metric,value,expected,source_path:line,equal。
+- poster_en.svg 内嵌的 2 处 SVG 路径改为小写；这是本次唯一内容发生变化的 SVG，变化仅限路径字符串。
+
+## 4. 生成器与验证脚本
+
+### 4.1 make_figures.py
+
+命令:
+
+    cd E:/workspace/FPGA_Comp
+    PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/make_figures.py
+
+输出（节选，EXIT=0）:
+
+    [F1] data_points=19 -> f1_system_arch.svg
+    [F2] data_points=19 -> f2_data_volume.svg
+    [F3] data_points=8 -> f3_event_pipeline.svg
+    [F4] data_points=14 -> f4_resources.svg
+    [F5] data_points=4 -> f5_timing.svg
+    [F6] data_points=5 -> f6_cycle_budget.svg
+    [F7] data_points=5 -> f7_heldout_rates.svg
+    [F8] data_points=8 -> f8_iteration.svg
+    [F9] data_points=8 -> f9_data_composition.svg
+    [F10] data_points=6 -> f10_latency.svg
+    figures=10 data_points_total=96
+    CSV rows=110
+    FIGURES_OK=1
+
+代码同步:
+- 10 个 save 调用的输出文件名均改为小写。
+- figure_data_table.csv 写入改为 w.writerow([fig.lower(), label, val, exp, src, equal])。
+- 图表标题、日志标签仍为 F1..F10，不改显示名。
+
+### 4.2 verify_numbers.py
+
+命令:
+
+    PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/verify_numbers.py
+
+输出（EXIT=0）:
+
+    TABLE OK header
+    TABLE OK rows=110
+    TABLE OK figures=f1,f2,f3,f4,f5,f6,f7,f8,f9,f10
+    SVG OK count=10 names=lowercase
+    checks=107 line_refs=73 derived=22 table_checks=3 svgs=10 fails=0
+    NUMBERS_VERIFIED=1
+
+代码同步:
+- CSV figure 期望改为 ["f1","f2",...,"f10"]。
+- SVG glob 改为 f*.svg；EXPECTED_SVGS 为 10 个精确小写名。
+- 首次按字典序排序使 f10 排在 f2 之前，触发 FAIL SVG names；改为按数字排序，键为 int(re.search(r"f([0-9]+)", p.name).group(1))，复跑通过。
+
+### 4.3 style_check.py
+
+命令:
+
+    PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/style_check.py
+
+输出（EXIT=0）:
+
+    STYLE OK banned_words=0
+    STYLE chars_cn=6037
+    STYLE headings=8
+    STYLE OK figure_refs=10
+    STYLE OK source_tables=7 lines=36,51,92,128,155,180,209
+    STYLE OK max_sentence_cn<=60
+    STYLE OK paragraph_sentences=3..5
+    STYLE_CHECK_OK=1
+
+## 5. 工作树审计
+
+    report/figures 文件名正则违规: 0
+    report 下大写 SVG 路径引用: 0
+    report 下大写 SVG 文件名引用（排除本证据日志旧名表）: 0；本日志旧名表 10 行
+    report/**/*.svg XML 解析: 11/11 PASS（10 图 + poster_en.svg）
+    report/**/*.md 相对链接缺失: 0
+    figure_data_table.csv: 110 行，表头 6 列，figure 键 f1..f10，equal 全 YES
+    10 个图表 SVG sha256 与基线一致: 10/10
+
+Python 语法检查（compile 内置，不写 __pycache__）:
+
+    make_figures.py PASS
+    verify_numbers.py PASS
+    style_check.py PASS
+    stream_stats.py PASS
+    PY_SYNTAX_OK=4
+
+## 6. 边界与交接说明
+
+- 本任务只覆盖 git 跟踪的 report 工作树。temp_test/{pack,pack_rev,pack_try,host/audit_pack}/report 下仍有打包暂存副本，属于 .gitignore 的临时目录，不在本任务写权限内；发布包是否已无大写名，以 host 的 task-67 重跑打包后的包内路径断言为准。
+- 当前 git 索引仍记录 10 个旧的大写路径（Windows 大小写不敏感，git status 显示为 M，而不是 rename）。工作树已全部是小写。提交时需用 git add -A 让 Git 记录重命名；本任务按要求不做 git 写操作，交 director/lead 处理。
+- 未改 docs、nn、retina_event、gateway、host 源码；未安装 npm 依赖；未改 package.json。
+- 未启动任何服务；未占用 UDP 1234 / TCP 8787；未杀任何进程。
+
+## 7. 交付文件
+
+- report/figures/f1_system_arch.svg ... f10_latency.svg（10 个小写 SVG）
+- report/figures/make_figures.py（小写输出 + 小写 CSV 键）
+- report/figures/verify_numbers.py（小写路径断言，107 checks）
+- report/figures/style_check.py（未改文风规则）
+- report/figures/figure_data_table.csv（110 行，f1..f10）
+- report/evaluation_report.md、report/design_report.md、report/poster_en.md、report/poster_en.svg、report/platform_checklist.md、report/demo_video_script.md、report/evidence/*.log 的路径引用
+- report/evidence/EVIDENCE_FIG_LOWER.log（本文件）

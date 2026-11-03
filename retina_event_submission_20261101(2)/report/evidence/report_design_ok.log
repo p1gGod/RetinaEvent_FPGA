@@ -1,0 +1,84 @@
+REPORT_DESIGN_OK=1
+Task: task-47 / M9f 设计报告主体
+Date: 2026-10-30T23:59:07+08:00
+Operator: director
+Workspace: E:/workspace/FPGA_Comp
+HEAD at start: 0948345 (report commit not yet made)
+
+[1] FILE STATS
+$ wc -l report/design_report.md
+527 report/design_report.md
+$ wc -c report/design_report.md
+59932 report/design_report.md
+$ grep -c '^|[- :|]*|$' report/design_report.md
+21
+CJK characters: 12778
+H1 count: 7
+
+[2] STYLE + REFS CHECKER
+$ node report/evidence/check_report.mjs
+CHECK H1_COUNT = 1 got=7
+CHECK H1_TITLES = 1 ["选题背景与创新点","设计原理与功能框图","软硬件划分依据与接口设计","优化过程与前后对比","大模型协作","技能包提炼过程","复现说明"]
+CHECK H4_PLUS = 1
+CHECK CJK_GE_12000 = 1 cjk=12778
+CHECK TABLES_GE_8 = 1 tables=21
+CHECK TABLE_COLUMNS = 1 issues=0
+CHECK BANNED_TERMS = 1 hits=0
+CHECK REFS = 1 links=33 missing=0
+CHECK SOURCE_EXISTS_02_metric_register.md = 1 docs/06_facts/02_metric_register.md
+CHECK SOURCE_EXISTS_05_action_uplink_contract.md = 1 docs/03_tech/05_action_uplink_contract.md
+CHECK SOURCE_EXISTS_00_current_status.md = 1 docs/06_facts/00_current_status.md
+CHECK NUMBER_PRESENT_20559 = 1 20,559
+CHECK NUMBER_PRESENT_11850 = 1 11,850
+CHECK NUMBER_PRESENT_7327 = 1 7,327
+CHECK NUMBER_PRESENT_0306ns = 1 +0.306 ns
+CHECK NUMBER_PRESENT_2890875 = 1 2,890,875
+CHECK NUMBER_PRESENT_a5fff751 = 1 a5fff751
+CHECK NUMBER_PRESENT_15940 = 1 15,940
+CHECK NUMBER_PRESENT_207840 = 1 207,840
+CHECK NUMBER_PRESENT_5652 = 1 5,652
+CHECK NUMBER_PRESENT_09042 = 1 0.9042
+STYLE_CHECK_OK=1
+REFS_OK=1
+CHECK_EXIT=0
+
+[3] NUMBER CROSS-CHECK AGAINST D8
+- D8-R1: act3c WNS +0.306 ns / TNS 0 / WHS +0.036 ns -> report §1.4, §4.1
+- D8-R2: LUT 20,559 / FF 11,850 / Slice 7,327 / BRAM 87 / DSP 7 -> report §1.4, §4.2
+- D8-M6: bitstream 2,890,875 B / md5 a5fff751... -> report §1.4, §7.1
+- D8-H6: pps ~15,940 -> report §1.3, §3.1, §7.3
+- D8-R6: 2-class 207,840 MAC; 3-class 208,080 MAC -> report uses 207,840 for act3c/v5/v7 2-class
+- D8-A7: v7 held-out 0.9042, ROM 5,652 words -> report §4.3
+- Registry count: M=8, R=8, A=8, T=6, H=6, O=5, total=41
+
+[4] FIGURES
+$ ls report/figures/*.svg | wc -l
+10
+$ ls report/figures/preview/*.png | wc -l
+10
+Embedded in report:
+- figures/f3_event_pipeline.svg (section 2.2)
+- figures/f5_timing.svg (section 4.1)
+Existing docs/assets SVGs remain embedded in section 2.1.
+f4_resources.svg is NOT embedded and NOT staged: preview shows Slice label 32.43%, while D8-R2 and report table use 46.23%. The cause is row_values(IMPL, "| Slice") matching "| Slice LUTs" first. This is a figure-generation defect; reported to lead for anno to fix. No report number was changed to match the bad figure.
+
+[5] SCOPE / GIT
+Intended commit paths:
+- README.md
+- report/design_report.md
+- report/evidence/check_report.mjs
+- report/evidence/REPORT_DESIGN_OK.log (this file; .gitignore has *.log, use git add -f)
+- report/figures/*.svg except f4_resources.svg + report/figures/make_figures.py (not preview PNGs)
+- docs/04_contest/05_report_outline_and_style.md
+- docs/06_facts/02_metric_register.md
+
+Not committed by this task (other pending work in worktree):
+- src/rtl/nn/nn_cfg.vh, nn_feat.v, nn_top.v, nn_winfeat.v, nn_winstat.v
+- sim/tb/*, sim/nn/EVIDENCE_M3b.md, EVIDENCE_M3c.md
+- build/build_inproc_v7.tcl
+- docs/README.md, docs/06_facts/00_current_status.md (task-44 pending)
+- nn/v7/, nn/out_v7/, nn/REPORT_v7_*.md, skill/ (other owners)
+
+[6] NOTES
+- Report line count and CJK count are checked by the checker; the checker is the authoritative pass/fail for STYLE_CHECK_OK and REFS_OK.
+- The report keeps v7 board-level numbers as "本版未覆盖，待 v7 位流验收后补".

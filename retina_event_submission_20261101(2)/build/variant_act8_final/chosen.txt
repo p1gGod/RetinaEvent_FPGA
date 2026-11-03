@@ -1,0 +1,4 @@
+CHOSEN=explore
+SOURCE=build/variant_act8e/retina_event.bit
+REASON=WNS +0.215 > Default +0.188; resources equivalent; hold +0.017; payload reproducible vs act8r
+DATE=2026-10-31 01:40:32 +0800

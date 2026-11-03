@@ -1,0 +1,36 @@
+REPACK_DRYRUN_OK=1
+# task-67 打包器确定性 dry-run；不是最终冻结证据，最终冻结件在真实工作树冻结后另出。
+GENERATED_AT=2026-10-31T02:31:40+08:00     
+SNAPSHOT_DIR=temp_test/pack_snapshot/20261031-023126                                                         
+SNAPSHOT_FILES=645     
+SNAPSHOT_BYTES=10433967    
+
+# [1] 同一快照连续两次打包
+PACK_FILES=651     
+PACK_BYTES=10472492    
+TREE_HASH=043ed44674af6ea6927290033996877f6a0e6cd3a716d8415d1762ccded23d69
+PACK_DETERMINISTIC=1 
+
+# [2] 命名与结构检查
+NAMECHECK_ENTRIES=730     
+NAMECHECK_BAD=0   
+NAMECHECK_SKIPPED=0   
+INTERNAL_REFS=186     
+INTERNAL_UNIQUE=59      
+INTERNAL_MISSING=0   
+ALIAS_APPLIED=2   
+EXTERNAL_REFS=184     
+EXTERNAL_REF_UNIQUE=33      
+FIGURES=12  
+FIGURE_REFS_OK=12/12 
+
+# [3] README checker（temp_test/host/readme_check.ps1）
+README_NUMBERS=17/17   
+README_LINKS=15/15   
+README_BANNED=0   
+README_SUBMIT_OK=1 
+
+# [4] 边界
+# 真实工作树冻结前不出最终 EVIDENCE_REPACK.log；最终冻结时点由 lead 给出。
+# 本日志中的 files/bytes/TREE_HASH 对应快照打包；日志以等长占位回填，回填不改变包内文件大小。
+# 端口：未占用 UDP 1234 / WS 8787；未跑 Vivado；未做 git 写操作。

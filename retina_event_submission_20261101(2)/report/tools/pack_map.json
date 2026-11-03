@@ -1,0 +1,715 @@
+{
+  "schema": 1,
+  "description": "FPGA_Comp 提交工程包映射表：官方目录结构，纯英文小写，排除构建产物与大数据集。",
+  "default_out": "temp_test/pack",
+  "name_regex": "^[a-z0-9_][a-z0-9._-]*$",
+  "name_exceptions": [
+    "README.md",
+    "skill/README.md",
+    "LICENSE"
+  ],
+  "max_file_bytes": 20971520,
+  "exclude_globs": [
+    "**/.git/**",
+    "**/temp_test/**",
+    "**/records/*.mp4",
+    "**/*.jou",
+    "**/*.log",
+    "**/*.pb",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/__pycache__/**",
+    "**/.venv/**",
+    "**/.Xil/**",
+    "**/*.pyc",
+    "**/*.backup.*",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.gitkeep",
+    "docs/01_product/collaboration_notes_legacy.md",
+    "report/evidence/EVIDENCE_REPACK.log",
+    "report/evidence/PACK_COMPLIANT.log",
+    "report/evidence/repro_audit.md",
+    "report/evidence/EVIDENCE_REPRO_AUDIT.log"
+  ],
+    "deny_globs": [
+    "report/evidence/EVIDENCE_REPACK.log",
+    "report/evidence/PACK_COMPLIANT.log",
+    "report/evidence/EVIDENCE_REPRO_AUDIT.log"
+  ],
+"log_exceptions": [
+    "report/evidence/*.log",
+    "docs/**/EVIDENCE_*.log",
+    "skill/_check/EVIDENCE*.log",
+    "board/EVIDENCE_*.log",
+    "build/act8_romswap.log"
+  ],
+  "ascii_aliases": {
+    "host/app/tools/annotator/打开标注.bat": "src/host/tools/annotator/open_annotator.bat"
+  },
+  "required": [
+    {
+      "path": "README.md",
+      "type": "file"
+    },
+    {
+      "path": "src/rtl",
+      "type": "dir"
+    },
+    {
+      "path": "src/host",
+      "type": "dir"
+    },
+    {
+      "path": "src/nn",
+      "type": "dir"
+    },
+    {
+      "path": "sim/tb",
+      "type": "dir"
+    },
+    {
+      "path": "sim/nn",
+      "type": "dir"
+    },
+    {
+      "path": "build",
+      "type": "dir"
+    },
+    {
+      "path": "board",
+      "type": "dir"
+    },
+    {
+      "path": "data",
+      "type": "dir"
+    },
+    {
+      "path": "skill/README.md",
+      "type": "file"
+    },
+    {
+      "path": "report",
+      "type": "dir"
+    },
+    {
+      "path": "report/evidence",
+      "type": "dir"
+    },
+    {
+      "path": "report/evidence/pack_ok.log",
+      "type": "file"
+    },
+    {
+      "path": "report/evidence/event_stream_stats.json",
+      "type": "file"
+    },
+    {
+      "path": "skill/_check",
+      "type": "dir"
+    },
+    {
+      "path": "skill/_check/evidence_skill_ok.log",
+      "type": "file"
+    },
+    {
+      "path": "report/llm_collaboration.md",
+      "type": "file"
+    },
+    {
+      "path": "LICENSE",
+      "type": "file"
+    },
+    {
+      "path": "vendor_manifest.json",
+      "type": "file"
+    },
+    {
+      "path": "report/evaluation_report.md",
+      "type": "file"
+    },
+    {
+      "path": "report/figures",
+      "type": "dir"
+    },
+    {
+      "path": "report/figures/make_figures.py",
+      "type": "file"
+    },
+    {
+      "path": "report/figures/figure_data_table.csv",
+      "type": "file"
+    },
+    {
+      "path": "report/poster_en.md",
+      "type": "file"
+    },
+    {
+      "path": "report/poster_en.svg",
+      "type": "file"
+    },
+    {
+      "path": "report/demo_video_script.md",
+      "type": "file"
+    },
+    {
+      "path": "report/platform_checklist.md",
+      "type": "file"
+    },
+    {
+      "path": "report/tools",
+      "type": "dir"
+    },
+    {
+      "path": "report/tools/readme.md",
+      "type": "file"
+    },
+    {
+      "path": "report/tools/pack_map.json",
+      "type": "file"
+    },
+    {
+      "path": "report/tools/pack_submission.ps1",
+      "type": "file"
+    },
+    {
+      "path": "report/tools/check_names.py",
+      "type": "file"
+    }
+  ],
+  "optional": [
+    {
+      "path": "report/design_report.md",
+      "source": "report/design_report.md"
+    }
+  ],
+  "generated_files": [
+    {
+      "target": "skill/README.md",
+      "content": "# 技能包（skill）\n\n本目录收录本工程可复用的工程技能，供评审复现与后续项目直接套用。\n\n## fpga_agent_task_contract\n\n- **适用场景**：FPGA/嵌入式项目中，把“任务书 -> 机读判据 -> 白名单 -> 证据落盘”固化成可检查的契约；适合多人/多智能体并行开发时防止越界和自证。\n- **使用方法**：按 `fpga_agent_task_contract/contract_template.md` 起任务书；实现后用 `python fpga_agent_task_contract/check_contract.py --contract <file> --root <repo>` 检查文件名、判据标记、证据日志与白名单。\n- **已验证效果**：本工程 M4/M5/M9 系列任务均以该脚本做提交前自检；证据日志首行标记（如 `PACK_OK=1`）与命令、退出码、数字一起落盘。\n- **失效条件**：只检查“有没有写”，不能证明硬件时序/上板性能；需要配合 Vivado 报告、ModelSim 波形与真实板卡实测；不适用于没有明确任务书与判据的探索性工作。\n- **来源（失败与观察）**：早期只凭口头目标开发，出现过判据口径不一致、证据散落、越界改文件后才发现白名单冲突；因此把契约、白名单、证据模板固化成脚本。\n\n## 目录约定\n\n- 所有目录与文件名使用英文小写、数字、点、下划线、连字符；扩展名同样小写（`.MD`/`.PNG` 视为违规）。\n- 根 `README.md` 与 `skill/README.md` 是任务书强制要求的大小写约定名，按规则做显式例外；其余路径不得大写。\n- 不提交 `node_modules/`、`dist/`、`records/*.mp4`、Vivado 的 `*.jou/*.log/*.pb` 与大于 20 MB 的单文件。\n\n生成方式：`report/tools/pack_submission.ps1` 读取 `report/tools/pack_map.json` 自动生成；本 README 由映射表中的 generated_files 写入。\n"
+    }
+  ],
+  "mappings": [
+    {
+      "source": "README.md",
+      "target": "README.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/llm_collaboration.md",
+      "target": "report/llm_collaboration.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/design_report.md",
+      "target": "report/design_report.md",
+      "type": "file",
+      "optional": true
+    },
+    {
+      "source": "report/evaluation_report.md",
+      "target": "report/evaluation_report.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "LICENSE",
+      "target": "LICENSE",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "vendor_manifest.json",
+      "target": "vendor_manifest.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/figures",
+      "target": "report/figures",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*.svg",
+        "**/*.py",
+        "**/*.csv",
+        "**/*.json"
+      ],
+      "exclude": [
+        "preview/**",
+        "**/__pycache__/**"
+      ]
+    },
+    {
+      "source": "report/tools",
+      "target": "report/tools",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "**/__pycache__/**",
+        "**/*.pyc"
+      ]
+    },
+    {
+      "source": "report/poster_en.md",
+      "target": "report/poster_en.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/poster_en.svg",
+      "target": "report/poster_en.svg",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/demo_video_script.md",
+      "target": "report/demo_video_script.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/platform_checklist.md",
+      "target": "report/platform_checklist.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "report/evidence",
+      "target": "report/evidence",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "*.log",
+        "*.json",
+        "*.txt",
+        "*.md",
+        "*.mjs",
+        "*.csv",
+        "*.svg"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "retina_event/src/hdl",
+      "target": "src/rtl",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "retina_event/sim",
+      "target": "sim",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "retina_event/tool",
+      "target": "build",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "*.tcl",
+        "*.ps1"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "retina_event/prj/retina_event.srcs/constrs_1/new/pin.xdc",
+      "target": "board/pin.xdc",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "retina_event/src/constraints/retina_event.xdc",
+      "target": "board/retina_event.xdc",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/program_retina.tcl",
+      "target": "board/program_retina.tcl",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/flash_program.tcl",
+      "target": "board/flash_program.tcl",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/flash_program_v3.tcl",
+      "target": "board/flash_program_v3.tcl",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/flash_retry.tcl",
+      "target": "board/flash_retry.tcl",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "docs/05_experiments/Flash固化_20261009/flash_detect.tcl",
+      "target": "board/flash_detect.tcl",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "board/readme.md",
+      "target": "board/readme.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "board/measurements.md",
+      "target": "board/measurements.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "board/extract_measurements.py",
+      "target": "board/extract_measurements.py",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "board/board_vs_offline_v5.md",
+      "target": "board/board_vs_offline_v5.md",
+      "type": "file",
+      "required": false
+    },
+    {
+      "source": "board/evidence_board_doc.log",
+      "target": "board/evidence_board_doc.log",
+      "type": "file",
+      "required": false
+    },
+    {
+      "source": "nn/stats.json",
+      "target": "data/nn_stats.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/_filter_probe.json",
+      "target": "data/nn_filter_probe.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/_recon2.json",
+      "target": "data/nn_recon2.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/_segments_probe.json",
+      "target": "data/nn_segments_probe.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "docs/05_experiments/action_recognition_20261029/capture_log_v7hands_20261030.md",
+      "target": "data/readme.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "skill",
+      "target": "skill",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*.py",
+        "**/*.md",
+        "**/*.txt",
+        "**/*.json",
+        "**/*.log"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "host/app/gateway",
+      "target": "src/host/gateway",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "host/app/packages",
+      "target": "src/host/packages",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "host/app/web/src",
+      "target": "src/host/web/src",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "host/app/tools",
+      "target": "src/host/tools",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
+        "_csv_probe_out/**",
+        "_exact/**",
+        "**/*.png",
+        "**/*.jpg",
+        "**/*.jpeg"
+      ]
+    },
+    {
+      "source": "host/app/package.json",
+      "target": "src/host/package.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/package-lock.json",
+      "target": "src/host/package-lock.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/tsconfig.base.json",
+      "target": "src/host/tsconfig.base.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/tsconfig.json",
+      "target": "src/host/tsconfig.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/start.bat",
+      "target": "src/host/start.bat",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/web/index.html",
+      "target": "src/host/web/index.html",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/web/package.json",
+      "target": "src/host/web/package.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/web/tsconfig.json",
+      "target": "src/host/web/tsconfig.json",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "host/app/web/vite.config.ts",
+      "target": "src/host/web/vite.config.ts",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn",
+      "target": "src/nn",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "**/*.py",
+        "v6/**/*.md",
+        "v7/**/*.md"
+      ],
+      "exclude": [
+        "out*/**",
+        "_evidence/**",
+        "_recon1.py",
+        "_recon2.py",
+        "_recon3.py",
+        "_recon4.py",
+        "_recon5.py"
+      ]
+    },
+    {
+      "source": "nn/REPORT_QC与数据集v4.md",
+      "target": "src/nn/report_qc_dataset_v4.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_v6_表征实验.md",
+      "target": "src/nn/report_v6_representation.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_v7_数据集.md",
+      "target": "src/nn/report_v7_dataset.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_v7_训练与量化.md",
+      "target": "src/nn/report_v7_training_quantization.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_决策链标定.md",
+      "target": "src/nn/report_decision_chain.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_数据勘察.md",
+      "target": "src/nn/report_data_survey.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_数据勘察_v2.md",
+      "target": "src/nn/report_data_survey_v2.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_数据勘察_v3.md",
+      "target": "src/nn/report_data_survey_v3.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_特征与窗口方案.md",
+      "target": "src/nn/report_features_windows.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_融合与裁决.md",
+      "target": "src/nn/report_fusion_decision.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_训练v5.md",
+      "target": "src/nn/report_training_v5.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_训练与量化.md",
+      "target": "src/nn/report_training_quantization.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "nn/REPORT_评估.md",
+      "target": "src/nn/report_evaluation.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/variant_act8_final",
+      "target": "build/variant_act8_final",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "retina_event.bit",
+        "timing.rpt",
+        "util.rpt",
+        "drc.rpt",
+        "md5.txt",
+        "CHOSEN.txt"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "build/variant_act8_uart",
+      "target": "build/variant_act8_uart",
+      "type": "dir",
+      "required": true,
+      "include": [
+        "retina_event.bit",
+        "retina_event_act8_uart.mcs",
+        "retina_event_act8_uart.prm",
+        "timing.rpt",
+        "util.rpt",
+        "drc.rpt",
+        "md5.txt",
+        "CHOSEN.txt"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "docs/06_facts/00_current_status.md",
+      "target": "docs/06_facts/00_current_status.md",
+      "type": "file",
+      "required": true
+    },
+    {
+      "source": "build/variant_act3c",
+      "target": "build/variant_act3c",
+      "type": "dir",
+      "required": true,
+      "optional": true,
+      "include": [
+        "timing_deliver.rpt",
+        "inproc_util_impl.rpt",
+        "retina_event.bit"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "build/variant_act7",
+      "target": "build/variant_act7",
+      "type": "dir",
+      "required": true,
+      "optional": true,
+      "include": [
+        "timing_deliver.rpt",
+        "util_deliver.rpt"
+      ],
+      "exclude": []
+    },
+    {
+      "source": "build/act8_romswap.log",
+      "target": "build/act8_romswap.log",
+      "type": "file",
+      "required": true,
+      "optional": true
+    }
+  ]
+}

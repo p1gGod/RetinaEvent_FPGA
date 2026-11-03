@@ -1,0 +1,71 @@
+POSTER_OK=1
+Task: task-58 / M9k 英文海报 + 演示视频分镜 + 平台上传清单
+Date: 2026-10-31T00:11:25+08:00
+Operator: director
+Workspace: E:/workspace/FPGA_Comp
+
+[1] DELIVERABLES
+- report/poster_en.md: 66 lines, 3,969 bytes, 6 section markers, no CJK
+- report/poster_en.svg: 118 lines, 2,725,488 bytes, A4 210mm x 297mm, two embedded TTF faces (regular + bold), 0 <image> elements, no CJK in visible text
+- report/demo_video_script.md: 52 lines, 8 shots, total 175 s, max narration sentence 10 CJK chars
+- report/platform_checklist.md: 77 lines, 5 required items, CN intro 87 CJK chars, EN intro 75 words, 3 keywords
+- report/evidence/check_poster.mjs: 113 lines, 5,101 bytes, all checks below
+
+[2] CHECKER OUTPUT
+$ cd E:/workspace/FPGA_Comp && node report/evidence/check_poster.mjs
+CHECK POSTER_SECTIONS_6 = 1 sections=6
+CHECK POSTER_ENGLISH_MD = 1
+CHECK POSTER_ENGLISH_SVG = 1
+PARSE_OK=1
+CHECK SVG_XML_PARSE = 1
+CHECK SVG_A4_PORTRAIT = 1
+CHECK POSTER_NUMBERS = 1 =38/38
+POSTER_NUMBERS=38/38
+CHECK VIDEO_SHOTS_GE_6 = 1 shots=8
+CHECK VIDEO_MONOTONIC = 1
+CHECK VIDEO_TOTAL_LE_180 = 1 total=175s
+CHECK VIDEO_REQUIRED_SHOTS = 1 missing=
+CHECK VIDEO_SENTENCE_LE_25 = 1 max=10
+VIDEO_OK=1
+CHECK PLATFORM_FIVE_ITEMS = 1 missing=
+CHECK INTRO_CN_LE_200 = 1 cjk=87
+CHECK INTRO_EN_LE_120 = 1 words=75
+CHECK PLATFORM_THREE_KEYWORDS = 1 keywords=3
+CHECK DOCS04_POSTER_PATH = 1
+CHECK DOCS04_PLATFORM_PATH = 1
+VIDEO_OK=1
+PLATFORM_OK=1
+POSTER_OK=1
+CHECK_EXIT=0
+
+[3] POSTER NUMBER TRACE
+All visible numeric tokens in poster_en.md + poster_en.svg <text> content were checked against:
+docs/06_facts/02_metric_register.md
+Result: 38/38 tokens found; no missing token.
+The first value (0 pulses) is labelled as an offline held-out count (D8-A7). v7 board-level numbers are explicitly not claimed (D8-A8, D8-O2).
+
+[4] FIGURE / ENGLISH POLICY
+- The original f1_system_arch.svg contains Chinese labels. To keep the printed poster pure English, poster_en.svg uses an English block diagram derived from F1; the source vector is linked from poster_en.md.
+- f4_resources.svg is not embedded: its generated Slice label remains 32.43%, conflicting with D8-R2 46.23%. A comment in poster_en.svg records the dependency and the pending anno fix.
+- No image files are embedded; the SVG is self-contained except for the embedded fonts.
+- F5/F7 are not embedded because their figure labels are Chinese; their authoritative values (D8-R1/R5/A7) are in Key Results.
+
+[5] DOCS/04 STATUS TABLE
+$ git diff --numstat -- 'docs/04_contest/02_提交物清单.md'
+6       6       docs/04_contest/02_提交物清单.md
+Updated rows 1-6 in section 1 only:
+- row 2 技能包: skill/ three packages + self-check
+- row 3 设计报告: report/design_report.md draft
+- row 4 目录结构: README.md §3
+- row 5 决赛额外: report/poster_en.svg + report/poster_en.md (A4 portrait)
+- row 6 平台上传必填: report/platform_checklist.md; video/photos/authorization pending
+- row 1 工程包: RTL/host/records in place; packaging pending
+Path grep:
+16:| 5 | ... | ✅ <code>report/poster_en.svg</code> + <code>report/poster_en.md</code>（A4 竖版） |
+17:| 6 | ... | 🔶 <code>report/platform_checklist.md</code>；视频/实物照/授权待补 |
+
+[6] CONSTRAINTS / NOT DONE
+- No git add / commit / push.
+- No change to report/figures/**, report/design_report.md, skill/**, RTL, host source, or ports.
+- F4 is left untouched for anno; the poster does not use it.
+- poster_en.pptx is not produced; the SVG is the print master, md is the editable source.

@@ -1,0 +1,113 @@
+README_SUBMIT_OK=1
+Task: task-57 / M9j 提交入口 README（把仓库根 README.md 重写为评审第一入口）
+Date: 2026-10-31T00:20:30+08:00
+Operator: host
+Workspace: E:/workspace/FPGA_Comp
+Environment: Windows / Git Bash; PowerShell 5.1; UTF-8 console (chcp 65001)
+
+[0] COMMAND
+chcp.com 65001 >/dev/null 2>&1
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Console]::OutputEncoding=[Text.Encoding]::UTF8; & 'temp_test/host/readme_check.ps1'"
+EXIT=0
+
+[1] CHECKER OUTPUT
+TITLE_OK ## 1. 作品与赛道
+TITLE_OK ## 2. 这是什么
+TITLE_OK ## 3. 提交目录对照表
+TITLE_OK ## 4. 快速复现
+TITLE_OK ## 5. 交付证据索引
+TITLE_OK ## 6. 关键指标一屏表
+TITLE_OK ## 7. 许可与第三方
+TITLE_OK ## 8. 版本与时间
+TITLES_OK=8/8
+SECTION2_CHARS=87 OK
+DIR_TABLE_ROWS=7 OK
+METRIC_TABLE_ROWS=8 OK
+NUM_OK 20,559
+NUM_OK 32.43%
+NUM_OK 11,850
+NUM_OK 9.35%
+NUM_OK 64.44%
+NUM_OK 2.92%
+NUM_OK +0.306 ns
+NUM_OK +0.036 ns
+NUM_OK 15,940
+NUM_OK 8.80 ms
+NUM_OK 2,890,875
+NUM_OK a5fff751e20019d7e80a3a953f7f8c5a
+NUM_OK 0.9042
+NUM_OK 63,400
+NUM_OK 126,800
+NUM_OK 135
+NUM_OK 240
+NUMBERS_OK=17/17
+LINK_OK report/design_report.md
+LINK_OK docs/01_product/product_manual.md
+LINK_OK docs/01_product/collaboration_notes_legacy.md
+LINK_OK build/build_inproc.tcl
+LINK_OK skill/README.md
+LINK_OK report/evidence/REPORT_DESIGN_OK.log
+LINK_OK report/evidence/EVIDENCE_POSTER.log
+LINK_OK report/evidence/PACK_OK.log
+LINK_OK report/evidence/EVIDENCE_README.log
+LINK_OK NOTICE
+LINK_OK docs/06_facts/00_current_status.md
+LINKS_OK=11/11
+BANNED 而是=0
+BANNED 首先=0
+BANNED 其次=0
+BANNED 最后=0
+BANNED 值得注意的是=0
+BANNED 赋能=0
+BANNED 打造=0
+BANNED 助力=0
+BANNED 闭环=0
+BANNED 痛点=0
+BANNED 一站式=0
+BANNED 多维度=0
+BANNED 显著提升=0
+BANNED 极大地=0
+BANNED 大幅=0
+BANNED 完美=0
+BANNED 我们认为=0
+BANNED 综上=0
+BANNED 总而言之=0
+BANNED_HITS=0
+CMDPATH_OK build/build_inproc.tcl
+CMDPATH_OK build/run_sim.ps1
+CMDPATH_OK sim/tb/tb_retina_core.v
+CMDPATH_OK=3/3
+EVIDENCE_LOG_OK EVIDENCE_POSTER.log
+EVIDENCE_LOG_OK EVIDENCE_README.log
+EVIDENCE_LOG_OK PACK_OK.log
+EVIDENCE_LOG_OK REPORT_DESIGN_OK.log
+EVIDENCE_LOGS=4/4
+README_SUBMIT_OK=1
+
+EXIT=0
+
+[2] ARTIFACT HASHES
+README.md: 94 lines, 5843 bytes, sha256 51ba3b86cb22f321a166b17921a52fe349632545375bfb711698557886a9ca4b
+docs/01_product/collaboration_notes_legacy.md: 509 lines, 30737 bytes, sha256 5f833ad9a571b3d21f190eea2d1daee2a5b713f7b9c8626211902891c04acf7a
+旧 README 复制件与 2026-09-27 版逐字节一致（hash 相等）。
+
+[3] STYLE SELF-CHECK
+正文 43 句；最长句 59 字；超过 60 字的句子 0 句。
+该检查为附加自查（task-57 文风要求），不计入 README_SUBMIT_OK 的机读判据。
+
+[4] EVIDENCE INDEX COVERAGE
+- report/evidence/REPORT_DESIGN_OK.log（首行 REPORT_DESIGN_OK=1）
+- report/evidence/EVIDENCE_POSTER.log（首行 POSTER_OK=1）
+- report/evidence/PACK_OK.log（首行 PACK_OK=1）
+- report/evidence/EVIDENCE_README.log（首行 README_SUBMIT_OK=1，本文件）
+
+[5] NOTES
+- report/evaluation_report.md 在本次运行时尚不存在；README 第 5 节如实写「本版未生成」并以纯文本保留路径，避免死链。task-45 产出评测报告与 report_eval_ok.log 后，第 5 节需补链接/补行并重跑本脚本。
+- 根 LICENSE 文件不存在；README 第 7 节如实写明「本版仓库尚未单独收录 LICENSE 文本」，MIT 声明与第三方来源指向 NOTICE。
+- 关键指标 17 个数字全部同时命中 README 与 docs/06_facts/02_metric_register.md；未把未测量值写成实测值。
+- 未做 git 写、未装依赖、未运行 Vivado、未占用 UDP 1234 / WS 8787。
+- git diff --check -- README.md 返回 0（无行尾空白）。
+- EVIDENCE_README.log 命中 .gitignore 的 *.log，提交需 git add -f。
+
+[6] POST-WRITE RECHECK
+写入本文件后再次运行 readme_check.ps1，输出 README_SUBMIT_OK=1、LINKS_OK=11/11、EVIDENCE_LOGS=4/4、EXIT=0。

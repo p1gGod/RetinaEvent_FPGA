@@ -1,0 +1,20 @@
+CHOSEN=explore
+SOURCE=build/variant_act8e/retina_event.bit
+BIT_SIZE=2839107
+FULL_MD5=5ec55ec07c44f2503df63f1bb160a6e6
+HEADER_LEN=127
+HDR_FIELD a=64 b=13 c=11 d=9
+HEADER_DATE=2026/10/31
+HEADER_TIME=01:40:32
+PAYLOAD_OFFSET=127
+PAYLOAD_LEN=2838980
+PAYLOAD_MD5=dcbcf543210c33cb22625128bc5f6b97
+BUILD_END=2026-10-31T01:40:33+0800
+TIMING: WNS=+0.215 TNS=0.000 WHS=+0.017 THS=0.000
+STRATEGY: opt_design/place_design/route_design -directive Explore + phys_opt_design (tool/build_inproc_v7.tcl)
+NOT_PROGRAMMED=1
+NOTE: header length is NOT fixed; it depends on header field lengths. Parsed by temp_test/rtl2/bit_payload_md5.py, not hardcoded. This design: 127 B = 13 B magic + a(3+64) + b(3+13) + c(3+11) + d(3+9) + e(1+4).
+NOTE: act8 Default payload md5 = f1197e9aaa1b6c2e26fa2653aa847a5e (2,838,576 B; different strategy => different payload, expected).
+NOTE: act8r reproducibility rebuild payload md5 = dcbcf543210c33cb22625128bc5f6b97 (2,838,980 B; identical to this delivery).
+CORRECTION: earlier 168 B / 71a0d469 was wrong (fixed 2026-10-31 02:2x by Lead order)
+NOTE: the old 71a0d469/2,838,939 was a tail hash starting at byte 168, 41 B too far into the payload.

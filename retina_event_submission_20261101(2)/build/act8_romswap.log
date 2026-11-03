@@ -1,0 +1,117 @@
+=== PRE 2026-10-31 01:20:09 ===
+4288488d66dd2f22bfc946b0698f29170cbc702ef21a68bcc4a646831e1bc41f *nn/out_v7b/nn_rom_data_v7b.v
+316ba0066ff1224f7c2e4afe923510fa75e83b8932f58f461f62edc005d62d16 *src/rtl/nn/nn_rom_data.v
+2d9b707330affcc80555633d509fa98eba0c102361a95fcdbd083d0d8aa4d311 *sim/tb/tb_nn_engine_v7_vectors.vh
+017f78338c3836342a50eef330a35a990570bad771187a24ff281104af4ed5ca *sim/tb/tb_golden_v7.vh
+341ee77b1215f4a5a7a46a3a24e96e0f01362e4837f451dad6810f4b3db93b05 *nn/out_v7b/tb_golden_v7.vh
+2026-10-31 01:20:07.331259700 nn/out_v7b/_tb_regen_check.vh
+2026-10-31 01:16:16.239267500 nn/out_v7b/artifact_hashes.json
+2026-10-31 01:16:23.324462300 nn/out_v7b/build_meta.json
+2026-10-31 01:16:15.474564600 nn/out_v7b/golden_vectors.json
+2026-10-31 01:16:10.461389300 nn/out_v7b/nn_params_v7b.json
+2026-10-31 01:16:10.467191900 nn/out_v7b/nn_rom_data_v7b.v
+2026-10-31 01:16:12.299693500 nn/out_v7b/rom_offsets.json
+2026-10-31 01:20:07.430324800 nn/out_v7b/tb_golden_v7.vh
+=== STEP1 cp rom ===
+CP_RC=0
+=== STEP2 regen vectors ===
+wrote E:\workspace\FPGA_Comp\retina_event\sim\tb\tb_nn_engine_v7_vectors.vh 121011 bytes
+json sha256 364c934b3668ccc3f31e84358c46b07a0e2b970eb5b3613d3c2673632a804596
+   gv_01_open_left_aug0 logits [-1, 0] class 1 margin 1 feat [0, 0, -42, 0, 14, 0, 48] sat []
+   gv_02_open_left_aug1 logits [-2, -2] class 0 margin 0 feat [0, 0, -127, 3, -4, 112, -64] sat []
+   gv_03_wave_left logits [11, -11] class 0 margin -22 feat [127, 127, -3, -1, 3, -6, 12] sat []
+   gv_04_empty_A logits [0, 0] class 0 margin 0 feat [0, 0, 42, 0, 0, 0, 0] sat []
+   gv_05_static_a logits [8, -5] class 0 margin -13 feat [86, 67, 44, 3, 3, 15, 8] sat []
+   gv_06_tie1 logits [-1, -1] class 0 margin 0 feat [0, 0, -42, 27, -23, 87, -37] sat []
+GEN_RC=0
+=== STEP3 cfg check ===
+CFG_OFFSETS nn/out_v7b/rom_offsets.json
+CFG_CHECK NN_W1_BASE   got=0     exp=0     OK
+CFG_CHECK NN_W2_BASE   got=288   exp=288   OK
+CFG_CHECK NN_W3_BASE   got=1440  exp=1440  OK
+CFG_CHECK NN_WG_BASE   got=4896  exp=4896  OK
+CFG_CHECK NN_WFC_BASE  got=5008  exp=5008  OK
+CFG_CHECK NN_B1_BASE   got=5520  exp=5520  OK
+CFG_CHECK NN_B2_BASE   got=5528  exp=5528  OK
+CFG_CHECK NN_B3_BASE   got=5544  exp=5544  OK
+CFG_CHECK NN_BG_BASE   got=5568  exp=5568  OK
+CFG_CHECK NN_BFC_BASE  got=5584  exp=5584  OK
+CFG_CHECK NN_SH1_BASE  got=5586  exp=5586  OK
+CFG_CHECK NN_SH2_BASE  got=5594  exp=5594  OK
+CFG_CHECK NN_SH3_BASE  got=5610  exp=5610  OK
+CFG_CHECK NN_SHG_BASE  got=5634  exp=5634  OK
+CFG_CHECK NN_SHFC_BASE got=5650  exp=5650  OK
+CFG_ROM_WORDS got=5652 exp=5652 OK
+CFG_ROM_AW got=13 exp=13 OK
+CFG_XCHECK NN_W1_WORDS  got=288   exp=288   OK
+CFG_XCHECK NN_W2_WORDS  got=1152  exp=1152  OK
+CFG_XCHECK NN_W3_WORDS  got=3456  exp=3456  OK
+CFG_XCHECK NN_WG_WORDS  got=112   exp=112   OK
+CFG_XCHECK NN_WFC_WORDS got=512   exp=512   OK
+CFG_XCHECK NN_G1_CIN    got=7     exp=7     OK
+CFG_XCHECK NN_G1_COUT   got=16    exp=16    OK
+CFG_XCHECK NN_FC_CONV_IN got=240   exp=240   OK
+CFG_XCHECK NN_FC_CIN    got=256   exp=256   OK
+CFG_XCHECK NN_NUM_CLASSES got=2     exp=2     OK
+ROM_HEX_WORDS=5652
+CFG_V7_BAD=0
+CFG_V7_OK=1
+CFG_RC=0
+=== STEP4 copy tb_golden ===
+CP2_RC=0
+=== POST 2026-10-31 01:20:10 ===
+4288488d66dd2f22bfc946b0698f29170cbc702ef21a68bcc4a646831e1bc41f *src/rtl/nn/nn_rom_data.v
+421004df16df80914ad34a524ef931fd1b974261c9557d5deb495aea76f81039 *sim/tb/tb_nn_engine_v7_vectors.vh
+341ee77b1215f4a5a7a46a3a24e96e0f01362e4837f451dad6810f4b3db93b05 *sim/tb/tb_golden_v7.vh
+  5672 src/rtl/nn/nn_rom_data.v
+    27 sim/tb/tb_nn_engine_v7_vectors.vh
+  5699 total
+5653
+4:// int32 bias, per-channel SH; 5652 words.
+5:module nn_rom_data(
+11:    reg [31:0] rom [0:5651];
+  File "<string>", line 1
+    import json,re,sys,hashlib\nroot=r"E:/workspace/FPGA_Comp"\nrom=open(root+"/src/rtl/nn/nn_rom_data.v",encoding="utf-8",errors="replace").read()\nwords=[(int(a),int(b,16)) for a,b in re.findall(r"rom\[\s*(\d+)\s*\]\s*=\s*32'h([0-9a-fA-F]+)",rom)]\nprint("ROM_WORDS_PARSED=%d"%len(words))\nprint("ROM_ADDR_MIN=%d ROM_ADDR_MAX=%d"%(min(w[0] for w in words),max(w[0] for w in words)))\nprint("ROM_FIRST=0x%08x ROM_LAST=0x%08x"%(words[0][1],words[-1][1]))\ndecl=re.search(r"reg\s*\[\s*31\s*:\s*0\s*\]\s*rom\s*\[\s*0\s*:\s*(\d+)\s*\]",rom)\nprint("ROM_DECL=[0:%s]"%(decl.group(1) if decl else "NONE"))\noff=json.load(open(root+"/nn/out_v7b/rom_offsets.json"))\nsecs=off["sections"] if isinstance(off,dict) and "sections" in off else off\nbad=0; end=0\nprint("SECTIONS=%d"%len(secs))\nfor s in secs:\n    st=int(s.get("start",s.get("base",-1))); wd=int(s.get("words",s.get("len",0))); nm=s.get("name","?")\n    ok=(st==end); bad+=0 if ok else 1\n    print("SEC %-12s start=%d words=%d chain_ok=%d end=%d"%(nm,st,wd,1 if ok else 0,st+wd))\n    end=st+wd\nprint("SECTION_CHAIN_END=%d BAD=%d"%(end,bad))\nprint("ROM_FREEZE_OK=%d"%(1 if (len(words)==5652 and end==5652 and bad==0 and words[0][0]==0 and words[-1][0]==5651) else 0))\n
+                               ^
+SyntaxError: unexpected character after line continuation character
+ROM_WORDS_PARSED=5652
+ROM_ADDR_MIN=0 ROM_ADDR_MAX=5651
+ROM_FIRST=0xffffffcc ROM_LAST=0x00000008
+ROM_DECL=[0:5651]
+SECTIONS=15
+SEC conv1_w      start=0 words=0 chain_ok=1 end=0
+SEC conv2_w      start=288 words=0 chain_ok=0 end=288
+SEC conv3_w      start=1440 words=0 chain_ok=0 end=1440
+SEC g1_w         start=4896 words=0 chain_ok=0 end=4896
+SEC fc_w         start=5008 words=0 chain_ok=0 end=5008
+SEC conv1_b      start=5520 words=0 chain_ok=0 end=5520
+SEC conv2_b      start=5528 words=0 chain_ok=0 end=5528
+SEC conv3_b      start=5544 words=0 chain_ok=0 end=5544
+SEC g1_b         start=5568 words=0 chain_ok=0 end=5568
+SEC fc_b         start=5584 words=0 chain_ok=0 end=5584
+SEC conv1_sh     start=5586 words=0 chain_ok=0 end=5586
+SEC conv2_sh     start=5594 words=0 chain_ok=0 end=5594
+SEC conv3_sh     start=5610 words=0 chain_ok=0 end=5610
+SEC g1_sh        start=5634 words=0 chain_ok=0 end=5634
+SEC fc_sh        start=5650 words=0 chain_ok=0 end=5650
+SECTION_CHAIN_END=5650 BAD=14
+ROM_FREEZE_OK=0
+SEC conv1_w      start=0 len=288 end=288 chain_ok=1
+SEC conv2_w      start=288 len=1152 end=1440 chain_ok=1
+SEC conv3_w      start=1440 len=3456 end=4896 chain_ok=1
+SEC g1_w         start=4896 len=112 end=5008 chain_ok=1
+SEC fc_w         start=5008 len=512 end=5520 chain_ok=1
+SEC conv1_b      start=5520 len=8 end=5528 chain_ok=1
+SEC conv2_b      start=5528 len=16 end=5544 chain_ok=1
+SEC conv3_b      start=5544 len=24 end=5568 chain_ok=1
+SEC g1_b         start=5568 len=16 end=5584 chain_ok=1
+SEC fc_b         start=5584 len=2 end=5586 chain_ok=1
+SEC conv1_sh     start=5586 len=8 end=5594 chain_ok=1
+SEC conv2_sh     start=5594 len=16 end=5610 chain_ok=1
+SEC conv3_sh     start=5610 len=24 end=5634 chain_ok=1
+SEC g1_sh        start=5634 len=16 end=5650 chain_ok=1
+SEC fc_sh        start=5650 len=2 end=5652 chain_ok=1
+ROM_WORDS_PARSED=5652 DECL=[0:5651] ADDR_MIN=0 ADDR_MAX=5651
+ROM_FIRST=0xffffffcc ROM_LAST=0x00000008
+SECTIONS=15 CHAIN_END=5652 BAD=0 rom_words_json=5652 addr_bits=13
+ROM_FREEZE_OK=1

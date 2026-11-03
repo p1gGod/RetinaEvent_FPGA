@@ -1,0 +1,114 @@
+EVAL_BACKFILL_OK=1
+task=task-65 M9n 评测报告回填
+owner=anno
+date=2026-10-31T02:10+08:00
+repo=E:/workspace/FPGA_Comp
+scope=report/** only
+git_write=none
+source_code_edit=none
+vivado_or_board_run=none
+
+## 1. 输入与权威来源
+
+ACT7_BUILD=sim/nn/EVIDENCE_M3f.md
+ACT7_VALUES=WNS +0.059 / TNS 0 / WHS +0.027 / THS 0；LUT 22,371(35.29%) / FF 14,325(11.30%) / Slice 7,968(50.27%) / BRAM 87(64.44%) / DSP 8(3.33%) / IOB 140(49.12%)；bit 2,835,423 B
+ACT7_BIT_MD5=9c13668c029c9d3a248cf69cbec03582
+ACT8_BUILD=report/evidence/act8_artifacts.txt
+ACT8_VALUES=WNS +0.215 / TNS 0 / WHS +0.017 / THS 0；LUT 22,383(35.30%) / FF 14,325(11.30%) / Slice 8,026(50.64%) / BRAM 86.5(64.07%) / DSP 8(3.33%) / IOB 140(49.12%)；bit 2,839,107 B
+ACT8_BIT_MD5=5ec55ec07c44f2503df63f1bb160a6e6
+ACT8_BURN=sim/nn/EVIDENCE_M3j.md:228-246，2026-10-31 02:02 烧板，DONE_PIN=1 / EOS=1 / PROG_RESULT=OK
+ACT3C_BIT=docs/06_facts/00_current_status.md:28，2,890,875 B / a5fff751e20019d7e80a3a953f7f8c5a
+V7B_SWEEP=nn/out_v7b/s100_threshold_sweep.json，18 组 margin x N_CONSEC
+V7B_DECISION=docs/06_facts/03_v7b_deployment_decision.md，V7B_MODEL_OK=0，显式风险接受
+FACT_REGISTRY=docs/06_facts/02_metric_register.md，M6/M12/R9/R10/R11/R12 为当前口径
+
+本次运行中事实登记册被并行任务更新：act8 从“已构建未烧板”改为“2026-10-31 02:02 烧板”。
+报告已按最新事实更新，避免把当前板上位流写成 act3c；板上动作结论仍只取 act3c 的历史实测。
+
+## 2. 命令与输出
+
+### 2.1 图表与数据点表
+
+command=PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/make_figures.py
+exit=0
+output=figures=12 data_points_total=137
+output=FIGURES_OK=1
+output=csv=report/figures/figure_data_table.csv rows=164
+output=metrics=164，所有行 equal=YES
+figures=f1_system_arch.svg f2_data_volume.svg f3_event_pipeline.svg f4_resources.svg f5_timing.svg f6_cycle_budget.svg f7_heldout_rates.svg f8_iteration.svg f9_data_composition.svg f10_latency.svg f11_threshold_sweep.svg f12_act7_vs_act3c.svg
+new_rows=f11 增加 v7b 汇总 5 行；f12 增加 act8 构建 16 行；f12 图内 23 点（act3c/act7/act8）
+csv_header=figure,metric,value,expected,source_path:line,equal
+
+### 2.2 数字溯源断言
+
+command=PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/verify_numbers.py
+exit=0
+output=checks=200 line_refs=145 derived=41 table_checks=3 svgs=12 fails=0
+output=NUMBERS_VERIFIED=1
+assertions=保留原有 107 条，全部通过
+new_checks=act8 位流/md5/WNS/WHS/六项资源/timing.rpt/util.rpt/CHOSEN；v7b 开合块/open pulse/int8 一致率；act8 相对 act7 的 WNS.WHS.LUT.Slice.bit.端点差与 8 ns 占比
+svg_parse=12/12 PARSE_OK
+csv_rows_expected=164
+
+### 2.3 文风与结构自查
+
+command=PYTHONUTF8=1 nn/.venv/Scripts/python.exe report/figures/style_check.py
+exit=0
+output=chars_cn=8534
+output=headings=8
+output=figure_refs=12
+output=source_tables=13
+output=banned_words=0
+output=contrast_construction=0
+output=exclamation=0
+output=max_sentence_cn<=60
+output=paragraph_sentences=3..5
+output=STYLE_CHECK_OK=1
+
+## 3. 报告回填内容
+
+file=report/evaluation_report.md
+size=58,843 B / 355 行 / 中文 8,534 字
+chapters=8
+figures_referenced=12
+chapter_1=新增 act7 与 act8 构建结论；act8 已烧板但未做动作验收
+chapter_2=测试平台表改列当前 act8 与上次动作实测 act3c；新增 s50/s100 口径段
+chapter_5_1=决策门限标定，18 行表，选中 16/3；8/3 与 16/3 四项同，硬负 3→2、总 pulse 88→74；24/4 开合 14/17 不可接受
+chapter_5_2=v7b 部署口径重训，open 17/17、wave 1、hardneg 2、总 pulse 74；硬负 2>1 与镜像 d_wave 0.0196>0.01 两项未达标，V7B_MODEL_OK=0 为显式风险接受；pulse 数均标 s100 板端口径
+chapter_5_3=act7 与 act8 构建实测；act8 插 Default +0.188 -> Explore +0.215，六项资源、bit/md5、相对 act7 差值
+chapter_6=表 6-1 基线/预算/act3c，表 6-2 资源 act3c/act7/Δ，表 6-3 时序与位流 act3c/act7/Δ，表 6-4 act7/act8/Δ
+chapter_7=表 7-1 版本对比，表 7-2 四来源三代对比，表 7-3 A1~A4 待回填
+chapter_8=act7 未烧板、act8 已烧板未验收；v7/v7b 板级时延与误触率为本版未测量
+tbd=act8 的 A1~A4 上板动作验收，待 task-70；报告不填估计值
+
+## 4. 关键数值清单（报告与 CSV 同口径）
+
+act3c_WNS=+0.306 ns；TNS 0；WHS +0.036 ns
+act3c_res=LUT 20,559(32.43%) / FF 11,850(9.35%) / Slice 7,327(46.23%) / BRAM 87(64.44%) / DSP 7(2.92%) / IOB 140(49.12%)
+act7_WNS=+0.059 ns；比 act3c 少 247 ps；LUT 22,371；Slice 7,968；bit 2,835,423 B
+act8_WNS=+0.215 ns；WHS +0.017 ns；LUT 22,383；FF 14,325；Slice 8,026；BRAM 86.5；DSP 8；IOB 140；bit 2,839,107 B
+act8_vs_act7=WNS +0.156 ns；LUT +12；FF 0；Slice +58；BRAM -0.5；bit +3,684 B
+v7_s100=open 17/17；wave pulse 5；hardneg pulse 5；总 pulse 97
+v7b_s100=open 17/17；wave pulse 1；hardneg pulse 2；总 pulse 74；int8 一致率 0.9299
+sweep=8/3 open 17/17 hardneg 3 pulse 88；16/3 open 17/17 hardneg 2 pulse 74；24/4 open 14/17 hardneg 1 pulse 32
+latency=推理 8.80 ms（440,087 拍）；p50 85.612 ms；p95 97.555 ms；契约 R3 <=300 ms
+v5_board=118 脉冲 / 16.4 次每分；开合 61；挥手 47；换手 8
+
+## 5. 图表文件哈希
+
+sha256_report=f15111fce524306735727d2a94be1a16fe7b0c81e535b030fa160639fa5780b1
+sha256_f11=5404c42d6efbaba785f8ab8a0d064921b58c97cb04f62fb76707c74efa3f4533
+sha256_f12=307f17cb7e951386e4b4470d07688501d736ba0713635d5aa3299fb4d6c8c313
+sha256_csv=8ad5dd799a2884259ae8c5e730ec011421d9b52215c1e39e70124b66f0a537c6
+
+## 6. 边界与未做
+
+board_action_test=未做，A1~A4 仍待 task-70
+vivado=未运行
+git=未做任何写操作
+source_edits=未改 retina_event/**、host/**、nn/**、docs/**
+stale_check=全仓工作树 figures/F[0-9] 大小写检查不在本任务范围；本任务仅回填 report/**
+registry_shift=act7 R9/R10 行号 33/34 -> 34/35；act3c 位流来源 docs/06:16 -> docs/06_facts/00_current_status.md:28
+known_limit=act8 烧板只证明编程成功与发流恢复，不证明动作指标；动作指标未测量就是未测量
+
+EVAL_BACKFILL_DONE=1

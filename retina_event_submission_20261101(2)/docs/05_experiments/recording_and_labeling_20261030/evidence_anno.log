@@ -1,0 +1,148 @@
+ANNO_CORE_OK=1
+# M7c 轻量动作标注工具 annotator —— 验收证据（task-32）
+
+生成时间: 2026-10-30 20:50 +08:00 (Asia/Shanghai)
+工作目录: E:\workspace\FPGA_Comp
+Node: v24.12.0  (node --test 内置 test runner；零 npm 依赖)
+被测目录: host/app/tools/annotator/
+数据契约: records/<session>/meta.json + chunk-00N.{video.mp4,events.csv,frames.csv,labels.json}（与 task-30 网关长录同一份）
+
+## 0. 产物清单
+
+  host/app/tools/annotator/server.mjs        本地静态+API 服务（127.0.0.1，默认 8790，Range/206，防路径穿越）
+  host/app/tools/annotator/ui/index.html     标注页骨架
+  host/app/tools/annotator/ui/core.js        纯函数内核（坐标/桶/CSV/Range/labels，浏览器+node 双用）
+  host/app/tools/annotator/ui/app.js         交互层（画面/时间轴/右栏/快捷键/自动保存）
+  host/app/tools/annotator/ui/style.css      样式
+  host/app/tools/annotator/test/core.test.mjs       核心纯函数单测（30 个 test）
+  host/app/tools/annotator/test/http_selfcheck.mjs  真起服务做 HTTP 自检（10 项）
+  host/app/tools/annotator/test/realdata_check.mjs  真实长录验证（8 项，默认指向 temp_test 长录）
+  host/app/tools/annotator/test/browser_smoke.mjs   headless Chrome/Edge + CDP 真跑页面（10 项）
+  host/app/tools/annotator/README.md         启动方式/快捷键/labels 字段/已知限制
+  host/app/tools/annotator/打开标注.bat       双击启动（chcp 65001 → node server.mjs）
+
+## 1. 核心纯函数单测  → ANNO_CORE_OK=1
+
+命令: cd host/app/tools/annotator && node --test test/core.test.mjs
+结果: tests 30 / pass 30 / fail 0 / duration_ms 约 130   (退出码 0)
+（判据要求 >= 12，实际 30，覆盖下列全部类别）
+
+  - px <-> ms 换算、缩放钳制（pxToMs/msToPx/fitView/clampView/zoomViewAt/panViewBy/tickStepMs）
+  - 片段边界钳制（clampSegment/resizeSegment/moveSegment：start<end、最小 40ms、不越界）
+  - Alt+N -> typeId 映射（hotkeySlotFromEvent/typeIdForSlot/planTypeAssign，含无选中建段后赋类型）
+  - 事件 100ms 桶聚合（bucketEvents/logNormalizeCounts，含空输入与超界）
+  - Range 头解析与 206 响应构造（parseRangeHeader/contentRangeHeader/rangeResponse，含 416 语义）
+  - 路径穿越拒绝（sanitizeRelPath：../、绝对路径、盘符、符号链接/junction 场景）
+  - labels.json 迁移/损坏恢复默认（parseLabelsText/normalizeLabels：缺字段、坏 JSON、版本 v1、id=0 无动作不可删）
+  - 坐标系往返：labels 绝对板卡毫秒 <-> UI 相对毫秒（clampSpanToDomain/segmentsToLabels/segmentsFromLabels/makeSegment）
+  - 真实帧率不匹配的定位语义：frameAtMs（floor，边界归属不晚于该时刻的帧）与 nearestFrameAtMs（点击/拖动取最近帧）
+
+## 2. 测试 fixture 生成（无长录时自给自足）
+
+命令: node temp_test/anno_fixture/make_fixture.mjs
+关键输出:
+  FIXTURE_OK=1
+  root=E:\workspace\FPGA_Comp\temp_test\anno_fixture\records
+    not-a-session: (无分段)
+    rec-20261030-190000: chunk-000.video.mp4, chunk-001.recording.mp4, chunk-002.video.mp4
+    rec-20261030-200000: chunk-000.video.mp4
+说明: chunk-000 含 frames 200 行 + events 360 行 + labels 3 段；chunk-001 只有 .recording.mp4（未 seal）；chunk-002 无 events/labels（验证缺文件按空处理、labels 缺文件返回默认且不算“损坏重建”）；另有 secret.txt 干扰项验证不会被 HTTP 泄漏。
+
+## 3. HTTP 自检  → ANNO_HTTP_OK=1
+
+命令: cd host/app/tools/annotator && node test/http_selfcheck.mjs
+（脚本 import {startServer}，port 0 让系统分配，避免占用用户端口；不 bind 1234/8787）
+关键输出:
+  PASS GET / 返回 200 且是标注页（含 <video> 与 app.js）  [status=200 bytes=4031]
+  PASS GET /api/sessions 列出 fixture 会话与分段  [sessions=2 chunks=3]
+  PASS GET /api/chunk 返回 frames/events/labels 与桶聚合  [frames=200 events=360 labels=3]
+  PASS 视频 Range: bytes=0-99 → 206 + Content-Range 正确  [206 content-range=bytes 0-99/65536 bytes=100]
+  PASS 视频 Range 越界 → 416 + Content-Range: bytes */size  [416]
+  PASS GET → POST → GET labels 往返一致（原子落盘）  [segments 0 → 2，类型名与区间一致]
+  PASS 路径穿越 ../ 与绝对路径被拒绝（4xx，不出内容）  [/media/..%2F..%2Fsecret.txt→404 /media/rec-20261030-190000/..%2F..%2Fsecret.txt→400 /media/rec-20261030-190000/chunk-000.video.mp4%2F..%2F..%2Fsecret.txt→400 /media/%2Fetc%2Fpasswd→404 /api/chunk/..%2F..%2Fetc/0→400 /api/chunk/rec-20261030-190000/..%2F..%2Fsecret.txt→400]
+  PASS 静态资源 /ui/{app,core}.js 与 style.css 可加载且 MIME 正确  [/ui/app.js 42618B /ui/core.js 35098B /ui/style.css 6901B /ui/index.html 3606B]
+  PASS 未知路由 404、JSON 错误体统一  [404]
+  PASS 根目录不存在：/api/sessions 返回 exists=false（UI 显示引导卡片）  [exists=false sessions=0 页面含 emptyState/--root 指引]
+  ----
+  checks=10 pass=10 fail=0
+  ANNO_HTTP_OK=1   (进程退出码 0)
+
+## 4. 真实长录验证（关键：fpsNominal=30 但源 ~21.5fps，时间轴必须走 frames.csv）
+
+数据: E:\workspace\FPGA_Comp\temp_test\rec_probe\rec_60s_final\20261030-202724_rec
+      chunk-000.video.mp4 46,183,970 B h264 800x480 1293 帧 / 容器时长 43.1s / 墙钟 60s
+      frames.csv 1294 行（表头+1293 帧，frame_idx 严格递增），events.csv 只有表头
+命令: cd host/app/tools/annotator && node test/realdata_check.mjs --root E:\workspace\FPGA_Comp\temp_test\rec_probe\rec_60s_final
+关键输出:
+  PASS meta.json 的 chunks[].video/events/frames 按会话目录拼（是文件名，不是绝对路径）  [session=20261030-202724_rec video=chunk-000.video.mp4 (46183970B)]
+  PASS frames.csv 行数 = 视频帧数 + 1，frame_idx 严格递增  [1294 行（表头 1 + 帧 1293）]
+  PASS GET /api/chunk 给出真实 t0/totalMs/帧数，且 events.csv 只有表头时 total=0、密度全 0  [t0=1793363245626 totalMs=59930 counts=600 桶]
+  PASS ★30fps 陷阱：视频时间→帧号→t_board_ms，全部对上 frames.csv（不能用 currentTime 当时间）  [t=5s→f150→板卡偏移6925ms；t=21.5s→f645→29872ms；t=30s→f900→41725ms；t=40s→f1200→55667ms；t=43.09s→f1292→59930ms；最大 PTS 偏差=16840ms]
+  PASS 二分定位：时间轴 ms → 最近帧 → frame/fps 精确 seek → 帧号往返一致  [rel=5000ms→f109→seek 3.633s；rel=20000ms→f432→14.400s；rel=40000ms→f863→28.767s；rel=59930ms→f1292→43.067s]
+  PASS ★拖动时间轴：像素 → 相对 ms（含缩放）→ 最近帧，全宽 1000px 单调且不越界  [x 0..1000px 共 21 个采样点单调，末点 f1292；放大 2x 中心 f647]
+  PASS 建段 + POST labels + GET 回读：落盘绝对板卡毫秒，frame 来自 frames.csv  [startMs=1793363257971 endMs=1793363269082 frames=266..506]
+  PASS 46MB 真视频 Range：0-99 → 206，末尾 10 字节 → 206，Content-Range 总长一致  [size=46183970]
+  ----
+  realdata checks=8 pass=8 fail=0
+  REALDATA_OK=1   (进程退出码 0)
+说明: 自检写入的 chunk-000.labels.json 已在结束时删除，原始长录保持干净（未写 E:\workspace\FPGA_Comp\records\）。
+
+## 5. 浏览器真机冒烟（headless Chrome + CDP，证明页面真的可用）
+
+为什么需要: 单测与 HTTP 自检只覆盖纯函数与协议层，不能证明“页面加载了 JS、能拖、能按键、能存盘”。
+环境: Windows Chrome C:\Program Files\Google\Chrome\Application\chrome.exe（无则回退 Edge）；Node 24 自带 WebSocket 直连 CDP；零依赖。
+命令: cd host/app/tools/annotator && node test/browser_smoke.mjs
+      （默认 --root 指向 temp_test 真实长录；目录或浏览器缺失时打印 BROWSER_SKIP=1 并跳过）
+关键输出:
+  PASS 页面加载：无未捕获异常，会话/分段下拉已填充  [session=20261030-202724_rec chunks=1 types=10 saveStatus=暂无标注 videoReady=4 dur=43.1 hotkey=打标：Alt+1..9（1..9 备用）]
+  PASS 点时间轴 60% 处 → 播放头按 frames.csv 定位  [clock=00:35.950 frame=776 currentTime=25.867 期望帧≈776]
+  PASS 键盘 ←/Shift+← 逐帧（基于 frames.csv 帧号）  [frame 776 → 777 → 787]
+  PASS 拖空白建段：片段列表 +1、自动保存写 labels.json（绝对板卡毫秒）  [row=00:14.965–00:32.917 无动作 17951ms；labels startMs=1793363260591 endMs=1793363278543 frames=322..710]
+  PASS Alt+3 给选中片段打标 → labels.typeId=3（动作三）  [row=00:14.965–00:32.917 动作三 17951ms]
+  PASS 右栏改类型名 → 自动保存到 labels.types[3].name  [types[3].name=自检改名三]
+  PASS Ctrl+S 立即保存：状态栏提示 + labels.updatedAt 刷新  [2026-10-30T12:47:02.069Z → 12:47:02.225Z]
+  PASS 导出 segments.csv（浏览器下载到临时目录，内容/列头正确）  [row=1,1793363260591,1793363278543,322,710,3,自检改名三,]
+  PASS Delete 删除选中片段 → 磁盘 segments 清空  [segments 0，labels 已自动保存]
+  PASS 全程无未捕获 JS 异常 / console.error  [errors=0（含资源加载失败检查）]
+  ----
+  browser checks=10 pass=10 fail=0
+  BROWSER_OK=1   (进程退出码 0)
+
+浏览器冒烟抓出并修掉的真实缺陷（这些是单测无法覆盖的）:
+  1) ui/index.html 原写 href="./style.css"、src="./app.js"，但页面由 GET / 返回、静态资源只在 /ui/* 路由：
+     浏览器实际请求 /style.css（拿到 JSON，MIME 被拒）和 /app.js（404），页面 JS 完全没加载。
+     已改为 ./ui/style.css 与 ./ui/app.js；现在 /ui/app.js 42618B 正常执行。
+  2) server.mjs saveLabels 的 tmp+rename 在 Windows 上撞到目标文件被短暂打开（测试轮询读 labels）会 EPERM：
+     Error: EPERM: operation not permitted, rename ...chunk-000.labels.json.tmp-<pid>-<ts> -> ...chunk-000.labels.json。
+     已抽 writeFileAtomic()：rename 对 EPERM/EBUSY/EACCES 重试 6 次（40+i*60ms），仍失败退化为直接覆盖写并删 tmp
+     （宁可非原子也不丢用户标注），saveLabels 响应带 atomic 字段。
+  3) labels.json 不存在（全新会话）曾返回 recovered=true，UI 误报「labels 已重建（原文件损坏）」；
+     已改为：文件不存在 → 默认 labels + recovered=false（显示“暂无标注”），只有“存在但解析失败/需迁移”才提示重建。
+
+## 6. 静态交叉检查（防 app.js 引用不存在的 core 导出 / DOM id）
+
+命令: node temp_test/anno_fixture/_static_xcheck.mjs   (cwd=仓库根)
+关键输出:
+  core_calls=37 core_exports=61
+  MISSING_CORE_EXPORTS=js   (正则误匹配，非真实缺失)
+  dom_ids=32 html_ids=32
+  MISSING_DOM_IDS=none
+
+## 7. 启动方式
+
+  A) 双击 host/app/tools/annotator/打开标注.bat  → 127.0.0.1:8790 并自动开浏览器
+  B) node host/app/tools/annotator/server.mjs --root E:\workspace\FPGA_Comp\records
+  真实长录调试: node host/app/tools/annotator/server.mjs --root E:\workspace\FPGA_Comp\temp_test\rec_probe\rec_60s_final --port 8791
+  可选参数: --port <n> / --root <dir> / --no-open / --help；服务只监听 127.0.0.1，不使用 1234/8787。
+
+## 8. 已知限制与注意事项
+
+  - 只读 events.csv 前 60000 条明细，更多事件只回 100ms 桶（密度柱），不会拖慢页面。
+  - 浏览器能否播 chunk-00N.video.mp4 取决于 H.264 封装（本机 Edge/Chrome 可播）；无视频时页面给提示但时间轴仍可用。
+  - 未 seal 的 chunk-00N.recording.mp4 在列表中显示「录制中/未完成」，不参与标注。
+  - labels.json 损坏或字段缺失会自动恢复默认结构（id=0 无动作固定不可删），并在页面顶部提示；
+    文件不存在（全新会话）不提示“重建”，状态栏显示“暂无标注”。
+  - 自动保存 800ms 防抖；写失败顶部红条提示（不静默）；Ctrl+S 立即保存；Windows 上 rename 被占用会自动重试/降级覆盖写。
+  - 时间轴唯一权威是 frames.csv：视频→帧号 clamp(round(currentTime*fpsNominal)) 再查 t_board_ms；点击/拖动→最近帧→currentTime=frameIdx/fpsNominal 精确 seek；全程不用 currentTime 当时间。
+  - 导出 segments.csv 列: id,startMs,endMs,startFrame,endFrame,typeId,typeName,note（绝对板卡毫秒，CRLF）。
+  - 全量回归命令: node --test test/core.test.mjs && node test/http_selfcheck.mjs && node test/realdata_check.mjs && node test/browser_smoke.mjs（本机四套全部退出码 0）。

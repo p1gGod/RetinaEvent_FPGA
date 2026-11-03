@@ -1,0 +1,19 @@
+{
+  "name": "@retina/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test --experimental-strip-types \"test/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@retina/protocol": "*"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

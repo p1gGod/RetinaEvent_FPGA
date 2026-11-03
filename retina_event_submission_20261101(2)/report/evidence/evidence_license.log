@@ -1,0 +1,296 @@
+LICENSE_OK=1
+# task-60 / M9l: root LICENSE, vendor manifest, README step 0
+# Date: 2026-10-31 (Asia/Shanghai)  Host: Windows 10, Git Bash, Node v24.12.0
+# Repo: E:/workspace/FPGA_Comp  Python: 3.14.0  PowerShell: 5.1
+# All commands below run from the repo root unless stated otherwise.
+
+[1] Root LICENSE (MIT, neutral copyright line)
+$ powershell -NoProfile -ExecutionPolicy Bypass -File temp_test/host/check_license.ps1 ; echo LICENSE_EXIT=$?
+MIT_TITLE_OK
+COPYRIGHT_OK
+MIT_BODY_OK Permission is hereby granted, free of charge
+MIT_BODY_OK copies or substantial portions of the Software
+MIT_BODY_OK THE SOFTWARE IS PROVIDED "AS IS"
+MIT_BODY_OK WITHOUT WARRANTY OF ANY KIND
+MIT_BODY_OK OUT OF OR IN CONNECTION WITH THE SOFTWARE
+MIT_BODY_LINES=5/5
+LICENSE_ASCII=1
+BANNED University=0
+BANNED College=0
+BANNED School=0
+BANNED Team=0
+BANNED Advisor=0
+BANNED Supervisor=0
+BANNED Professor=0
+BANNED Laboratory=0
+BANNED_HITS=0
+LICENSE_BYTES=1081
+LICENSE_SHA256=48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30
+COPYRIGHT=Copyright (c) 2026 RetinaEvent Contributors
+LICENSE_OK=1
+LICENSE_EXIT=0
+
+[2] Vendor manifest generated from setup_vendor_rtl.ps1 and verified from real bytes
+$ python temp_test/host/gen_vendor_manifest.py
+MANIFEST_WRITTEN=retina_event\vendor_manifest.json
+MANIFEST_FILES=26
+MANIFEST_BYTES=206613
+MANIFEST_SHA256=a9693c2cc5d1b6fce3b557ce06808367359908c49ac81f020d0969ceba6df1a0
+GEN1_EXIT=0
+
+$ python temp_test/host/gen_vendor_manifest.py
+MANIFEST_WRITTEN=retina_event\vendor_manifest.json
+MANIFEST_FILES=26
+MANIFEST_BYTES=206613
+MANIFEST_SHA256=a9693c2cc5d1b6fce3b557ce06808367359908c49ac81f020d0969ceba6df1a0
+GEN2_EXIT=0
+# diff of the two generator outputs: empty (same file list, bytes, sha256).
+
+$ powershell -NoProfile -ExecutionPolicy Bypass -File build/check_vendor_manifest.ps1
+CHECK ... (26 files, one CHECK line per entry)
+MANIFEST_FILES=26
+MANIFEST_BYTES=206613
+MANIFEST_SHA256=a9693c2cc5d1b6fce3b557ce06808367359908c49ac81f020d0969ceba6df1a0
+CHECKED_ENTRIES=26
+VENDOR_MANIFEST_OK=1
+VMC1_EXIT=0
+# Second identical run: VMC2_EXIT=0, same MANIFEST_SHA256, diff empty.
+# Source of truth: setup_vendor_rtl.ps1 $vendorFiles has 26 entries (13 from
+# routine 37, 13 from routine 60). HASH_SOURCE prints the live source tree;
+# if it is absent, the checker falls back to retina_event/ref_original/.
+
+[3] README step 0 and license link
+$ chcp.com 65001 ; powershell -NoProfile -ExecutionPolicy Bypass -File temp_test/host/readme_check.ps1
+TITLE_OK ... (8/8 sections)
+TITLES_OK=8/8
+SECTION2_CHARS=87 OK
+DIR_TABLE_ROWS=7 OK
+TB_COUNT_OK=71
+STEP0_OK_ITEM STEP0_HEADING
+STEP0_OK_ITEM STEP0_SETUP
+STEP0_OK_ITEM STEP0_CHECK
+STEP0_OK_ITEM STEP0_OK
+STEP0_OK_ITEM STEP0_SIM_SELF
+STEP0_OK_ITEM STEP0_REF
+STEP0=6/6
+METRIC_TABLE_ROWS=8 OK
+LICENSE_LINK_OK
+LICENSE_OLD_TEXT=0
+NUMBERS_OK=17/17
+LINKS_OK=14/14
+BANNED_HITS=0
+CMDPATH_OK=build/build_inproc.tcl
+CMDPATH_OK=build/run_sim.ps1
+CMDPATH_OK=sim/tb/tb_retina_core.v
+CMDPATH_OK=vendor_manifest.json
+CMDPATH_OK=build/check_vendor_manifest.ps1
+CMDPATH_OK=5/5
+EVIDENCE_LOGS=5/5
+README_SUBMIT_OK=1
+README_EXIT=0
+
+[4] Packaging assertions
+# 4a) Official map (unchanged report/tools/pack_map.json).
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack
+PACK_SUMMARY files=576 bytes=6238557 skipped=0
+NAMECHECK entries=642 bad=0 skipped=0
+TREE_HASH=57409035b24a9204d2c85f9c699d9a2cb7e32439f22bcdcbf019270b72022815
+PACK_EXIT=0
+# Paths inside temp_test/pack:
+LICENSE_FILES=0
+VENDOR_MANIFEST_FILES=0
+REF_ORIGINAL_PATHS=0
+EXP_PATHS=0
+# This is expected: the official map has no LICENSE / vendor_manifest mapping.
+# task-60 forbids editing report/tools/pack_map.json, so this gap is reported
+# to the Lead instead of being patched in place.
+
+# 4b) Audit map: copy of the official map plus two mappings and a LICENSE
+# name-exception. Written under temp_test/host/, not in report/tools/.
+$ python ... (see temp_test/host/pack_map_license.json)
+MAPPINGS=50 REQUIRED=19 EXCEPTIONS=3
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/host/audit_pack -Map temp_test/host/pack_map_license.json
+PACK_SUMMARY files=578 bytes=6247217 skipped=0
+NAMECHECK entries=644 bad=0 skipped=0
+TREE_HASH=2c04f41521247d943cdc6346f597e2a9b11c39ea7ade643e8fcd2cc83ffec7ef
+AUDIT_EXIT=0
+# Audit pack contents:
+license (1081 bytes, sha256=48f8048e...c77fd30; the packer lowercases names)
+vendor_manifest.json (7579 bytes)
+REF_ORIGINAL_PATHS=0
+EXP_PATHS=0
+# Note: [4b] was an audit map before task-60 clause ④. The official map now has
+# an explicit LICENSE name exception; the final package keeps uppercase LICENSE
+# (see [7]/[8]). This note supersedes the earlier lowercase limitation.
+
+# 4c) Final rerun after this evidence log existed (counts include the log itself).
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack
+PACK_SUMMARY files=578 bytes=6293695 skipped=0
+NAMECHECK entries=644 bad=0 skipped=0
+TREE_HASH=24d1d7c749e4c02f8733ba1f1530e17a81028fec09eb887755c784571f762753
+OFFICIAL_EXIT=0
+OFFICIAL: license=0 vendor_manifest=0 ref_original=0 exp_ov5640_lcd_eth=0.
+
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/host/audit_pack -Map temp_test/host/pack_map_license.json
+PACK_SUMMARY files=580 bytes=6302355 skipped=0
+NAMECHECK entries=646 bad=0 skipped=0
+TREE_HASH=fecb3a710ebcdd3f2df43b3c2f05dc20964d35770c1a068328a80f397b92f5db
+AUDIT_EXIT=0
+AUDIT: license=1 vendor_manifest=1 ref_original=0 exp_ov5640_lcd_eth=0.
+$ sha256sum LICENSE temp_test/host/audit_pack/license
+48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30 *LICENSE
+48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30 *temp_test/host/audit_pack/license
+
+[5] Scope and limits
+- No RTL (.v/.sv), gateway/**, packages/**, or web/** source was changed.
+- Under task-60 clause ④, pack tools were changed: report/tools/pack_map.json,
+  report/tools/pack_submission.ps1, report/tools/README.md (the clause explicitly
+  asks for the new mappings and fail-fast assertions). See [7].
+- No git write, no dependency install, no Vivado/ModelSim run.
+- UDP 1234 / WS 8787 were not touched (user panel PID 14432 was running).
+- The manifest hashes were computed from exp_ov5640_lcd_eth/prj_src/rtl; the
+  read-only fallback to retina_event/ref_original/ is implemented in the checker.
+- The browser cannot be opened in this session, so no UI acceptance was run;
+  README/checker checks are static.
+
+[6] Conclusion
+LICENSE_OK=1
+VENDOR_MANIFEST_OK=1
+README_SUBMIT_OK=1
+PACKAGING: [4] was an audit map run before clause ④. The official map now packs
+LICENSE + vendor_manifest.json and has 0 ref_original/exp paths; see [7]/[8].
+
+[7] task-60 clause ④: official map coverage + fail-fast packaging
+# Date: 2026-10-31T00:47+08:00
+# Scope: add report/figures, report/tools, poster/demo/platform files, root
+# LICENSE and vendor_manifest.json to the official package; fail before writing
+# a package if report/evaluation_report.md is missing or report/figures has <8 SVG.
+
+Map counts after the change:
+$ node -e "const m=require('./report/tools/pack_map.json'); console.log(m.mappings.length, m.required.length, m.name_exceptions.length)"
+56 32 3
+# name_exceptions = README.md, skill/README.md, LICENSE
+# mappings: LICENSE -> LICENSE; vendor_manifest.json -> vendor_manifest.json;
+# report/figures -> report/figures; report/tools -> report/tools;
+# report/poster_en.md|svg, report/demo_video_script.md, report/platform_checklist.md.
+# report/evaluation_report.md is now required, not optional.
+
+Fail-fast check (captured while the evaluation report did not yet exist):
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack_preflight
+ERROR report/evaluation_report.md 不存在：等 task-45 交付后再打包
+PREFLIGHT_EXIT=4
+# The output directory was not created, so a missing report cannot leave a
+# half-built package. SVG<8 branch is implemented in the same block but was not
+# triggered separately because the real tree has 10 SVG.
+
+Pre-final pack run (counts before this section, report_eval_ok.log and the README eval links; final counts in [8]):
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack_try
+NAME_EXCEPTION LICENSE
+NAME_EXCEPTION README.md
+NAME_EXCEPTION skill/README.md
+NAMECHECK entries=674 bad=0 skipped=0
+NAME_EXCEPTIONS=LICENSE,README.md,skill/README.md
+FORBIDDEN_PATHS=0
+FIGURE_SVGS=10
+RENAMES=1
+NOASCII_SKIPPED=0
+TREE_HASH=20b6859456b793ecdded4ef908cc5dad65ac6e87ef7500aa8115d49661e1f7e1
+PACK_SUMMARY files=606 bytes=9425392 skipped=0
+PACK_TRY_EXIT=0
+
+Key package paths (pack_try):
+$ ls -l temp_test/pack_try/LICENSE temp_test/pack_try/vendor_manifest.json \
+    temp_test/pack_try/report/evaluation_report.md \
+    temp_test/pack_try/report/poster_en.svg \
+    temp_test/pack_try/report/figures/make_figures.py \
+    temp_test/pack_try/report/figures/figure_data_table.csv \
+    temp_test/pack_try/report/tools/readme.md
+LICENSE 1081 B; vendor_manifest.json 7579 B; report/evaluation_report.md present;
+poster_en.svg 2725488 B; make_figures.py 47333 B; figure_data_table.csv 12253 B;
+report/tools/readme.md present (target name lowercased by the naming rule).
+$ sha256sum LICENSE temp_test/pack_try/LICENSE
+48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30 *LICENSE
+48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30 *temp_test/pack_try/LICENSE
+$ find temp_test/pack_try -type f | grep -Ec 'ref_original|exp_ov5640_lcd_eth'
+0
+
+Official 3.3.5.4 tree check (pre-final; final table in [8]; all eight present, missing=0):
+| official item | package path | files |
+| --- | --- | --- |
+| README.md | README.md | 1 |
+| src/ | src/ | 340 |
+| sim/ | sim/ | 174 |
+| build/ | build/ | 25 |
+| board/ | board/ | 7 |
+| data/ | data/ | 5 |
+| skill/README.md | skill/README.md | 1 |
+| report/ | report/ | 32 |
+# report/ includes figures (10 SVG), tools (4 files), evaluation/design/llm
+# reports, poster/demo/platform files and evidence logs. Package has 10 SVG and
+# 4 report/tools files, so both new coverage checks are satisfied.
+
+# The final official-map run to temp_test/pack is recorded in [8]. [8] is appended
+# after packing, so the copy inside the package stops at this [7] section.
+
+[8] Final official-map pack (after task-45 completed and README eval links)
+# Date: 2026-10-31T00:49+08:00
+# This section is appended after the package copy was written; see [7] for the
+# same statement inside the package. All numbers below are the final repo state.
+
+$ powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack
+OFFICIAL_FINAL_EXIT=0
+PACK_SUMMARY files=608 bytes=9463847 skipped=0
+NAMECHECK entries=676 bad=0 skipped=0
+NAME_EXCEPTIONS=LICENSE,README.md,skill/README.md
+TREE_HASH=021bf2962cf4f27a69fe29b434fec61d3b090fffa7833af9b6e5f06aa15b90ac
+FORBIDDEN_PATHS=0
+FIGURE_SVGS=10
+RENAMES=1
+NOASCII_SKIPPED=0
+# A second run produced the same TREE_HASH and PACK_SUMMARY; diff of the two
+# captured logs is empty (idempotent).
+
+Key package paths and hashes:
+LICENSE                            1081 B  48f8048e0e2a311865056c04ec35cbb400f29d1a6f00b3d5e0c61d2d0c77fd30
+vendor_manifest.json               7579 B  a9693c2cc5d1b6fce3b557ce06808367359908c49ac81f020d0969ceba6df1a0
+report/evaluation_report.md       35797 B  fe818cf5aa9762c3340da1e920be3fed63bc9c28c53f811fd5dd3a7bfcc5e0e0
+report/evidence/report_eval_ok.log 5741 B  present
+report/poster_en.svg            2725488 B  present
+report/figures/make_figures.py    47333 B  present
+report/figures/figure_data_table.csv 12253 B present
+report/tools/readme.md             8696 B  present
+# sha256sum: root and package LICENSE are identical; root and package
+# vendor_manifest.json are identical; root and package evaluation_report.md
+# are identical.
+
+Final official 3.3.5.4 tree check (missing entries = 0):
+| official item | package path | files |
+| --- | --- | --- |
+| README.md | README.md | 1 |
+| src/ | src/ | 340 |
+| sim/ | sim/ | 175 |
+| build/ | build/ | 25 |
+| board/ | board/ | 7 |
+| data/ | data/ | 5 |
+| skill/README.md | skill/README.md | 1 |
+| report/ | report/ | 33 |
+# report/ contains 10 SVG figures, 4 tool files, evaluation/design/llm reports,
+# poster/demo/platform files and 6 evidence logs.
+# ref_original/ and exp_ov5640_lcd_eth/ path count = 0.
+
+$ python report/tools/check_names.py --root temp_test/pack \
+    --manifest temp_test/pack.manifest.check.txt \
+    --exceptions README.md,skill/README.md,LICENSE
+NAMECHECK entries=676 bad=0 skipped=0
+TREE_HASH=021bf2962cf4f27a69fe29b434fec61d3b090fffa7833af9b6e5f06aa15b90ac
+CHECK_EXIT=0
+
+README checker after linking the evaluation report and report_eval_ok.log:
+TITLES_OK=8/8; STEP0=6/6; NUMBERS_OK=17/17; LINKS_OK=16/16;
+EVIDENCE_LOGS=6/6; BANNED_HITS=0; README_SUBMIT_OK=1; README_EXIT=0.
+
+# Scope: task-60 clause ④ changed report/tools/pack_map.json,
+# report/tools/pack_submission.ps1 and report/tools/README.md; README.md was
+# updated for step 0 and for the now-available evaluation report. No RTL, no
+# gateway/packages/web source, no git write, no dependency install.
+# The package copy of this file stops at [7] because [8] is the post-pack record.

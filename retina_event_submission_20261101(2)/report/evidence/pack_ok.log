@@ -1,0 +1,238 @@
+PACK_OK=1
+任务：task-49（M9h 提交工程打包；按 lead 裁决修订：允许前导下划线、证据日志进包、非 ASCII 别名/NOASCII_SKIPPED）
+时间：2026-10-31T00:06:00+08:00
+环境：Windows / Git Bash；PowerShell 5.1.26100.9711；Python 3.14.0；cwd E:/workspace/FPGA_Comp
+约束：未执行 Vivado/综合/烧录；未做任何 git 写操作；未安装依赖；未占用 1234/8787。
+
+修订口径：
+  * name_regex 改为 ^[a-z0-9_][a-z0-9._-]*$（官方允许字母/数字/下划线/连字符，未禁止下划线开头）。
+  * 判据凭证日志白名单：report/evidence/*.log、docs/**/EVIDENCE_*.log、skill/_check/EVIDENCE*.log；显式映射进包。
+  * 非 ASCII 源名优先用 pack_map.json 顶层 ascii_aliases 重命名；无别名则跳过并写输出根 noascii_skipped.md（按全小写命名规则落盘）。
+  * README.md 大小写例外理由已写入 report/tools/README.md：官方指南原文点名的 README.md 与 skill/README.md，属于固定路径例外。
+
+============================================================
+[1] 一键打包：精确命令与两次运行
+============================================================
+命令（连续执行两次）：
+  powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Out temp_test/pack
+
+RUN1_EXIT=0
+PACK_MAP E:\workspace\FPGA_Comp\report\tools\pack_map.json
+PACK_OUT E:\workspace\FPGA_Comp\temp_test\pack
+WARN optional-missing report/evaluation_report.md
+RENAME host/app/tools/annotator/打开标注.bat -> src/host/tools/annotator/open_annotator.bat
+KEEP skill/README.md (source)
+NAME_EXCEPTION README.md
+NAME_EXCEPTION skill/README.md
+MANIFEST E:\workspace\FPGA_Comp\temp_test\pack.manifest.txt
+TREE_HASH=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+NAMECHECK entries=633 bad=0 skipped=0
+NAME_EXCEPTIONS=README.md,skill/README.md
+RENAMES=1
+NOASCII_SKIPPED=0
+TREE_HASH=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+PACK_SUMMARY files=567 bytes=6058877 skipped=0
+
+RUN2_EXIT=0
+PACK_MAP E:\workspace\FPGA_Comp\report\tools\pack_map.json
+PACK_OUT E:\workspace\FPGA_Comp\temp_test\pack
+WARN optional-missing report/evaluation_report.md
+RENAME host/app/tools/annotator/打开标注.bat -> src/host/tools/annotator/open_annotator.bat
+KEEP skill/README.md (source)
+NAME_EXCEPTION README.md
+NAME_EXCEPTION skill/README.md
+MANIFEST E:\workspace\FPGA_Comp\temp_test\pack.manifest.txt
+TREE_HASH=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+NAMECHECK entries=633 bad=0 skipped=0
+NAME_EXCEPTIONS=README.md,skill/README.md
+RENAMES=1
+NOASCII_SKIPPED=0
+TREE_HASH=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+PACK_SUMMARY files=567 bytes=6058877 skipped=0
+
+幂等：
+  diff -u temp_test/pack_manifest_run1.txt temp_test/pack_manifest_run2.txt
+  DIFF_EXIT=0（无差异）
+  sha256(run1)=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+  sha256(run2)=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+  TREE_HASH 相同且等于清单 sha256。
+
+说明：skipped=0。旧版 23 条跳过项中，前导下划线文件已按新规则进包；唯一非 ASCII 源名
+host/app/tools/annotator/打开标注.bat 通过 ascii_aliases 改名为 open_annotator.bat（RENAMES=1），
+没有无别名非 ASCII 文件，故 NOASCII_SKIPPED=0（noascii_skipped.md 仍生成，内容见 [3]）。
+
+============================================================
+[2] 命名 / 体积 / 清单独立复查
+============================================================
+命令：
+  python report/tools/check_names.py --root temp_test/pack --manifest temp_test/pack.manifest.check.txt --exceptions README.md,skill/README.md
+CHECK_EXIT=0
+NAME_EXCEPTION README.md
+NAME_EXCEPTION skill/README.md
+MANIFEST temp_test\pack.manifest.check.txt
+TREE_HASH=cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6
+NAMECHECK entries=633 bad=0 skipped=0
+NAME_EXCEPTIONS=README.md,skill/README.md
+
+清单 sha256 与两次运行一致：
+  cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6  temp_test/pack_manifest_run1.txt
+  cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6  temp_test/pack_manifest_run2.txt
+  cf249d112dbeeca5a2381f9755b9f93cecca20642bd50d7cd7ddd9bcdf30b5d6  temp_test/pack.manifest.check.txt
+
+============================================================
+[3] 输出树、必需路径与新白名单内容
+============================================================
+顶层（find temp_test/pack -maxdepth 1 -mindepth 1 -printf '%f\n' | sort）：
+  README.md
+  board
+  build
+  data
+  noascii_skipped.md
+  report
+  sim
+  skill
+  src
+
+逐目录文件数：board=7 build=22 data=5 report=4 sim=169 skill=19 src=339（合计 567）。
+
+必需路径检查（全部 OK）：
+  OK README.md
+  OK src/rtl
+  OK src/host
+  OK src/nn
+  OK sim/tb
+  OK sim/nn
+  OK build
+  OK board
+  OK data
+  OK skill/README.md
+  OK report
+  OK report/llm_collaboration.md
+  OK report/evidence
+  OK report/evidence/pack_ok.log
+  OK skill/_check
+  OK skill/_check/evidence_skill_ok.log
+  OK noascii_skipped.md
+
+skill/_check 进包 grep（find temp_test/pack -path '*skill/_check*' -printf '%P\n' | sort）：
+  skill/_check
+  skill/_check/check_readme.py
+  skill/_check/evidence_skill_ok.log
+  skill/_check/run_selfchecks.py
+
+report/evidence 进包 grep（find temp_test/pack -path '*report/evidence*' -printf '%P\n' | sort）：
+  report/evidence
+  report/evidence/pack_ok.log
+  report/evidence/report_design_ok.log
+
+下划线前缀文件进包抽样：
+  sim/tb/_probe
+  src/host/tools/_verify_baud.mjs
+  src/host/tools/_verify_evonly.mjs
+  src/host/tools/_verify_heartbeat.mjs
+  src/host/tools/_verify_serial.mjs
+  src/host/tools/_verify_sixfix.mjs
+  src/host/tools/_verify_slider.mjs
+  src/host/tools/_verify_transport.mjs
+  src/host/tools/_verify_transport2.mjs
+  src/host/tools/_verify_uart_telem.mjs
+  src/nn/_recon1.py
+  src/nn/_recon2.py
+  src/nn/_recon3.py
+  src/nn/_recon4.py
+  src/nn/_recon5.py
+
+NOASCII_SKIPPED 文件（temp_test/pack/noascii_skipped.md，按全小写规则命名）：
+  # NOASCII_SKIPPED
+  NOASCII_SKIPPED=0
+  none: all mapped files are ASCII or covered by ascii_aliases
+
+RENAME 记录（打包输出）：
+  RENAME host/app/tools/annotator/打开标注.bat -> src/host/tools/annotator/open_annotator.bat
+  输出中只有 open_annotator.bat，没有中文目标名。
+
+排除/体积检查：
+  node_modules 目录数=0；dist 目录数=0；.git 目录数=0；__pycache__ 目录数=0。
+  >20 MB 文件数=0。
+  records/*.mp4、*.jou、*.pb 等全局排除规则在 pack_map.json 中配置。
+  *.log 仍全局排除，但 report/evidence/*.log、docs/**/EVIDENCE_*.log、skill/_check/EVIDENCE*.log 走 log_exceptions 显式进包。
+
+report/ 内容：
+  design_report.md 54826 B（存在，按要求复制）
+  llm_collaboration.md 12464 B（必需）
+  evidence/pack_ok.log、evidence/report_design_ok.log（判据凭证）
+  evaluation_report.md 不存在 -> WARN optional-missing，不算 FAIL。
+
+============================================================
+[4] 反例验证（temp_test 内）
+============================================================
+造 3 个反例：
+  temp_test/pack_negative/中文目录/readme.txt
+  temp_test/pack_negative/BADNAME.MD
+  temp_test/pack_negative/big.bin（20971521 B，刚好超过 20 MB）
+
+(4.1) 命名检查对原始反例树应 FAIL：
+命令：
+  python report/tools/check_names.py --root temp_test/pack_negative --manifest temp_test/pack_negative.manifest.txt --exceptions README.md,skill/README.md
+NEG_CHECK_EXIT=1
+BADNAME BADNAME.MD
+BADNAME 中文目录
+SKIP big.bin 20971521
+MANIFEST temp_test\pack_negative.manifest.txt
+TREE_HASH=45705415da78a9db6cf5b45b4ba4af26c819273f47ad295bf9800c70a321eeee
+NAMECHECK entries=4 bad=2 skipped=1
+结论：中文目录与大写扩展名被 BADNAME 拒绝，超限文件被 SKIP；退出码 1。
+
+(4.2) 打包脚本的复制阶段应跳过超限/中文名，并记录 NOASCII：
+使用最小测试映射 temp_test/pack_negative_map.json（source=temp_test/pack_negative，target=negative，无全局排除）：
+命令：
+  powershell -NoProfile -ExecutionPolicy Bypass -File report/tools/pack_submission.ps1 -Map temp_test/pack_negative_map.json -Out temp_test/pack_negative_out
+NEG_PACK_EXIT=0
+NOASCII_SKIP temp_test/pack_negative/中文目录/readme.txt
+SKIP negative/big.bin 20971521
+MANIFEST temp_test\pack_negative_out.manifest.txt
+TREE_HASH=b904e6738fc8ad15facc32d55cbefb72418c51b8809f0d2e21cc5dec9d1c8d2e
+NAMECHECK entries=3 bad=0 skipped=0
+RENAMES=0
+NOASCII_SKIPPED=1
+TREE_HASH=b904e6738fc8ad15facc32d55cbefb72418c51b8809f0d2e21cc5dec9d1c8d2e
+PACK_SUMMARY files=2 bytes=155 skipped=2
+输出树：
+  d negative
+  f negative/badname.md 2
+  f noascii_skipped.md 153
+noascii_skipped.md 内容：
+  NOASCII_SKIPPED=1
+  - temp_test/pack_negative/中文目录/readme.txt - non-ascii-component
+结论：big.bin 未进入输出（d 生效）；中文目录未产出，但被记录到 noascii_skipped.md（b 生效）；
+BADNAME.MD 被规范化为 badname.md 后合规；files=2 含 noascii_skipped.md，skipped=2 为中文文件与超限文件。
+
+============================================================
+[5] 实现与文件
+============================================================
+修改（均在 task-49 白名单内）：
+  report/tools/pack_submission.ps1  主程序：读 map；ascii_aliases；NOASCII_SKIPPED；repo 相对路径判定日志例外；RENAMES/NOASCII 计数
+  report/tools/pack_map.json        映射表（48 条 mappings；新 name_regex；3 条 log_exceptions；1 条 ascii_alias；evidence 映射；17 条 required）
+  report/tools/check_names.py       命名/体积/排序清单/TREE_HASH 检查器；默认正则允许首位下划线
+  report/tools/README.md            用法、映射、README 例外理由、日志白名单、ascii_alias/NOASCII、反例和退出码
+  report/evidence/PACK_OK.log       本证据（首行 PACK_OK=1）
+  temp_test/pack/**                 输出树（gitignore 内）
+
+关键口径：
+  * 输出强制在 temp_test 下，脚本拒绝 temp_test 根；不会写仓库根 submission/。
+  * README.md 与 skill/README.md 是官方指南指定的两个固定路径例外；其他 .MD/.PNG 仍 BADNAME。
+  * 目标路径的 ASCII 大写组件自动转小写；非 ASCII 有别名则 RENAME，无别名则 NOASCII_SKIP + noascii_skipped.md。
+  * 单文件 >20 MB 打印 SKIP <目标路径> <字节> 并计入 skipped。
+  * 预检：python -m py_compile report/tools/check_names.py 通过；pack_map.json JSON 解析通过（MAP_OK 48）。
+  * skill/README.md 优先使用源文件（本次源文件存在，主程序打印 KEEP skill/README.md (source)）；
+    generated_files 仅作缺失兜底。
+
+============================================================
+[6] 结论
+============================================================
+PACK_OK=1：两次运行退出码 0；PACK_SUMMARY 均为 files=567 bytes=6058877 skipped=0；
+TREE_HASH 两次相同（cf249d...b5d6）；NAMECHECK entries=633 bad=0 skipped=0；
+RENAMES=1（annotator/打开标注.bat -> open_annotator.bat）；NOASCII_SKIPPED=0；
+skill/_check 与 report/evidence 均已进包（见 [3] grep）；17 个必需路径全部存在；
+反例验证 (c) BADNAME、(d) SKIP/NOASCII 均符合预期。
+证据文件：report/evidence/PACK_OK.log（*.log 被 .gitignore 忽略，提交时需 git add -f）。
