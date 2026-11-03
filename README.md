@@ -139,7 +139,7 @@ pwsh -NoProfile -File build/run_sim.ps1 -Tb tb_retina_core
 
 表中数字全部取自 docs/06_facts 的 D8 口径。原始报告：act3c 在 `build/variant_act3c/`，act8 在 `build/variant_act8_final/`；act3c 作为历史动作实测位流保留。未产生的数字写“本版未测量”，不补猜。
 
-⚠️ **当前上板位流与验收口径**：2026-10-31 17:26 起板上运行的是 `variant_act8_uart`（2,726,527 B，全文 md5 `34843361199dcbea33ec16473a3fe308`，载荷 md5 `210a20fc22ff10d5532cbe03c1689502`，WNS +0.296，LUT 46.16% / BRAM 66.30%），即在 act8 交付逻辑上并联 UART v3 链路（事件回传 + 遥测 + CTRL，115200~921600 四档），以太网与动作识别部分不变。第 6 节与第 8 节的 A1~A4 验收数字、空场景基线都是在 `variant_act8_final` 上取得；`variant_act8_uart` 只补测了串口链路与判定功能，**未重跑 A1~A4**。两个位流都随包分发：`build/variant_act8_final/`（历史动作验收位流）与 `build/variant_act8_uart/`（当前上板位流，含 `.mcs` Flash 镜像）。
+⚠️ **当前上板位流与验收口径**：2026-10-31 17:26 起板上运行的是 `variant_act8_uart`（2,726,527 B，全文 md5 `34843361199dcbea33ec16473a3fe308`，载荷 md5 `210a20fc22ff10d5532cbe03c1689502`，WNS +0.296，LUT 46.16% / BRAM 66.30%），即在 act8 交付逻辑上并联 UART v3 链路（事件回传 + 遥测 + CTRL，115200\~921600 四档），以太网与动作识别部分不变。第 6 节与第 8 节的 A1~A4 验收数字、空场景基线都是在 `variant_act8_final` 上取得；`variant_act8_uart` 只补测了串口链路与判定功能，**未重跑 A1~A4**。两个位流都随包分发：`build/variant_act8_final/`（历史动作验收位流）与 `build/variant_act8_uart/`（当前上板位流，含 `.mcs` Flash 镜像）。
 
 ## 7. 许可与第三方
 
