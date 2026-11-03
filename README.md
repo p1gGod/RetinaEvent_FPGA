@@ -151,24 +151,4 @@ pwsh -NoProfile -File build/run_sim.ps1 -Tb tb_retina_core
 本版 README 更新于 2026-10-31。板上运行 `variant_act8_final`（v7b 两分类权重 + `MARGIN_MIN=16`，md5 见第 6 节）。该位流于 2026-10-31 02:02 烧板，`DONE_PIN=1` / `EOS=1` / `PROG_RESULT=OK`。空场景零误报已实测（20.1 分钟带录像 + 4 小时连续被动监测，均 0 次；0 事件上界分别 0.149 / 0.0125 次/分）；A1~A4 动作段验收已于同日 15:49–16:26 执行 4 轮（3 轮有效：A3 召回 14/20、19/20、15/20，累计 48/60=0.80；A1/A2 零误触；A4 共 1 条退场过渡），G2（≥0.85）未稳定达标已如实记录。v7 模型离线留出准确率两折 0.9042 / 0.8754（未合并）；评测报告与设计报告对 act8 的口径一致。
 
 class2 横向挥手保持实验性，不随本版部署。位流构建与时序记录见 [当前状态](docs/06_facts/00_current_status.md)。资源与时序口径以 D8 为准。
-## 9 已知未达标与风险接受
 
-以下三项在提交时点未达标或未验证，如实列出。判据未达标的记录不修改门限、不重新取样至通过。
-
-| 项 | 状态 | 实测 / 门限 | 处置 |
-| --- | --- | --- | --- |
-| v7b 模型自动判据 | 未达标（`V7B_MODEL_OK=0`） | 硬负样本 pulse 2（门限 ≤1）；镜像迁移 `d_wave` 0.0196（门限 ≤0.01） | 权重仍作为 act8 部署权重，属显式风险接受，见 [docs/06_facts/03_v7b_deployment_decision.md](docs/06_facts/03_v7b_deployment_decision.md) |
-| act8 板级动作指标 | 已测，G2 未稳定达标 | A1~A4 执行 4 轮（3 轮有效）：A3 召回 48/60=0.80（最好 19/20），G2 ≥0.85 未稳定达标；A1/A2 零误触；A4 1 条退场过渡；空场景 241.2 分钟 0 次事件 | 见 `report/evaluation_report.md` §7.1；缺口如实记录，不调门限、不重跑挑结果 |
-| act8 时序余量 | 通过但薄 | WNS +0.215 ns（act3c 为 +0.306 ns） | 最差路径在 `udp_merge` 事件包长链，后续版本需预寄存 |
-
-回退判据：若 A1（双手离开画面）出现静止误报，v7b 权重失效，回退 act3c/v5 或重训；若 act8 时序在他人环境不收敛，回退 act7（`variant_act7`，WNS +0.059 ns）。
-
-## 10. 仓库同步与库容（2026-10-31）
-
-私有仓：`https://github.com/scissorlight/FPGA_comp.git`（分支 `main`）。冻结提交 `ee5cd013a3e773e66e3c7fb3cdb87b2535204d92`，本地与 `origin/main` 已一致（31 个提交、74.5 MiB 已同步）。历史冻结包 `submission/retina_event_submission_20261031.zip`（2026-10-31 06:22:30，666 文件 / 25,060,025 B）保留作证据；**当前交付包为 `submission/retina_event_submission_20261101.zip`（2026-11-01，683 文件 / 36,626,595 B 树体积）**，已并入 §7.1 验收回填、串口动作回传与 `variant_act8_uart` 上板位流。两包的 `TREE_HASH`、双跑结果与 zip 校验值记录在仓库内 `report/evidence` 下的 REPACK 日志（按 `pack_map.json` 不入包）。
-
-库容实测（`git ls-tree -r -l HEAD` 全量）：已跟踪 4,998 文件 / 760.6 MiB，`HEAD` 最大单文件 62,915,419 B（板会录制的原始转储 `mtu60_dump_sampled.bin`，超出单文件上限故不入包），`.git` 638 MB。三条红线对照：单文件 100 MB 硬限 ✅（余量 1.59 倍）、单次推送 2 GB 硬限 ✅、官方建议仓库 < 1 GB ✅（占用 64%）。
-
-⚠️ **冻结哈希的适用边界**：`TREE_HASH` 只对应生成它的那一次冻结包（10-31 包 `8b9f987b…`；11-01 包见 REPACK 日志），**不对应本提交之后的仓库树**——`README.md` 与 `report/tools/` 都是打包输入，本节与体检工具落库后再跑打包器会得到新哈希。要复现原哈希须回到冻结提交前的树或重做一次双跑冻结。远端可达性：`git ls-remote` 与 HTTPS 部分克隆（`--depth 1 --filter=blob:none`）均返回同一 HEAD 与 4,998 条文件清单。
-
-红线：单文件不得超 100 MB；单次推送不得超 2 GB；新增大体积实测数据（录像、`raw/*.bin`）不再入库，避免继续侵蚀 < 1 GB 余量。完整复查记录与遗留项（已跟踪 `*.gen/` 产物 1,187 个 / 179.7 MiB 属历史遗留，本轮不处置）见 [docs/07_review/08_phase_review_20261031.md](docs/07_review/08_phase_review_20261031.md)。
