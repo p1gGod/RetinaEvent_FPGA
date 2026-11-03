@@ -33,7 +33,7 @@
 | `skill/` | `skill/` | 三项可复用的 FPGA 工程技能包 |
 | `report/` | `report/` | 设计报告、评测报告、图表与机读证据 |
 
-上表是仓库路径。提交包内目录名与文件名按官方 3.3.5.4 全部 ASCII 小写（如 `docs/06_facts`、`board/readme.md`、`report/evidence/pack_ok.log`），大小写例外只有官方点名的 `README.md`、`skill/README.md` 与任务书要求的 `LICENSE`。包内改名与链接改写由 `report/tools/normalize_pack.mjs` 与 `fix_pack_links.mjs` 自动完成，映射表在 `name_map.json`。
+上表是仓库路径。提交包内目录名与文件名按官方 3.3.5.4 全部 ASCII 小写（如 docs/06_facts、board/readme.md、report/evidence/pack_ok.log），大小写例外只有官方点名的 README.md、LICENSE 与任务书要求的 XXX，包内改名与链接改写由 normalize_pack.mjs 与 fix_pack_links.mjs 自动完成，映射表在 name_map.json。
 
 ## 4. 快速复现
 
