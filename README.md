@@ -124,19 +124,19 @@ pwsh -NoProfile -File build/run_sim.ps1 -Tb tb_retina_core
 
 ## 6. 关键指标一屏表
 
-| 指标 | act3c（上次动作实测所用） | act8（当前交付） | 源文件（相对仓库根） |
-| --- | --- | --- | --- |
-| LUT | 20,559 / 63,400（32.43%） | 22,383 / 63,400（35.30%） | `docs/06_facts/02_metric_register.md`（D8-R2/R12/R3） |
-| FF | 11,850 / 126,800（9.35%） | 14,325 / 126,800（11.30%） | 同上（D8-R2/R12/R3） |
-| Slice | 7,327（46.23%） | 8,026（50.64%） | 同上（D8-R2/R12/R3） |
-| BRAM | 87 / 135（64.44%） | 86.5 / 135（64.07%） | 同上（D8-R2/R12/R3） |
-| DSP | 7 / 240（2.92%） | 8 / 240（3.33%） | 同上（D8-R2/R12/R3） |
-| IOB | 140（49.12%） | 140（49.12%） | 同上（D8-R2/R12/R3） |
-| WNS / TNS / WHS | +0.306 ns；TNS 0，WHS +0.036 ns | +0.215 ns；TNS 0，WHS +0.017 ns | 同上（D8-R1/R12） |
-| 事件流回传 | ≈15,940 pps（UDP 包率） | 同链路，本版沿用 | `docs/06_facts/00_current_status.md` §1（D8-H6） |
-| 动作回传延迟 | 板上判别 8.80 ms/窗；端到端回传本版未测量 | 板级判别与回传延迟本版未测量 | `sim/nn/EVIDENCE_M3.md`（D8-R5） |
-| 板上位流 | `variant_act3c`，2,890,875 B，md5 `a5fff751e20019d7e80a3a953f7f8c5a` | `variant_act8_final`，2,839,107 B；全文 md5 `5ec55ec07c44f2503df63f1bb160a6e6`，载荷 md5 `dcbcf543210c33cb22625128bc5f6b97` | `build/variant_act3c/retina_event.bit`、`build/variant_act8_final/retina_event.bit`（D8-M6/M12） |
-| v7 离线留出准确率 | — | 两折 0.9042 / 0.8754（未合并，非 pooled；均值 0.8898），离线非板上 | `nn/out_v7/results_v7_final.json`（D8-A7） |
+| 指标  | act8（当前交付） | 源文件（相对仓库根） |
+| --- | --- | --- |
+| LUT | 22,383 / 63,400（35.30%） | `docs/06_facts/02_metric_register.md`（D8-R2/R12/R3） |
+| FF |  14,325 / 126,800（11.30%） | 同上（D8-R2/R12/R3） |
+| Slice | 8,026（50.64%） | 同上（D8-R2/R12/R3） |
+| BRAM | 86.5 / 135（64.07%） | 同上（D8-R2/R12/R3） |
+| DSP | 8 / 240（3.33%） | 同上（D8-R2/R12/R3） |
+| IOB | 140（49.12%） | 同上（D8-R2/R12/R3） |
+| WNS / TNS / WHS | +0.215 ns；TNS 0，WHS +0.017 ns | 同上（D8-R1/R12） |
+| 事件流回传 | 同链路，本版沿用 | `docs/06_facts/00_current_status.md` §1（D8-H6） |
+| 动作回传延迟 | 板级判别与回传延迟本版未测量 | `sim/nn/EVIDENCE_M3.md`（D8-R5） |
+| 板上位流 | `variant_act8_final`，2,839,107 B；全文 md5 `5ec55ec07c44f2503df63f1bb160a6e6`，载荷 md5 `dcbcf543210c33cb22625128bc5f6b97` | `build/variant_act3c/retina_event.bit`、`build/variant_act8_final/retina_event.bit`（D8-M6/M12） |
+| v7 离线留出准确率 | 两折 0.9042 / 0.8754（未合并，非 pooled；均值 0.8898），离线非板上 | `nn/out_v7/results_v7_final.json`（D8-A7） |
 
 表中数字全部取自 docs/06_facts 的 D8 口径。原始报告：act3c 在 `build/variant_act3c/`，act8 在 `build/variant_act8_final/`；act3c 作为历史动作实测位流保留。未产生的数字写“本版未测量”，不补猜。
 
