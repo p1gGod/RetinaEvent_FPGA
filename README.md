@@ -119,7 +119,8 @@ pwsh -NoProfile -File build/run_sim.ps1 -Tb tb_retina_core
 | [report/evidence/evidence_license.log](report/evidence/evidence_license.log) | 根 LICENSE 与厂家依赖清单检查 | LICENSE_OK=1（含 VENDOR_MANIFEST_OK=1） |
 | [report/evidence/report_eval_ok.log](report/evidence/report_eval_ok.log) | 评测报告与图表机读检查 | REPORT_EVAL_OK=1 |
 
-其余机读证据：`EVIDENCE_DESIGN_REPRO.log`（DESIGN_REPRO_OK=1）、`EVIDENCE_EVAL_BACKFILL.log`（EVAL_BACKFILL_OK=1）、`EVIDENCE_FIG_ACT8.log`（FIGURES_ACT8_OK=1）、`EVIDENCE_FIG_LOWER.log`（FIG_LOWER_OK=1）、`EVIDENCE_REPACK_DRYRUN.log`（REPACK_DRYRUN_OK=1）、冷启动审计记录（`EVIDENCE_REPRO_AUDIT.log`，REPRO_AUDIT_OK=1，仓库内留档，不随包）。表内链接按包内小写文件名书写；仓库内这些证据日志保留大写原名（`EVIDENCE_LICENSE.log`、`EVIDENCE_POSTER.log`、`EVIDENCE_README.log`、`PACK_OK.log`、`REPORT_DESIGN_OK.log`、`report_eval_ok.log`），打包时统一转小写并改写引用，因此链接在包内可点。冻结双跑与命名合规证据（`EVIDENCE_REPACK.log`、`PACK_COMPLIANT.log`）含打包自身哈希，仅留仓库证据目录、不入包。
+其余机读证据：EVIDENCE_DESIGN_REPRO.log（DESIGN_REPRO_OK=1）、EVIDENCE_EVAL_BACKFILL.log（EVAL_BACKFILL_OK=1）、EVIDENCE_FIG_ACT8.log（FIGURES_ACT8_OK=1）、EVIDENCE_FIG_LOWER.log（FIG_LOWER_OK=1）、EVIDENCE_REPACK_DRYRUN.log（REPACK_DRYRUN_OK=1）；另有冷启动审计记录 EVIDENCE_REPRO_AUDIT.log（REPRO_AUDIT_OK=1，仓库内留档，不随包）。表内链接按包内小写文件名书写。上述日志在仓库中保留全大写原名（EVIDENCE_LICENSE.log、EVIDENCE_POSTER.log、EVIDENCE_README.log、PACK_OK.log、REPORT_DESIGN_OK.log、report_eval_ok.log），打包时统一转小写并改写引用，因此链接在包内可点。冻结双跑与命名合规证据（EVIDENCE_REPACK.log、PACK_COMPLIANT.log）记录了打包产物自身的哈希，入包会形成自指、破坏包内哈希的可复现性，故仅留仓库证据目录，不入包。
+
 
 ## 6. 关键指标一屏表
 
